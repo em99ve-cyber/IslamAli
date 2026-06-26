@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islam Ali | Video Editor & Translator</title>
+    <meta name="description" content="Cinematic video editor, colorist, and professional video translator & subtitler portfolio based in Cairo. Turning raw footage into cinematic stories with high-quality English/Arabic translation.">
+    <!-- Google Fonts & Preconnects -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://drive.google.com" crossorigin>
+    <link rel="preconnect" href="https://facebook.com" crossorigin>
+    <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+    <link rel="dns-prefetch" href="https://drive.google.com">
+    <link rel="dns-prefetch" href="https://facebook.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Intro Loading Screen -->
+    <div class="intro-loader" id="introLoader" aria-hidden="true">
+        <div class="loader-content">
+            <div class="loader-circle">
+                <div class="circle-glow"></div>
+            </div>
+            <div class="loader-text">
+                <span class="brand-name">ISLAM ALI</span>
+                <span class="loading-progress" id="loadingProgress">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mouse Tracking Interactive Background -->
+    <div class="ambient-background" aria-hidden="true">
+        <canvas id="particlesCanvas" class="particles-canvas"></canvas>
+        <div class="bg-grid"></div>
+        <div class="bg-noise"></div>
+        <div class="ambient-blob blob-1" id="blob1"></div>
+        <div class="ambient-blob blob-2" id="blob2"></div>
+        <div class="ambient-blob blob-3" id="blob3"></div>
+        <div class="cursor-ambient-glow" id="cursorGlow"></div>
+    </div>
+
+    <!-- Custom Cursor Follower -->
+    <div class="custom-cursor-dot" id="cursorDot" aria-hidden="true"></div>
+    <div class="custom-cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+    <!-- Floating Glass Navbar Wrapper -->
+    <div class="navbar-wrapper">
+        <nav class="floating-navbar glass tilt interactive-el" id="navbar" data-tilt-scale="1.02">
+            <a href="#home" class="logo interactive-el">Islam <span>Ali</span></a>
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link active interactive-el">Home</a></li>
+                    <li><a href="#about" class="nav-link interactive-el">About</a></li>
+                    <li><a href="#portfolio" class="nav-link interactive-el">Work</a></li>
+                    <li><a href="#process" class="nav-link interactive-el">Process</a></li>
+                </ul>
+            </div>
+            <div class="nav-actions">
+                <a href="#request" class="nav-cta glass interactive-el">Request</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Container -->
+    <main class="page-content">
+
+        <!-- Hero Section -->
+        <header id="home" class="hero-section section-padding">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <div class="tagline glass tilt interactive-el">• VIDEO · COLOR · TRANSLATION</div>
+                        
+                        <h1 class="main-title">
+                            Crafting Cinematic Videos & <span class="gradient-text">AI Visuals</span> That Capture Attention Instantly.
+                        </h1>
+                        
+                        <p class="bio">
+                            Based in Cairo, I am a post-production specialist, translator, and subtitler. Over the past 3+ years, I have helped brands and high-profile creators scale their digital presence. By merging high-end color grading, seamless editing rhythm, and accurate translation workflows, I transform raw concepts into high-converting visual assets that command authority.
+                        </p>
+                        
+                        <div class="hero-actions">
+                            <a href="#portfolio" class="btn btn-primary interactive-el">Explore My Work</a>
+                            <a href="#request" class="btn btn-secondary glass interactive-el">Book a Project</a>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-portrait-side interactive-el">
+                        <!-- Before/After Slider Container -->
+                        <div class="hero-portrait-wrapper slider-container" id="portraitSlider">
+                            <div class="hero-portrait-glow"></div>
+                            
+                            <!-- Before Image (Without Glasses) -->
+                            <img src="hero-portrait.png" alt="Islam Ali (Without Glasses)" class="slider-img-before">
+                            
+                            <!-- After Image Container (With Glasses) - Aligned Right -->
+                            <div class="slider-overlay-wrap">
+                                <img src="hero-portrait-glasses.png" alt="Islam Ali (With Glasses)" class="slider-img-after">
+                            </div>
+                            
+                            <!-- Vertical Divider Slider Line -->
+                            <div class="slider-divider-line">
+                                <div class="slider-divider-handle">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 9l-4 4 4 4m8 0l4-4-4-4" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skills-marquee">
+                    <div class="skills-track">
+                        <span class="tag glass">Cinematic Video Editing</span>
+                        <span class="tag glass">Professional Color Grading</span>
+                        <span class="tag glass">Cinematic Short Films</span>
+                        <span class="tag glass">High-Retention Reels</span>
+                        <span class="tag glass">Bilingual Subtitling</span>
+                        <span class="tag glass">Audio Transcription & Sync</span>
+                        <span class="tag glass">Sound Design & SFX</span>
+                        <span class="tag glass">Color Correction & Matching</span>
+                        <span class="tag glass">Short-Form Engagement Loops</span>
+                        <span class="tag glass">Audience Retention Pacing</span>
+                        <span class="tag glass">Creative Storytelling Cuts</span>
+                        <span class="tag glass">English & Arabic Translation</span>
+                        <span class="tag glass">Cinematic Film Emulation</span>
+                        <span class="tag glass">TikTok & Shorts Optimization</span>
+                        
+                        <!-- Duplicate elements for seamless infinite looping -->
+                        <span class="tag glass">Cinematic Video Editing</span>
+                        <span class="tag glass">Professional Color Grading</span>
+                        <span class="tag glass">Cinematic Short Films</span>
+                        <span class="tag glass">High-Retention Reels</span>
+                        <span class="tag glass">Bilingual Subtitling</span>
+                        <span class="tag glass">Audio Transcription & Sync</span>
+                        <span class="tag glass">Sound Design & SFX</span>
+                        <span class="tag glass">Color Correction & Matching</span>
+                        <span class="tag glass">Short-Form Engagement Loops</span>
+                        <span class="tag glass">Audience Retention Pacing</span>
+                        <span class="tag glass">Creative Storytelling Cuts</span>
+                        <span class="tag glass">English & Arabic Translation</span>
+                        <span class="tag glass">Cinematic Film Emulation</span>
+                        <span class="tag glass">TikTok & Shorts Optimization</span>
+                    </div>
+                </div>
+
+                <div class="core-pillars">
+                    <div class="pillar-card glass tilt interactive-el" data-tilt-scale="1.03">
+                        <div class="pillar-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                            </svg>
+                        </div>
+                        <h3>EDIT & RHYTHM</h3>
+                        <p>High-retention editing built for YouTube, social campaigns, and commercials. I structure narratives and pacing that keep viewers hooked from the first second.</p>
+                    </div>
+                    <div class="pillar-card glass tilt interactive-el" data-tilt-scale="1.03">
+                        <div class="pillar-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                            </svg>
+                        </div>
+                        <h3>COLOR GRADE</h3>
+                        <p>Professional studio color grading. I match camera sensors, correct exposures, and build atmospheric, stylized look files (LUTs) that fit the story's mood.</p>
+                    </div>
+                    <div class="pillar-card glass tilt interactive-el" data-tilt-scale="1.03">
+                        <div class="pillar-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.813 15.904L9 21l8.904-4.813L21 9l-3-3-8.187 9.904zM15 10a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <h3>TRANSLATION & SUBTITLES</h3>
+                        <p>Professional human translation and localization. I specialize in English-to-Arabic subtitling, dialogue timing, and script adaptation that preserves emotional and cultural context.</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- About Section -->
+        <section id="about" class="about-section section-padding">
+            <div class="container">
+                <span class="section-label">ABOUT</span>
+                <div class="about-header-grid">
+                    <h2 class="about-title">Translating high-concept ideas into release-ready video assets.</h2>
+                    <p class="about-desc">From polished commercials and cinematic color correction to multi-language video localization, my post-production workflow is optimized to deliver visual authority, quick turnaround times, and maximum viewer engagement.</p>
+                </div>
+
+                <div class="about-cards-grid">
+                    <div class="glass-card glass tilt interactive-el">
+                        <h3>Creative Positioning</h3>
+                        <p>I bridge the gap between traditional cinematic storytelling and precise multi-language communication. By integrating accurate manual translation and precise subtitle timing into standard timeline workflows, I create videos that resonate with global audiences and align with professional branding standards. I don't just edit—I localize.</p>
+                        <div class="software-tags">
+                            <span>Premiere Pro</span><span>After Effects</span><span>Professional Color Tools</span>
+                            <span>English / Arabic Translation</span><span>Subtitle Synchronization</span><span>Advanced Audio Design</span>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card glass tilt interactive-el">
+                        <h3>Release-Ready Work</h3>
+                        <p>Below is a curated selection of work spanning cinematic shorts, color grading sensor-matching studies, viral creator reels, and professional script localizations. Each project displays the technical tools, my specific creative role, and the structural highlights that drove viewer conversion.</p>
+                        <div class="software-tags">
+                            <span>Cinematic Shorts</span><span>Color Grading Reels</span><span>Subtitled Commercials</span>
+                            <span>Engagement Optimization</span><span>Soundscapes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Portfolio Section -->
+        <section id="portfolio" class="portfolio-section section-padding">
+            <div class="container">
+                <div class="portfolio-header">
+                    <div>
+                        <span class="section-label">SELECTED WORK</span>
+                        <h2 class="section-title">Projects</h2>
+                    </div>
+                    <div class="portfolio-tabs" role="tablist">
+                        <button class="portfolio-tab-btn active interactive-el" data-category="all" role="tab" aria-selected="true">All</button>
+                        <button class="portfolio-tab-btn interactive-el" data-category="editing" role="tab" aria-selected="false">Video Editing</button>
+                        <button class="portfolio-tab-btn interactive-el" data-category="color" role="tab" aria-selected="false">Color Grading</button>
+                        <button class="portfolio-tab-btn interactive-el" data-category="translation" role="tab" aria-selected="false">Translation</button>
+                        <button class="portfolio-tab-btn interactive-el" data-category="featured" role="tab" aria-selected="false">Best of the Best</button>
+                    </div>
+                </div>
+                
+                <div class="carousel-container">
+                    <div id="portfolio-grid" class="portfolio-grid">
+                        <div id="portfolio-track" class="portfolio-track">
+                            <!-- Projects are rendered dynamically via JavaScript -->
+                        </div>
+                    </div>
+                    <div class="carousel-nav">
+                        <button class="carousel-nav-btn prev interactive-el" id="prevProjectBtn" aria-label="Previous Project">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        </button>
+                        <button class="carousel-nav-btn next interactive-el" id="nextProjectBtn" aria-label="Next Project">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section id="process" class="process-section section-padding">
+            <div class="container">
+                <span class="section-label">PROCESS</span>
+                <h2 class="section-title">A Structured Pipeline for Premium Execution.</h2>
+                <div class="process-grid">
+                    <article class="process-card glass tilt interactive-el" data-step="01">
+                        <div class="step-num">01</div>
+                        <h3>Brief & Focus Hook</h3>
+                        <p>Deconstructing your brand targets and establishing the core audience retention hook for the first 3 seconds.</p>
+                    </article>
+                    <article class="process-card glass tilt interactive-el" data-step="02">
+                        <div class="step-num">02</div>
+                        <h3>Visual Blueprint</h3>
+                        <p>Mapping out pacing beats, custom color palettes, structural asset references, and translated dialogue scripts.</p>
+                    </article>
+                    <article class="process-card glass tilt interactive-el" data-step="03">
+                        <div class="step-num">03</div>
+                        <h3>High-Velocity Assembly</h3>
+                        <p>Integrating multi-cam footage, building immersive sound FX beds, applying color LUTs, and timing caption cuts.</p>
+                    </article>
+                    <article class="process-card glass tilt interactive-el" data-step="04">
+                        <div class="step-num">04</div>
+                        <h3>Export & Optimize</h3>
+                        <p>Rendering native high-bitrate outputs formatted and optimized for YouTube broadcast or social-first channels.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Request Section -->
+        <section id="request" class="request-section section-padding">
+            <div class="container">
+                <span class="section-label">PROJECT REQUEST</span>
+                <h2 class="section-title">A quick way to start the right conversation.</h2>
+                
+                <div class="request-tool-wrapper glass tilt interactive-el" id="requestTool" data-tilt-max="4">
+                    <!-- Top Badge -->
+                    <div class="request-header-wrap">
+                        <button class="request-badge interactive-el" id="requestBadgeBtn">Make a request</button>
+                        <p class="request-intro-text">One click starts the flow. Pick a project lane, choose the exact request, adjust the prepared note if needed, then send it through Gmail or Outlook.</p>
+                    </div>
+
+                    <!-- Form Content (Hidden initially, slides down on click) -->
+                    <div class="request-form-body" id="requestFormBody">
+                        <!-- Lane Selector -->
+                        <div class="request-row">
+                            <div class="lane-selector-group">
+                                <button class="request-lane-btn interactive-el" data-lane="editing">Video Editing</button>
+                                <button class="request-lane-btn interactive-el" data-lane="color">Color Grading</button>
+                                <button class="request-lane-btn interactive-el" data-lane="translation">Subtitling & Translation</button>
+                                <button class="request-lane-btn interactive-el" data-lane="longterm">Long-Term Project Request</button>
+                            </div>
+                        </div>
+
+                        <!-- Sub Content Wrapper (Hidden initially) -->
+                        <div class="request-sub-content" id="requestSubContent" style="display: none; opacity: 0; transition: opacity 0.65s cubic-bezier(0.25, 1, 0.2, 1), max-height 0.65s cubic-bezier(0.25, 1, 0.2, 1); max-height: 0; overflow: hidden; margin-top: 25px;">
+                            <!-- Focus Selector -->
+                            <div class="request-row focus-row-container">
+                                <div class="request-focus-header" id="requestFocusHeader">CHOOSE A VIDEO FOCUS</div>
+                                <div class="focus-selector-group" id="focusSelectorGroup">
+                                    <!-- Populated dynamically via JS -->
+                                </div>
+                            </div>
+
+                            <!-- Hidden select for focus syncing in JS -->
+                            <select id="requestTypeSelect" style="display: none;"></select>
+
+                            <!-- Footer Note -->
+                            <p class="request-footer-note" style="margin-top: 25px;">Choose a service above and click below to send me a project request email directly.</p>
+
+                            <!-- Send Action Dropdown -->
+                            <div class="send-action-wrapper">
+                                <button class="btn btn-primary send-request-btn interactive-el" id="sendRequestBtn">
+                                    Send request
+                                </button>
+                                <div class="provider-dropdown glass" id="providerDropdown">
+                                    <button class="provider-opt interactive-el" data-provider="gmail">Open in Gmail</button>
+                                    <button class="provider-opt interactive-el" data-provider="outlook">Open in Outlook</button>
+                                    <button class="provider-opt interactive-el" data-provider="default">Default Mail App</button>
+                                    <div class="dropdown-divider"></div>
+                                    <button class="provider-opt interactive-el" data-provider="copy">Copy request text</button>
+                                </div>
+                                <div class="copy-success-message" id="copyMessage">Copied to clipboard!</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section section-padding">
+            <div class="container">
+                <div class="contact-card glass tilt interactive-el" data-tilt-max="4">
+                    <span class="section-label">DIRECT COMMUNICATION</span>
+                    <h2>Let's talk details.</h2>
+                    <p>I am available through the following contact channels for video editing, color grading, branded content, and professional translation/subtitling projects.</p>
+                    
+                    <div class="contact-links">
+                        <a href="mailto:em99ve@gmail.com" class="contact-link interactive-el" id="emailContact">
+                            <div class="contact-name">Email</div>
+                            <div class="contact-value">em99ve@gmail.com</div>
+                        </a>
+                        <a href="http://www.linkedin.com/in/islamAli099" target="_blank" rel="noopener" class="contact-link interactive-el" id="linkedinContact">
+                            <div class="contact-name">LinkedIn</div>
+                            <div class="contact-value">Islam's Profile</div>
+                        </a>
+                        <a href="https://wa.me/201069298477" target="_blank" rel="noopener" class="contact-link interactive-el" id="whatsappContact">
+                            <div class="contact-name">WhatsApp</div>
+                            <div class="contact-value">+20 1069298477</div>
+                        </a>
+                        <a href="https://www.instagram.com/islam.m.aly/" target="_blank" rel="noopener" class="contact-link interactive-el" id="instagramContact">
+                            <div class="contact-name">Instagram</div>
+                            <div class="contact-value">islam.m.aly</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-left">
+                <span>&copy; <span id="copyrightYear">2026</span> Islam Ali. All rights reserved.</span>
+            </div>
+            <div class="footer-right">
+                <span>Video Editing · Color Grading · Translation</span>
+                <span> Cairo, Egypt</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Details Modal (Popups for case study views) -->
+    <div class="modal" id="projectModal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="modal-backdrop interactive-el"></div>
+        <div class="modal-wrapper">
+            <div class="modal-card glass">
+                <button class="close-modal interactive-el" aria-label="Close Project details">&times;</button>
+                
+                <div class="modal-grid">
+                    <div class="modal-media-side">
+                        <div class="media-container" id="modalMediaContainer">
+                            <!-- Populated by JS: Video player, iFrame, or Image -->
+                        </div>
+                        <div class="media-external-link">
+                            <a id="modalExternalLink" href="#" target="_blank" rel="noopener" class="btn btn-secondary glass interactive-el">Open in full screen &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="modal-info-side">
+                        <span class="modal-category" id="modalCategory">Category</span>
+                        <h2 class="modal-title" id="modalTitle">Project Title</h2>
+                        <p class="modal-desc" id="modalDesc">Detailed description of the project, goals, and results.</p>
+                        
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <strong>Role</strong>
+                                <span id="modalRole">Video Editor</span>
+                            </div>
+                            <div class="info-item">
+                                <strong>Tools Used</strong>
+                                <span id="modalTools">Premiere Pro, After Effects</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script File -->
+    <script src="app.js"></script>
+</body>
+</html>
