@@ -2377,6 +2377,14 @@ footer {
         min-height: 260px !important;
     }
     
+    /* Scale Google Drive iframe content on mobile to prevent zoom-in/clipping */
+    .media-container iframe[src*="drive.google.com"] {
+        width: 133.33% !important;
+        height: 133.33% !important;
+        transform: scale(0.75) !important;
+        transform-origin: 0 0 !important;
+    }
+    
     .modal-info-side {
         padding: 30px 20px !important;
     }
