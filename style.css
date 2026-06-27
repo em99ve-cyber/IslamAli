@@ -1919,6 +1919,10 @@ footer {
 }
 
 @media (max-width: 767px) {
+    :root {
+        --glass-blur: 10px; /* Optimized from 20px for mobile scrolling performance */
+    }
+
     body {
         font-size: 14px;
     }
@@ -2365,6 +2369,12 @@ footer {
     
     .media-container.aspect-portrait {
         max-height: 52vh !important;
+    }
+    
+    .media-container.aspect-landscape {
+        aspect-ratio: auto !important;
+        height: auto !important;
+        min-height: 260px !important;
     }
     
     .modal-info-side {

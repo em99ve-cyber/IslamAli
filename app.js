@@ -1,4 +1,4 @@
-﻿/* app.js - Interactive Portfolio Functionality */
+/* app.js - Interactive Portfolio Functionality */
 
 // --- 1. Dynamic Projects Data ---
 // You can easily modify, add or delete projects here.
@@ -575,8 +575,10 @@ function initBuxelParticles() {
     let width = canvas.width = window.innerWidth;
     let height = canvas.height = window.innerHeight;
 
+    const isMobileDevice = window.innerWidth < 768;
+
     // Grid settings for fluid velocity field
-    const spacing = 100; // cell size in pixels
+    const spacing = isMobileDevice ? 150 : 100; // cell size in pixels (larger on mobile for performance)
     let cols = Math.ceil(width / spacing) + 2;
     let rows = Math.ceil(height / spacing) + 2;
     let grid = [];
@@ -599,12 +601,12 @@ function initBuxelParticles() {
 
     // Fluid particles
     let particles = [];
-    const particleCount = 130;
+    const particleCount = isMobileDevice ? 50 : 130; // Reduced on mobile
     const colors = ["#00f0ff", "#ff00a0", "#7b00ff"]; // Premium Cyan, Sunset Magenta, Deep Violet
 
     // Large Nebula Blobs
     let nebulae = [];
-    const nebulaCount = 5;
+    const nebulaCount = isMobileDevice ? 2 : 5; // Reduced on mobile
 
     // Pre-render a soft glow sprite sheet for particles to make rendering ultra-lightweight
     const glowCanvas = document.createElement("canvas");
@@ -672,7 +674,10 @@ function initBuxelParticles() {
     createNebulae();
 
     // Event listeners
+    let lastWidth = window.innerWidth;
     window.addEventListener("resize", () => {
+        if (window.innerWidth === lastWidth) return; // Skip resize on mobile scroll (address bar hide/show)
+        lastWidth = window.innerWidth;
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
         initGrid();
@@ -839,6 +844,7 @@ function initBuxelParticles() {
 // --- 7. Lightweight 3D Tilt Effect ---
 // --- 7. Lightweight 3D Tilt Effect ---
 function initTiltEffect() {
+    if (window.innerWidth < 768) return; // Disable tilt on mobile for performance
     // Only target elements that haven't been initialized yet to avoid duplicate listeners
     const tiltCards = document.querySelectorAll(".tilt:not(.tilt-initialized)");
     
