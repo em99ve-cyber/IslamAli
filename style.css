@@ -2545,3 +2545,102 @@ footer {
     text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
 }
 
+/* Custom Video Play Overlay Styles */
+.custom-video-placeholder {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.video-placeholder-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(15px) brightness(0.4);
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+.video-placeholder-img {
+    position: relative;
+    z-index: 2;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.6s ease;
+}
+
+.custom-video-placeholder:hover .video-placeholder-img {
+    transform: scale(1.03);
+}
+
+.custom-play-button {
+    position: absolute;
+    z-index: 3;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.custom-play-button svg {
+    width: 32px;
+    height: 32px;
+    margin-left: 5px; /* Perfect triangle centering */
+    transition: transform 0.4s ease, color 0.4s ease;
+}
+
+.custom-video-placeholder:hover .custom-play-button {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(0, 242, 254, 0.6);
+    transform: scale(1.12);
+    box-shadow: 0 20px 40px rgba(0, 242, 254, 0.25), inset 0 0 25px rgba(255, 255, 255, 0.25);
+    color: #00f2fe;
+}
+
+.custom-video-placeholder:hover .custom-play-button svg {
+    transform: scale(1.08);
+}
+
+/* Fullscreen Media Container Layout fixes */
+.media-container:fullscreen {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    aspect-ratio: auto !important;
+    background: #000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.media-container:-webkit-full-screen {
+    width: 100vw !important;
+    height: 100vh !important;
+    max-height: 100vh !important;
+    aspect-ratio: auto !important;
+    background: #000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+

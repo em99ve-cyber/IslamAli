@@ -106,6 +106,32 @@ foreach ($p in $projects) {
     $role = $p.E
     $toolsStr = $p.F
 
+    # Resolve Facebook share link redirect if present
+    if ($link -like "*facebook.com/share/*") {
+        Write-Output "Resolving Facebook share redirect: $link"
+        try {
+            $mobileUA = "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1"
+            $fbRequest = Invoke-WebRequest -Uri $link -UserAgent $mobileUA -Method Get -TimeoutSec 10 -MaximumRedirection 0 -ErrorAction SilentlyContinue
+            $refreshHeader = $fbRequest.Headers["refresh"]
+            if ($refreshHeader -and $refreshHeader -match "fullscreen_video/(\d+)") {
+                $fbVideoId = $Matches[1]
+                $link = "https://www.facebook.com/watch/?v=$fbVideoId"
+                Write-Output "   Resolved to: $link"
+            } else {
+                $content = $fbRequest.Content
+                if ($content -match "fb://fullscreen_video/(\d+)") {
+                    $fbVideoId = $Matches[1]
+                    $link = "https://www.facebook.com/watch/?v=$fbVideoId"
+                    Write-Output "   Resolved to: $link"
+                } else {
+                    Write-Warning "   Could not extract Facebook video ID."
+                }
+            }
+        } catch {
+            Write-Warning "   Error resolving Facebook share link: $_"
+        }
+    }
+
     # Standardize Title names for cinematic shorts
     switch ($rowNum) {
         2 { $title = "Strang Lila Short Film" }

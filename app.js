@@ -1,4 +1,4 @@
-﻿/* app.js - Interactive Portfolio Functionality */
+/* app.js - Interactive Portfolio Functionality */
 
 // --- 1. Dynamic Projects Data ---
 // You can easily modify, add or delete projects here.
@@ -1229,18 +1229,7 @@ function initPortfolio() {
     const closeBtn = document.querySelector(".close-modal");
     const backdrop = document.querySelector(".modal-backdrop");
     
-    function preloadProject(projectId) {
-        if (modal && modal.classList.contains("active")) return;
-        const project = projectsData.find(p => p.id === projectId);
-        if (!project || project.mediaType !== "video") return;
-
-        // Skip if already preloaded
-        if (preloadedProjectId === projectId) return;
-
-        const mediaContainer = document.getElementById("modalMediaContainer");
-        const externalLink = document.getElementById("modalExternalLink");
-        if (!mediaContainer || !externalLink) return;
-
+    function loadProjectMedia(project, mediaContainer, externalLink, projectId) {
         // Clear previous content
         mediaContainer.innerHTML = "";
         externalLink.href = project.mediaUrl;
@@ -1254,34 +1243,90 @@ function initPortfolio() {
             mediaContainer.classList.remove("aspect-portrait");
         }
 
-        const url = project.mediaUrl;
-        const isEmbedBlocked = (projectId === 31 || projectId === 32) && url.includes("facebook.com");
+        if (project.mediaType === "video") {
+            const url = project.mediaUrl;
+            const isEmbedBlocked = (projectId === 31 || projectId === 32) && url.includes("facebook.com");
 
-        if (isEmbedBlocked) {
-            mediaContainer.innerHTML = `
-                <div class="blocked-embed-placeholder">
-                    <div class="blocked-embed-blur-backdrop" style="background-image: url('${project.thumbnail}');"></div>
-                    <div class="blocked-embed-content">
-                        <a href="${project.mediaUrl}" target="_blank" rel="noopener" class="blocked-play-btn interactive-el">
+            if (isEmbedBlocked) {
+                mediaContainer.innerHTML = `
+                    <div class="blocked-embed-placeholder">
+                        <div class="blocked-embed-blur-backdrop" style="background-image: url('${project.thumbnail}');"></div>
+                        <div class="blocked-embed-content">
+                            <a href="${project.mediaUrl}" target="_blank" rel="noopener" class="blocked-play-btn interactive-el">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </a>
+                            <span class="blocked-embed-note">Play on Facebook</span>
+                            <span class="blocked-embed-subnote">Embedding restricted by Facebook due to music copyright</span>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // Render a beautiful custom play button placeholder
+                mediaContainer.innerHTML = `
+                    <div class="custom-video-placeholder interactive-el">
+                        <div class="video-placeholder-backdrop" style="background-image: url('${project.thumbnail}');"></div>
+                        <img src="${project.thumbnail}" alt="${project.title}" class="video-placeholder-img">
+                        <button class="custom-play-button interactive-el" aria-label="Play video">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M8 5v14l11-7z"/>
                             </svg>
-                        </a>
-                        <span class="blocked-embed-note">Play on Facebook</span>
-                        <span class="blocked-embed-subnote">Embedding restricted by Facebook due to music copyright</span>
+                        </button>
                     </div>
-                </div>
-            `;
-        } else if (url.includes("youtube.com") || url.includes("youtu.be") || url.includes("drive.google.com") || url.includes("drive.usercontent.google.com") || url.includes("facebook.com")) {
-            let iframeAttrs = 'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen';
-            if (url.includes("facebook.com")) {
-                iframeAttrs = 'scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"';
-            }
-            mediaContainer.innerHTML = `<iframe src="${url}" ${iframeAttrs}></iframe>`;
-        } else {
-            mediaContainer.innerHTML = `<video src="${url}" controls></video>`;
-        }
+                `;
 
+                // Set up event listener on the placeholder to trigger autoplay and fullscreen
+                const placeholder = mediaContainer.querySelector(".custom-video-placeholder");
+                placeholder.addEventListener("click", () => {
+                    let iframeAttrs = 'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen';
+                    let embedUrl = url;
+
+                    if (url.includes("facebook.com")) {
+                        iframeAttrs = 'scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"';
+                    }
+
+                    let htmlContent = "";
+                    if (url.includes("youtube.com") || url.includes("youtu.be") || url.includes("drive.google.com") || url.includes("drive.usercontent.google.com") || url.includes("facebook.com")) {
+                        if (url.includes("youtube.com/embed/")) {
+                            embedUrl = url.includes("?") ? `${url}&autoplay=1` : `${url}?autoplay=1`;
+                        }
+                        htmlContent = `<iframe src="${embedUrl}" ${iframeAttrs} id="activeVideoPlayer" style="width:100%; height:100%; border:none;"></iframe>`;
+                    } else {
+                        htmlContent = `<video src="${url}" controls autoplay playsinline id="activeVideoPlayer" style="width:100%; height:100%;"></video>`;
+                    }
+
+                    mediaContainer.innerHTML = htmlContent;
+
+                    // Trigger fullscreen immediately on the mediaContainer
+                    if (mediaContainer.requestFullscreen) {
+                        mediaContainer.requestFullscreen();
+                    } else if (mediaContainer.webkitRequestFullscreen) { /* Safari */
+                        mediaContainer.webkitRequestFullscreen();
+                    } else if (mediaContainer.mozRequestFullScreen) { /* Firefox */
+                        mediaContainer.mozRequestFullScreen();
+                    } else if (mediaContainer.msRequestFullscreen) { /* IE/Edge */
+                        mediaContainer.msRequestFullscreen();
+                    }
+                });
+            }
+        } else {
+            mediaContainer.innerHTML = `<img src="${project.mediaUrl}" alt="${project.title}">`;
+        }
+    }
+
+    function preloadProject(projectId) {
+        const project = projectsData.find(p => p.id === projectId);
+        if (!project || project.mediaType !== "video") return;
+
+        // Skip if already preloaded
+        if (preloadedProjectId === projectId) return;
+
+        const mediaContainer = document.getElementById("modalMediaContainer");
+        const externalLink = document.getElementById("modalExternalLink");
+        if (!mediaContainer || !externalLink) return;
+
+        loadProjectMedia(project, mediaContainer, externalLink, projectId);
         preloadedProjectId = projectId;
     }
 
@@ -1312,49 +1357,7 @@ function initPortfolio() {
 
         // If not already preloaded (or matches different project), load it fresh
         if (preloadedProjectId !== projectId) {
-            mediaContainer.innerHTML = "";
-            externalLink.href = project.mediaUrl;
-
-            // Set aspect ratio class
-            if (project.aspect === "portrait") {
-                mediaContainer.classList.add("aspect-portrait");
-                mediaContainer.classList.remove("aspect-landscape");
-            } else {
-                mediaContainer.classList.add("aspect-landscape");
-                mediaContainer.classList.remove("aspect-portrait");
-            }
-
-            if (project.mediaType === "video") {
-                const url = project.mediaUrl;
-                const isEmbedBlocked = (projectId === 31 || projectId === 32) && url.includes("facebook.com");
-
-                if (isEmbedBlocked) {
-                    mediaContainer.innerHTML = `
-                        <div class="blocked-embed-placeholder">
-                            <div class="blocked-embed-blur-backdrop" style="background-image: url('${project.thumbnail}');"></div>
-                            <div class="blocked-embed-content">
-                                <a href="${project.mediaUrl}" target="_blank" rel="noopener" class="blocked-play-btn interactive-el">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </a>
-                                <span class="blocked-embed-note">Play on Facebook</span>
-                                <span class="blocked-embed-subnote">Embedding restricted by Facebook due to music copyright</span>
-                            </div>
-                        </div>
-                    `;
-                } else if (url.includes("youtube.com") || url.includes("youtu.be") || url.includes("drive.google.com") || url.includes("drive.usercontent.google.com") || url.includes("facebook.com")) {
-                    let iframeAttrs = 'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen';
-                    if (url.includes("facebook.com")) {
-                        iframeAttrs = 'scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"';
-                    }
-                    mediaContainer.innerHTML = `<iframe src="${url}" ${iframeAttrs}></iframe>`;
-                } else {
-                    mediaContainer.innerHTML = `<video src="${url}" controls></video>`;
-                }
-            } else {
-                mediaContainer.innerHTML = `<img src="${project.mediaUrl}" alt="${project.title}">`;
-            }
+            loadProjectMedia(project, mediaContainer, externalLink, projectId);
             preloadedProjectId = projectId;
         }
 
