@@ -241,7 +241,7 @@ foreach ($p in $projects) {
     if ($link -like "*drive.google.com*") {
         if ($link -match "/file/d/([^/]+)") {
             $fileId = $Matches[1]
-            $mediaUrl = "https://drive.usercontent.google.com/download?id=$fileId&confirm=t"
+            $mediaUrl = "https://drive.google.com/file/d/$fileId/preview"
         }
     } elseif ($link -like "*facebook.com*") {
         $encodedLink = [uri]::EscapeDataString($link)

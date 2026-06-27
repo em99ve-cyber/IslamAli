@@ -2379,9 +2379,9 @@ footer {
     
     /* Scale Google Drive iframe content on mobile to prevent zoom-in/clipping */
     .media-container iframe[src*="drive.google.com"] {
-        width: 133.33% !important;
-        height: 133.33% !important;
-        transform: scale(0.75) !important;
+        width: 150% !important;
+        height: 150% !important;
+        transform: scale(0.6666) !important;
         transform-origin: 0 0 !important;
     }
     
