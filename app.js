@@ -1298,18 +1298,20 @@ function initPortfolio() {
 
                     mediaContainer.innerHTML = htmlContent;
 
-                    // Trigger fullscreen ONLY on mobile devices directly on the player element (iframe/video)
+                    // Trigger fullscreen ONLY on mobile devices (excluding iOS to prevent double player)
                     const isMobile = window.innerWidth < 768;
-                    const player = mediaContainer.querySelector("#activeVideoPlayer");
-                    if (isMobile && player) {
-                        if (player.requestFullscreen) {
-                            player.requestFullscreen();
-                        } else if (player.webkitRequestFullscreen) { /* Safari / iOS */
-                            player.webkitRequestFullscreen();
-                        } else if (player.mozRequestFullScreen) { /* Firefox */
-                            player.mozRequestFullScreen();
-                        } else if (player.msRequestFullscreen) { /* IE/Edge */
-                            player.msRequestFullscreen();
+                    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+                    
+                    if (isMobile && !isIOS) {
+                        // Request fullscreen on mediaContainer so CSS scaling remains active
+                        if (mediaContainer.requestFullscreen) {
+                            mediaContainer.requestFullscreen();
+                        } else if (mediaContainer.webkitRequestFullscreen) { /* Safari */
+                            mediaContainer.webkitRequestFullscreen();
+                        } else if (mediaContainer.mozRequestFullScreen) { /* Firefox */
+                            mediaContainer.mozRequestFullScreen();
+                        } else if (mediaContainer.msRequestFullscreen) { /* IE/Edge */
+                            mediaContainer.msRequestFullscreen();
                         }
                     }
                 });
