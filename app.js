@@ -1245,7 +1245,7 @@ function initPortfolio() {
 
         if (project.mediaType === "video") {
             const url = project.mediaUrl;
-            const isEmbedBlocked = (projectId === 31 || projectId === 32) && url.includes("facebook.com");
+            const isEmbedBlocked = ((projectId >= 22 && projectId <= 28) || projectId === 31 || projectId === 32) && url.includes("facebook.com");
 
             if (isEmbedBlocked) {
                 mediaContainer.innerHTML = `
@@ -1258,7 +1258,7 @@ function initPortfolio() {
                                 </svg>
                             </a>
                             <span class="blocked-embed-note">Play on Facebook</span>
-                            <span class="blocked-embed-subnote">Embedding restricted by Facebook due to music copyright</span>
+                            <span class="blocked-embed-subnote">Embedding restricted by Facebook settings</span>
                         </div>
                     </div>
                 `;
@@ -1298,15 +1298,19 @@ function initPortfolio() {
 
                     mediaContainer.innerHTML = htmlContent;
 
-                    // Trigger fullscreen immediately on the mediaContainer
-                    if (mediaContainer.requestFullscreen) {
-                        mediaContainer.requestFullscreen();
-                    } else if (mediaContainer.webkitRequestFullscreen) { /* Safari */
-                        mediaContainer.webkitRequestFullscreen();
-                    } else if (mediaContainer.mozRequestFullScreen) { /* Firefox */
-                        mediaContainer.mozRequestFullScreen();
-                    } else if (mediaContainer.msRequestFullscreen) { /* IE/Edge */
-                        mediaContainer.msRequestFullscreen();
+                    // Trigger fullscreen ONLY on mobile devices directly on the player element (iframe/video)
+                    const isMobile = window.innerWidth < 768;
+                    const player = mediaContainer.querySelector("#activeVideoPlayer");
+                    if (isMobile && player) {
+                        if (player.requestFullscreen) {
+                            player.requestFullscreen();
+                        } else if (player.webkitRequestFullscreen) { /* Safari / iOS */
+                            player.webkitRequestFullscreen();
+                        } else if (player.mozRequestFullScreen) { /* Firefox */
+                            player.mozRequestFullScreen();
+                        } else if (player.msRequestFullscreen) { /* IE/Edge */
+                            player.msRequestFullscreen();
+                        }
                     }
                 });
             }
