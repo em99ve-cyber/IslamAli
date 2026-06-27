@@ -1,4 +1,4 @@
-/* app.js - Interactive Portfolio Functionality */
+﻿/* app.js - Interactive Portfolio Functionality */
 
 // --- 1. Dynamic Projects Data ---
 // You can easily modify, add or delete projects here.
@@ -14,7 +14,7 @@ const projectsData = [
         role: "Editor & Colorist",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1pMGdnYhXO7o1WCA82hhSVpr7nt7o0VBZ/preview",
+        mediaUrl: "https://drive.usercontent.google.com/download?id=1pMGdnYhXO7o1WCA82hhSVpr7nt7o0VBZ&confirm=t",
         aspect: "landscape"
     },
     {
@@ -26,7 +26,7 @@ const projectsData = [
         role: "Editor & Colorist",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1EkgmoOU-8p2RAKrf_5D71I7_7DKPLdUi/preview",
+        mediaUrl: "https://drive.usercontent.google.com/download?id=1EkgmoOU-8p2RAKrf_5D71I7_7DKPLdUi&confirm=t",
         aspect: "landscape"
     },
     {
@@ -38,7 +38,7 @@ const projectsData = [
         role: "Editor & Colorist",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1M0zXIeSvIDBNcu0E0jpXpjUau6taC5LM/preview",
+        mediaUrl: "https://drive.usercontent.google.com/download?id=1M0zXIeSvIDBNcu0E0jpXpjUau6taC5LM&confirm=t",
         aspect: "landscape"
     },
     {
@@ -50,7 +50,7 @@ const projectsData = [
         role: "Editor & Colorist",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1BHsLvLA2-g9sJZHehnSV9BNMDe4FfJ9O/preview",
+        mediaUrl: "https://drive.usercontent.google.com/download?id=1BHsLvLA2-g9sJZHehnSV9BNMDe4FfJ9O&confirm=t",
         aspect: "landscape"
     },
     {
@@ -62,7 +62,7 @@ const projectsData = [
         role: "Film editor / Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1ls1Jd9tTaW7axUD8Ey7lmj0LAj9TiXME/preview",
+        mediaUrl: "https://drive.usercontent.google.com/download?id=1ls1Jd9tTaW7axUD8Ey7lmj0LAj9TiXME&confirm=t",
         aspect: "landscape"
     },
     {
@@ -74,7 +74,7 @@ const projectsData = [
         role: "Editor & Colorist",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1XlQdXfbkVtkUtOTXTOTxsw2zJKPK9DIq/preview",
+        mediaUrl: "https://drive.usercontent.google.com/download?id=1XlQdXfbkVtkUtOTXTOTxsw2zJKPK9DIq&confirm=t",
         aspect: "landscape"
     },
     {
@@ -86,7 +86,7 @@ const projectsData = [
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1BNz4QaelfFRHiPLnjMrTTYe_BdthyL7y/preview",
+        mediaUrl: "https://drive.usercontent.google.com/download?id=1BNz4QaelfFRHiPLnjMrTTYe_BdthyL7y&confirm=t",
         aspect: "landscape"
     },
     {
@@ -98,7 +98,7 @@ const projectsData = [
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1VG9VgbMJtQMLtA-J7p7EmKEeNAhhyBJe/preview",
+        mediaUrl: "https://drive.usercontent.google.com/download?id=1VG9VgbMJtQMLtA-J7p7EmKEeNAhhyBJe&confirm=t",
         aspect: "landscape"
     },
     {
@@ -110,7 +110,7 @@ const projectsData = [
         role: "Editor, Colorist & Music Supervisor",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1xPTelvjDZe03GKDMGiVNnsNIU9P0vv9e/preview",
+        mediaUrl: "https://drive.usercontent.google.com/download?id=1xPTelvjDZe03GKDMGiVNnsNIU9P0vv9e&confirm=t",
         aspect: "landscape"
     },
     {
@@ -122,7 +122,7 @@ const projectsData = [
         role: "Editor, Colorist & Music Supervisor",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1wOpWc7CQxgcc8DxcPZe4LYP9ZQU3yP2_/preview",
+        mediaUrl: "https://drive.usercontent.google.com/download?id=1wOpWc7CQxgcc8DxcPZe4LYP9ZQU3yP2_&confirm=t",
         aspect: "landscape"
     },
     {
@@ -134,7 +134,7 @@ const projectsData = [
         role: "Editor, Colorist & Music Supervisor",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1kOyWpq03X4MoqDH55xm196e04FdY1tKI/preview",
+        mediaUrl: "https://drive.usercontent.google.com/download?id=1kOyWpq03X4MoqDH55xm196e04FdY1tKI&confirm=t",
         aspect: "landscape"
     },
     {
@@ -350,7 +350,7 @@ const projectsData = [
         role: "Video Editor,AI animation, sound design& Colorist ",
         tools: ["Adobe Premiere Pro", "Color correction", "AI generation"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/15qTuTJ2N0TUmqV43ZHJaic8KtdVQARr5/preview",
+        mediaUrl: "https://drive.usercontent.google.com/download?id=15qTuTJ2N0TUmqV43ZHJaic8KtdVQARr5&confirm=t",
         aspect: "portrait"
     },
     {
@@ -362,7 +362,7 @@ const projectsData = [
         role: "Videographer,Video Editor, sound design& Colorist ",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1cOmuUZCvNKlprkDOz2CPvEj0mTr90_9S/preview",
+        mediaUrl: "https://drive.usercontent.google.com/download?id=1cOmuUZCvNKlprkDOz2CPvEj0mTr90_9S&confirm=t",
         aspect: "portrait"
     },
     {
@@ -374,7 +374,7 @@ const projectsData = [
         role: "Videographer,Video Editor, sound design& Colorist ",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1Nif0Q8OV-bJix240KO1KPnWR0Tangc1Y/preview",
+        mediaUrl: "https://drive.usercontent.google.com/download?id=1Nif0Q8OV-bJix240KO1KPnWR0Tangc1Y&confirm=t",
         aspect: "portrait"
     },
     {
@@ -386,7 +386,7 @@ const projectsData = [
         role: "Videographer,Video Editor, sound design& Colorist ",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1q7eW_7maawsOnyU2cyV3LKg_G6Iq8ltZ/preview",
+        mediaUrl: "https://drive.usercontent.google.com/download?id=1q7eW_7maawsOnyU2cyV3LKg_G6Iq8ltZ&confirm=t",
         aspect: "landscape"
     },
     {
@@ -1272,7 +1272,7 @@ function initPortfolio() {
                     </div>
                 </div>
             `;
-        } else if (url.includes("youtube.com") || url.includes("youtu.be") || url.includes("drive.google.com") || url.includes("facebook.com")) {
+        } else if (url.includes("youtube.com") || url.includes("youtu.be") || url.includes("drive.google.com/file/d/") || url.includes("facebook.com")) {
             let iframeAttrs = 'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen';
             if (url.includes("facebook.com")) {
                 iframeAttrs = 'scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"';
@@ -1343,7 +1343,7 @@ function initPortfolio() {
                             </div>
                         </div>
                     `;
-                } else if (url.includes("youtube.com") || url.includes("youtu.be") || url.includes("drive.google.com") || url.includes("facebook.com")) {
+                } else if (url.includes("youtube.com") || url.includes("youtu.be") || url.includes("drive.google.com/file/d/") || url.includes("facebook.com")) {
                     let iframeAttrs = 'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen';
                     if (url.includes("facebook.com")) {
                         iframeAttrs = 'scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"';

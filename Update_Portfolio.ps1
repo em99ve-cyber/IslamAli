@@ -126,7 +126,7 @@ foreach ($p in $projects) {
 
     # Aspect Ratio logic
     $aspect = "landscape"
-    if ($title -like "*Mohammed Shami*" -or $link -like "*/reel/*" -or $title -like "*Teleperformance*") {
+    if ($title -like "*Mohammed Shami*" -or $link -like "*/reel/*" -or $title -like "*Teleperformance*" -or $link -like "*/shorts/*") {
         $aspect = "portrait"
     }
     if ($title -like "*Campus Career Fair*") {
@@ -176,6 +176,26 @@ foreach ($p in $projects) {
             } catch {
                 Write-Warning "   Failed to scrape Facebook page."
             }
+        } elseif ($link -like "*youtube.com*" -or $link -like "*youtu.be*") {
+            try {
+                if ($link -match "(?:v=|\/v\/|embed\/|youtu\.be\/|\/shorts\/)([^?&]+)") {
+                    $ytId = $Matches[1]
+                    $ytThumbUrl = "https://img.youtube.com/vi/$ytId/maxresdefault.jpg"
+                    Invoke-WebRequest -Uri $ytThumbUrl -OutFile $thumbnailLocalPath -UserAgent $userAgent -TimeoutSec 15
+                    $newThumbnailsDownloaded++
+                    Write-Output "   Successfully downloaded YouTube thumbnail."
+                }
+            } catch {
+                # Fallback to hqdefault if maxresdefault is not available
+                try {
+                    $ytThumbUrlFallback = "https://img.youtube.com/vi/$ytId/hqdefault.jpg"
+                    Invoke-WebRequest -Uri $ytThumbUrlFallback -OutFile $thumbnailLocalPath -UserAgent $userAgent -TimeoutSec 15
+                    $newThumbnailsDownloaded++
+                    Write-Output "   Successfully downloaded fallback YouTube thumbnail."
+                } catch {
+                    Write-Warning "   Failed to download YouTube thumbnail."
+                }
+            }
         }
 
         # If download failed or it's a fallback placeholder
@@ -221,11 +241,18 @@ foreach ($p in $projects) {
     if ($link -like "*drive.google.com*") {
         if ($link -match "/file/d/([^/]+)") {
             $fileId = $Matches[1]
-            $mediaUrl = "https://drive.google.com/file/d/$fileId/preview"
+            $mediaUrl = "https://drive.usercontent.google.com/download?id=$fileId&confirm=t"
         }
     } elseif ($link -like "*facebook.com*") {
         $encodedLink = [uri]::EscapeDataString($link)
         $mediaUrl = "https://www.facebook.com/plugins/video.php?href=$encodedLink&show_text=0"
+    } elseif ($link -like "*youtube.com*" -or $link -like "*youtu.be*") {
+        if ($link -match "(?:v=|\/v\/|embed\/|youtu\.be\/|\/shorts\/)([^?&]+)") {
+            $ytId = $Matches[1]
+            $mediaUrl = "https://www.youtube.com/embed/$ytId?rel=0&modestbranding=1"
+        }
+    } elseif ($link -like "*dropbox.com*") {
+        $mediaUrl = $link -replace 'dl=0', 'raw=1' -replace 'dl=1', 'raw=1'
     }
 
     # Format description for JS template literals
