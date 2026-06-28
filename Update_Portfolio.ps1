@@ -105,6 +105,7 @@ foreach ($p in $projects) {
     $desc = $p.D
     $role = $p.E
     $toolsStr = $p.F
+    $originalPost = $p.G
 
     # Resolve Facebook share link redirect if present
     if ($link -like "*facebook.com/share/*") {
@@ -284,6 +285,11 @@ foreach ($p in $projects) {
     # Format description for JS template literals
     $escapedDesc = $desc.Replace("\", "\\").Replace('"', '\"').Replace("`n", "\n").Replace("`r", "")
 
+    $escapedOriginalPost = ""
+    if (-not [string]::IsNullOrEmpty($originalPost)) {
+        $escapedOriginalPost = $originalPost.Replace("\", "\\").Replace('"', '\"')
+    }
+
     # Construct single JS block
     $jsProject = @"
     {
@@ -296,7 +302,8 @@ foreach ($p in $projects) {
         tools: $toolsJs,
         mediaType: "video",
         mediaUrl: "$mediaUrl",
-        aspect: "$aspect"
+        aspect: "$aspect",
+        originalPost: "$escapedOriginalPost"
     }
 "@
     $jsBlocks += $jsProject

@@ -15,7 +15,8 @@ const projectsData = [
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
         mediaUrl: "https://drive.google.com/file/d/1pMGdnYhXO7o1WCA82hhSVpr7nt7o0VBZ/preview",
-        aspect: "landscape"
+        aspect: "landscape",
+        originalPost: ""
     },
     {
         id: 2,
@@ -27,7 +28,8 @@ const projectsData = [
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
         mediaUrl: "https://drive.google.com/file/d/1EkgmoOU-8p2RAKrf_5D71I7_7DKPLdUi/preview",
-        aspect: "landscape"
+        aspect: "landscape",
+        originalPost: ""
     },
     {
         id: 3,
@@ -39,7 +41,8 @@ const projectsData = [
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
         mediaUrl: "https://drive.google.com/file/d/1M0zXIeSvIDBNcu0E0jpXpjUau6taC5LM/preview",
-        aspect: "landscape"
+        aspect: "landscape",
+        originalPost: ""
     },
     {
         id: 4,
@@ -51,7 +54,8 @@ const projectsData = [
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
         mediaUrl: "https://drive.google.com/file/d/1BHsLvLA2-g9sJZHehnSV9BNMDe4FfJ9O/preview",
-        aspect: "landscape"
+        aspect: "landscape",
+        originalPost: ""
     },
     {
         id: 5,
@@ -63,7 +67,8 @@ const projectsData = [
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
         mediaUrl: "https://drive.google.com/file/d/1ls1Jd9tTaW7axUD8Ey7lmj0LAj9TiXME/preview",
-        aspect: "landscape"
+        aspect: "landscape",
+        originalPost: ""
     },
     {
         id: 6,
@@ -75,7 +80,8 @@ const projectsData = [
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
         mediaUrl: "https://drive.google.com/file/d/1XlQdXfbkVtkUtOTXTOTxsw2zJKPK9DIq/preview",
-        aspect: "landscape"
+        aspect: "landscape",
+        originalPost: ""
     },
     {
         id: 7,
@@ -87,7 +93,8 @@ const projectsData = [
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
         mediaUrl: "https://drive.google.com/file/d/1BNz4QaelfFRHiPLnjMrTTYe_BdthyL7y/preview",
-        aspect: "landscape"
+        aspect: "landscape",
+        originalPost: ""
     },
     {
         id: 8,
@@ -99,7 +106,8 @@ const projectsData = [
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
         mediaUrl: "https://drive.google.com/file/d/1VG9VgbMJtQMLtA-J7p7EmKEeNAhhyBJe/preview",
-        aspect: "landscape"
+        aspect: "landscape",
+        originalPost: ""
     },
     {
         id: 9,
@@ -111,7 +119,8 @@ const projectsData = [
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
         mediaUrl: "https://drive.google.com/file/d/1xPTelvjDZe03GKDMGiVNnsNIU9P0vv9e/preview",
-        aspect: "landscape"
+        aspect: "landscape",
+        originalPost: ""
     },
     {
         id: 10,
@@ -123,7 +132,8 @@ const projectsData = [
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
         mediaUrl: "https://drive.google.com/file/d/1wOpWc7CQxgcc8DxcPZe4LYP9ZQU3yP2_/preview",
-        aspect: "landscape"
+        aspect: "landscape",
+        originalPost: ""
     },
     {
         id: 11,
@@ -135,7 +145,8 @@ const projectsData = [
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
         mediaUrl: "https://drive.google.com/file/d/1kOyWpq03X4MoqDH55xm196e04FdY1tKI/preview",
-        aspect: "landscape"
+        aspect: "landscape",
+        originalPost: ""
     },
     {
         id: 12,
@@ -146,8 +157,9 @@ const projectsData = [
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F18gtEfcuSt%2F&show_text=0",
-        aspect: "portrait"
+        mediaUrl: "https://drive.google.com/file/d/12VpCjdZInGjsOM-1N8Mx34L2t18CEDMT/preview",
+        aspect: "portrait",
+        originalPost: "https://www.facebook.com/share/v/18gtEfcuSt/"
     },
     {
         id: 13,
@@ -158,8 +170,9 @@ const projectsData = [
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F17d3jqvn3V%2F&show_text=0",
-        aspect: "portrait"
+        mediaUrl: "https://drive.google.com/file/d/1fG8645G8_VEXYxSky9QnEpeflB5YGQGG/preview",
+        aspect: "portrait",
+        originalPost: "https://www.facebook.com/share/v/17d3jqvn3V/"
     },
     {
         id: 14,
@@ -170,8 +183,9 @@ const projectsData = [
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F1D71ChjMrU%2F&show_text=0",
-        aspect: "portrait"
+        mediaUrl: "https://drive.google.com/file/d/1jyjayaP2sPxziyjwDCzEwLL--J81d9FN/preview",
+        aspect: "portrait",
+        originalPost: "https://www.facebook.com/share/v/1D71ChjMrU/"
     },
     {
         id: 15,
@@ -182,8 +196,9 @@ const projectsData = [
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F1FAQ27dsoX%2F&show_text=0",
-        aspect: "portrait"
+        mediaUrl: "https://drive.google.com/file/d/1staSZySInlcOgHhDlz5AVC89VTiUSG25/preview",
+        aspect: "portrait",
+        originalPost: "https://www.facebook.com/share/v/1FAQ27dsoX/"
     },
     {
         id: 16,
@@ -194,8 +209,9 @@ const projectsData = [
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F938147480875096&show_text=0",
-        aspect: "portrait"
+        mediaUrl: "https://drive.google.com/file/d/1OX5uol2j55cDx-w7U-HRrcSLoqjpdK9s/preview",
+        aspect: "portrait",
+        originalPost: "https://www.facebook.com/reel/938147480875096"
     },
     {
         id: 17,
@@ -206,8 +222,9 @@ const projectsData = [
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1763089927546647&show_text=0",
-        aspect: "portrait"
+        mediaUrl: "https://drive.google.com/file/d/1WC_FMj0wUaVnVa10XK_Usx0gDODKNyAj/preview",
+        aspect: "portrait",
+        originalPost: "https://www.facebook.com/reel/1763089927546647"
     },
     {
         id: 18,
@@ -218,8 +235,9 @@ const projectsData = [
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F17cchSfkc1%2F&show_text=0",
-        aspect: "portrait"
+        mediaUrl: "https://drive.google.com/file/d/1QouY1mFICqBKagysze0CZ8laA3uzZTuU/preview",
+        aspect: "portrait",
+        originalPost: "https://www.facebook.com/share/v/17cchSfkc1/"
     },
     {
         id: 19,
@@ -230,8 +248,9 @@ const projectsData = [
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F397823062876992&show_text=0",
-        aspect: "portrait"
+        mediaUrl: "https://drive.google.com/file/d/1B5dMYrEyKA3dH9udQTyz1HOI8KuVxtOP/preview",
+        aspect: "portrait",
+        originalPost: "https://www.facebook.com/reel/397823062876992"
     },
     {
         id: 20,
@@ -242,8 +261,9 @@ const projectsData = [
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F1JU66mVZfz%2F&show_text=0",
-        aspect: "portrait"
+        mediaUrl: "https://drive.google.com/file/d/1vEb6v5v4i7kjLpSE6006MVnCASs8Slzh/preview",
+        aspect: "portrait",
+        originalPost: "https://www.facebook.com/share/v/1JU66mVZfz/"
     },
     {
         id: 21,
@@ -254,8 +274,9 @@ const projectsData = [
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F1W6B1PPbt9%2F&show_text=0",
-        aspect: "portrait"
+        mediaUrl: "https://drive.google.com/file/d/1Sp7OmtQ_yNITTFkxVMdhT3UAhmOYIbEO/preview",
+        aspect: "portrait",
+        originalPost: "https://www.facebook.com/share/v/1W6B1PPbt9/"
     },
     {
         id: 22,
@@ -266,8 +287,9 @@ const projectsData = [
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F887708776538856&show_text=0",
-        aspect: "portrait"
+        mediaUrl: "https://drive.google.com/file/d/1MOOIoS33HawAZPffasFyA7qi_nD80i4R/preview",
+        aspect: "portrait",
+        originalPost: "https://www.facebook.com/reel/887708776538856"
     },
     {
         id: 23,
@@ -278,8 +300,9 @@ const projectsData = [
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F1ChG1sZPHc%2F&show_text=0",
-        aspect: "portrait"
+        mediaUrl: "https://drive.google.com/file/d/1EtqeSct5W17WEXODEtj43jufK2HYCLNz/preview",
+        aspect: "portrait",
+        originalPost: "https://www.facebook.com/share/v/1ChG1sZPHc/"
     },
     {
         id: 24,
@@ -290,8 +313,9 @@ const projectsData = [
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F18MCDBAe9j%2F&show_text=0",
-        aspect: "portrait"
+        mediaUrl: "https://drive.google.com/file/d/1M4ckzltGXLETnkeu9eah2oSev1sqk-yS/preview",
+        aspect: "portrait",
+        originalPost: "https://www.facebook.com/share/v/18MCDBAe9j/"
     },
     {
         id: 25,
@@ -302,8 +326,9 @@ const projectsData = [
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F357597543504090&show_text=0",
-        aspect: "portrait"
+        mediaUrl: "https://drive.google.com/file/d/1b8JUtTRCIfUWfUPyXHHD1_xyTJzwRI9v/preview",
+        aspect: "portrait",
+        originalPost: "https://www.facebook.com/reel/357597543504090"
     },
     {
         id: 26,
@@ -314,8 +339,9 @@ const projectsData = [
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F193MWbSZWN%2F&show_text=0",
-        aspect: "portrait"
+        mediaUrl: "https://drive.google.com/file/d/1vtKXvuGHrv11oetqtiwg9Imw2X8_2nkb/preview",
+        aspect: "portrait",
+        originalPost: "https://www.facebook.com/share/v/193MWbSZWN/"
     },
     {
         id: 27,
@@ -326,8 +352,9 @@ const projectsData = [
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F940250344253167&show_text=0",
-        aspect: "portrait"
+        mediaUrl: "https://drive.google.com/file/d/1BRE0YwKa8w5iUrEEDED0vIz5kOMb_Xap/preview",
+        aspect: "portrait",
+        originalPost: "https://www.facebook.com/reel/940250344253167"
     },
     {
         id: 28,
@@ -338,8 +365,9 @@ const projectsData = [
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F414288234542459&show_text=0",
-        aspect: "portrait"
+        mediaUrl: "https://drive.google.com/file/d/1aRX8UqumMAm1jXZSWE5o4Z00VaALjEac/preview",
+        aspect: "portrait",
+        originalPost: "https://www.facebook.com/reel/414288234542459"
     },
     {
         id: 29,
@@ -351,7 +379,8 @@ const projectsData = [
         tools: ["Adobe Premiere Pro", "Color correction", "AI generation"],
         mediaType: "video",
         mediaUrl: "https://drive.google.com/file/d/15qTuTJ2N0TUmqV43ZHJaic8KtdVQARr5/preview",
-        aspect: "portrait"
+        aspect: "portrait",
+        originalPost: ""
     },
     {
         id: 30,
@@ -363,7 +392,8 @@ const projectsData = [
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
         mediaUrl: "https://drive.google.com/file/d/1cOmuUZCvNKlprkDOz2CPvEj0mTr90_9S/preview",
-        aspect: "portrait"
+        aspect: "portrait",
+        originalPost: "https://www.facebook.com/share/r/15vDdLCXCBx/"
     },
     {
         id: 31,
@@ -375,7 +405,8 @@ const projectsData = [
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
         mediaUrl: "https://drive.google.com/file/d/1Nif0Q8OV-bJix240KO1KPnWR0Tangc1Y/preview",
-        aspect: "portrait"
+        aspect: "portrait",
+        originalPost: "https://www.facebook.com/share/r/1DvqCytLYj/"
     },
     {
         id: 32,
@@ -387,7 +418,8 @@ const projectsData = [
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
         mediaUrl: "https://drive.google.com/file/d/1q7eW_7maawsOnyU2cyV3LKg_G6Iq8ltZ/preview",
-        aspect: "landscape"
+        aspect: "landscape",
+        originalPost: "https://www.facebook.com/share/v/1BSQ8GWDCV/"
     },
     {
         id: 33,
@@ -398,8 +430,9 @@ const projectsData = [
         role: "Videographer,Video Editor, sound design& Colorist ",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2F100064726327101%2Fvideos%2Fpcb.1429993362501528%2F1801425011215899&show_text=0",
-        aspect: "portrait"
+        mediaUrl: "https://drive.google.com/file/d/1V14on_KbudXbJy_MXB9BFRt14l0-EPxE/preview",
+        aspect: "portrait",
+        originalPost: "https://www.facebook.com/100064726327101/videos/pcb.1429993362501528/1801425011215899"
     }
 ];
 
@@ -847,8 +880,23 @@ function initBuxelParticles() {
         });
 
         ctx.globalAlpha = 1.0;
-        requestAnimationFrame(animate);
+        if (!window.bgAnimationPaused) {
+            requestAnimationFrame(animate);
+        }
     }
+
+    window.bgAnimationPaused = false;
+    window.pauseBgAnimation = function() {
+        window.bgAnimationPaused = true;
+        // Keep elements visible to show through the transparent modal, but freeze the animation loops to save CPU/GPU cycles
+    };
+
+    window.resumeBgAnimation = function() {
+        if (window.bgAnimationPaused) {
+            window.bgAnimationPaused = false;
+            requestAnimationFrame(animate);
+        }
+    };
 
     animate();
 }
@@ -1066,8 +1114,9 @@ function initPortfolio() {
         return card ? card.clientWidth + 24 : 384; // Card width + gap
     };
 
+    window.carouselPaused = false;
     function smoothScroll() {
-        if (autoScrollActive && !isHovered && !isTransitioning && loopWidth > 0) {
+        if (autoScrollActive && !isHovered && !isTransitioning && loopWidth > 0 && !window.carouselPaused) {
             scrollPos += scrollSpeed;
             if (scrollPos >= loopWidth) {
                 scrollPos -= loopWidth; // Seamless wrap-around
@@ -1275,89 +1324,38 @@ function initPortfolio() {
                     </div>
                 `;
             } else {
-                // Render a beautiful custom play button placeholder
-                mediaContainer.innerHTML = `
-                    <div class="custom-video-placeholder interactive-el">
-                        <div class="video-placeholder-backdrop" style="background-image: url('${project.thumbnail}');"></div>
-                        <img src="${project.thumbnail}" alt="${project.title}" class="video-placeholder-img">
-                        <button class="custom-play-button interactive-el" aria-label="Play video">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M8 5v14l11-7z"/>
-                            </svg>
-                        </button>
-                    </div>
-                `;
+                let iframeAttrs = 'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen';
+                let embedUrl = url;
 
-                // Set up event listener on the placeholder to trigger autoplay and fullscreen
-                const placeholder = mediaContainer.querySelector(".custom-video-placeholder");
-                placeholder.addEventListener("click", () => {
-                    let iframeAttrs = 'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" referrerpolicy="no-referrer"';
-                    let embedUrl = url;
+                if (url.includes("facebook.com")) {
+                    iframeAttrs = 'scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"';
+                }
 
-                    if (url.includes("facebook.com")) {
-                        iframeAttrs = 'scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy" referrerpolicy="no-referrer"';
-                    }
+                let htmlContent = "";
+                let isGoogleDrive = url.includes("drive.google.com") || url.includes("drive.usercontent.google.com");
 
-                    let htmlContent = "";
-                    let isGoogleDrive = url.includes("drive.google.com") || url.includes("drive.usercontent.google.com");
-
-                    if (isGoogleDrive) {
-                        const fileIdMatch = url.match(/\/file\/d\/([^/]+)/) || url.match(/[?&]id=([^&]+)/);
-                        if (fileIdMatch) {
-                            const fileId = fileIdMatch[1];
-                            const directStreamUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
-                            // Try native HTML5 video player first for instant streaming
-                            htmlContent = `<video src="${directStreamUrl}" controls autoplay playsinline id="activeVideoPlayer" style="width:100%; height:100%;"></video>`;
-                        } else {
-                            htmlContent = `<iframe src="${url}" ${iframeAttrs} id="activeVideoPlayer" style="width:100%; height:100%; border:none;"></iframe>`;
-                        }
-                    } else if (url.includes("youtube.com") || url.includes("youtu.be") || url.includes("facebook.com")) {
-                        if (url.includes("youtube.com/embed/")) {
-                            embedUrl = url.includes("?") ? `${url}&autoplay=1` : `${url}?autoplay=1`;
-                        }
-                        htmlContent = `<iframe src="${embedUrl}" ${iframeAttrs} id="activeVideoPlayer" style="width:100%; height:100%; border:none;"></iframe>`;
+                if (isGoogleDrive) {
+                    const fileIdMatch = url.match(/\/file\/d\/([^/]+)/) || url.match(/[?&]id=([^&]+)/);
+                    if (fileIdMatch) {
+                        const fileId = fileIdMatch[1];
+                        const iframeUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+                        htmlContent = `<iframe src="${iframeUrl}" ${iframeAttrs} id="activeVideoPlayer" style="width:100%; height:100%; border:none;"></iframe>`;
                     } else {
-                        htmlContent = `<video src="${url}" controls autoplay playsinline id="activeVideoPlayer" style="width:100%; height:100%;"></video>`;
+                        htmlContent = `<iframe src="${url}" ${iframeAttrs} id="activeVideoPlayer" style="width:100%; height:100%; border:none;"></iframe>`;
                     }
-
-                    mediaContainer.innerHTML = htmlContent;
-
-                    // Fallback to standard Google Drive iframe if the direct stream fails (e.g. virus warning on large files)
-                    if (isGoogleDrive) {
-                        const videoEl = mediaContainer.querySelector("video");
-                        if (videoEl) {
-                            videoEl.addEventListener("error", () => {
-                                console.warn("Google Drive direct stream failed. Falling back to official iframe preview player.");
-                                const fileIdMatch = url.match(/\/file\/d\/([^/]+)/) || url.match(/[?&]id=([^&]+)/);
-                                if (fileIdMatch) {
-                                    const fileId = fileIdMatch[1];
-                                    const iframeUrl = `https://drive.google.com/file/d/${fileId}/preview`;
-                                    mediaContainer.innerHTML = `<iframe src="${iframeUrl}" ${iframeAttrs} id="activeVideoPlayer" style="width:100%; height:100%; border:none;"></iframe>`;
-                                }
-                            });
-                        }
+                } else if (url.includes("youtube.com") || url.includes("youtu.be") || url.includes("facebook.com")) {
+                    if (url.includes("youtube.com/embed/")) {
+                        embedUrl = url.includes("?") ? `${url}&autoplay=1` : `${url}?autoplay=1`;
                     }
+                    htmlContent = `<iframe src="${embedUrl}" ${iframeAttrs} id="activeVideoPlayer" style="width:100%; height:100%; border:none;"></iframe>`;
+                } else {
+                    htmlContent = `<video src="${url}" controls autoplay playsinline id="activeVideoPlayer" style="width:100%; height:100%; border-radius:12px;"></video>`;
+                }
 
-                    // Trigger fullscreen ONLY on mobile devices (excluding iOS to prevent double player)
-                    const isMobile = window.innerWidth < 768;
-                    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-                    
-                    if (isMobile && !isIOS) {
-                        // Request fullscreen on mediaContainer so CSS scaling remains active
-                        if (mediaContainer.requestFullscreen) {
-                            mediaContainer.requestFullscreen();
-                        } else if (mediaContainer.webkitRequestFullscreen) { /* Safari */
-                            mediaContainer.webkitRequestFullscreen();
-                        } else if (mediaContainer.mozRequestFullScreen) { /* Firefox */
-                            mediaContainer.mozRequestFullScreen();
-                        } else if (mediaContainer.msRequestFullscreen) { /* IE/Edge */
-                            mediaContainer.msRequestFullscreen();
-                        }
-                    }
-                });
+                mediaContainer.innerHTML = htmlContent;
             }
         } else {
-            mediaContainer.innerHTML = `<img src="${project.mediaUrl}" alt="${project.title}">`;
+            mediaContainer.innerHTML = `<img src="${project.mediaUrl}" alt="${project.title}" style="width:100%; height:100%; object-fit:contain; border-radius:12px;">`;
         }
     }
 
@@ -1398,6 +1396,19 @@ function initPortfolio() {
         document.getElementById("modalRole").textContent = project.role;
         document.getElementById("modalTools").textContent = project.tools.join(", ");
 
+        // Handle View Original Post button
+        const actionWrapper = document.getElementById("modalActionWrapper");
+        const originalPostLink = document.getElementById("modalOriginalPostLink");
+        if (actionWrapper && originalPostLink) {
+            if (project.originalPost && project.originalPost.trim() !== "") {
+                originalPostLink.href = project.originalPost;
+                actionWrapper.style.display = "flex";
+            } else {
+                actionWrapper.style.display = "none";
+                originalPostLink.href = "#";
+            }
+        }
+
         const mediaContainer = document.getElementById("modalMediaContainer");
         const externalLink = document.getElementById("modalExternalLink");
 
@@ -1406,6 +1417,12 @@ function initPortfolio() {
             loadProjectMedia(project, mediaContainer, externalLink, projectId);
             preloadedProjectId = projectId;
         }
+
+        // Pause background rendering to allocate 100% CPU/GPU resources to the video!
+        if (typeof window.pauseBgAnimation === "function") {
+            window.pauseBgAnimation();
+        }
+        window.carouselPaused = true;
 
         // Show Modal
         modal.classList.add("active");
@@ -1421,6 +1438,12 @@ function initPortfolio() {
 
         modal.classList.remove("active");
         document.body.classList.remove("modal-open");
+        window.carouselPaused = false;
+
+        // Resume background rendering when modal is closed
+        if (typeof window.resumeBgAnimation === "function") {
+            window.resumeBgAnimation();
+        }
     }
 
     if (closeBtn) closeBtn.addEventListener("click", closeModal);

@@ -1254,34 +1254,66 @@ body:hover .cursor-ambient-glow {
     background: rgba(255, 255, 255, 0.02);
 }
 
-/* Premium Carousel Nav layout */
+/* Premium Carousel Nav layout - Split left & right */
 .carousel-nav {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 8px;
-    margin-top: 25px;
+    display: block; /* Removed flex layout, buttons are absolute relative to .carousel-container */
 }
 
 .carousel-nav-btn {
-    width: 38px;
-    height: 38px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    width: 44px; /* Slightly larger for a premium feel */
+    height: 44px;
     border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(255, 255, 255, 0.01);
-    color: var(--color-text-secondary);
+    background: rgba(10, 12, 18, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 240, 255, 0.2); /* Cyan neon border */
+    color: var(--color-text-primary);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all var(--transition-fast);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     padding: 0;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 10px rgba(0, 240, 255, 0.05);
 }
 
-.carousel-nav-btn:hover {
-    background: var(--color-accent);
+.carousel-nav-btn.prev {
+    left: -22px; /* Hangs half outside the carousel container on desktop */
+}
+
+.carousel-nav-btn.next {
+    right: -22px;
+}
+
+/* Hover effects with cyan/purple dual glow */
+.carousel-nav-btn.prev:hover {
+    background: rgba(0, 240, 255, 0.15);
+    border-color: rgba(0, 240, 255, 0.8);
+    box-shadow: 0 0 18px rgba(0, 240, 255, 0.6), inset 0 0 8px rgba(0, 240, 255, 0.3);
     color: #ffffff;
-    border-color: var(--color-accent);
-    box-shadow: 0 0 12px var(--color-accent-glow);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.carousel-nav-btn.next:hover {
+    background: rgba(189, 0, 255, 0.15); /* Purple for next button */
+    border-color: rgba(189, 0, 255, 0.8);
+    box-shadow: 0 0 18px rgba(189, 0, 255, 0.6), inset 0 0 8px rgba(189, 0, 255, 0.3);
+    color: #ffffff;
+    transform: translateY(-50%) scale(1.08);
+}
+
+/* Responsive adjustment for tablet/mobile screen boundaries */
+@media (max-width: 1280px) {
+    .carousel-nav-btn.prev {
+        left: 10px;
+    }
+    .carousel-nav-btn.next {
+        right: 10px;
+    }
 }
 
 /* --- Process Section --- */
@@ -1702,8 +1734,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(10px);
+    background-color: rgba(6, 6, 9, 0.75); /* Semi-transparent overlay to let the frozen background show through */
 }
 
 .modal-wrapper {
@@ -1728,9 +1759,11 @@ footer {
     overflow-y: auto;
     border-radius: 24px;
     padding: 0;
-    background: #0a0c12; /* Solid high-performance dark surface */
-    border: 1px solid rgba(0, 240, 255, 0.12); /* Subtle glow border */
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 240, 255, 0.03);
+    background: rgba(10, 12, 18, 0.45); /* Highly transparent premium glass background */
+    backdrop-filter: blur(12px); /* Premium blur, cached efficiently by browser since background is frozen */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 240, 255, 0.15); /* Subtle glow border */
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 240, 255, 0.04);
 }
 
 .close-modal {
@@ -1758,7 +1791,7 @@ footer {
 }
 
 .modal-media-side {
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.3); /* Fully unified transparent media background */
     display: flex;
     flex-direction: column;
     justify-content: center;
