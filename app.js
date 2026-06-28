@@ -601,12 +601,12 @@ function initBuxelParticles() {
 
     // Fluid particles
     let particles = [];
-    const particleCount = isMobileDevice ? 50 : 130; // Reduced on mobile
+    const particleCount = isMobileDevice ? 35 : 100; // Optimized particle count for lower-end CPUs
     const colors = ["#00f0ff", "#ff00a0", "#7b00ff"]; // Premium Cyan, Sunset Magenta, Deep Violet
 
     // Large Nebula Blobs
     let nebulae = [];
-    const nebulaCount = isMobileDevice ? 2 : 5; // Reduced on mobile
+    const nebulaCount = isMobileDevice ? 2 : 4; // Optimized nebula count for lower-end CPUs
 
     // Pre-render a soft glow sprite sheet for particles to make rendering ultra-lightweight
     const glowCanvas = document.createElement("canvas");
@@ -631,6 +631,26 @@ function initBuxelParticles() {
         glowCtx.beginPath();
         glowCtx.arc(cx, cy, radius, 0, Math.PI * 2);
         glowCtx.fill();
+    });
+
+    // Pre-render large soft nebula glows (caching radial gradients to avoid heavy runtime math)
+    const nebulaCanvases = colors.map(color => {
+        const nc = document.createElement("canvas");
+        nc.width = 500;
+        nc.height = 500;
+        const nctx = nc.getContext("2d");
+        const rgb = hexToRgb(color);
+        
+        const grad = nctx.createRadialGradient(250, 250, 0, 250, 250, 250);
+        grad.addColorStop(0, `rgba(${rgb}, 1.0)`);
+        grad.addColorStop(0.5, `rgba(${rgb}, 0.5)`);
+        grad.addColorStop(1, "rgba(0, 0, 0, 0)");
+        
+        nctx.fillStyle = grad;
+        nctx.beginPath();
+        nctx.arc(250, 250, 250, 0, Math.PI * 2);
+        nctx.fill();
+        return nc;
     });
 
     // Create particles
@@ -661,8 +681,7 @@ function initBuxelParticles() {
                 vx: 0,
                 vy: 0,
                 radius: Math.random() * 250 + 220, // Larger soft radius for seamless clouds
-                color: colors[colorIdx],
-                rgb: hexToRgb(colors[colorIdx]),
+                colorIndex: colorIdx,
                 alpha: Math.random() * 0.04 + 0.02, // Subtle noticeable but low opacity
                 angle: Math.random() * Math.PI * 2,
                 speed: Math.random() * 0.15 + 0.05
@@ -783,16 +802,9 @@ function initBuxelParticles() {
             if (n.y < -n.radius) n.y = height + n.radius;
             else if (n.y > height + n.radius) n.y = -n.radius;
 
-            // Draw nebula radial gradient
-            const grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.radius);
-            grad.addColorStop(0, `rgba(${n.rgb}, ${n.alpha})`);
-            grad.addColorStop(0.5, `rgba(${n.rgb}, ${n.alpha * 0.5})`); // Richer cloud center transition
-            grad.addColorStop(1, "rgba(0, 0, 0, 0)");
-
-            ctx.fillStyle = grad;
-            ctx.beginPath();
-            ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
-            ctx.fill();
+            // Draw nebula using pre-rendered canvas sprite (super fast!)
+            ctx.globalAlpha = n.alpha;
+            ctx.drawImage(nebulaCanvases[n.colorIndex], n.x - n.radius, n.y - n.radius, n.radius * 2, n.radius * 2);
         });
 
         // 4. Update and Draw Fluid Particles (Stardust)
@@ -1279,15 +1291,27 @@ function initPortfolio() {
                 // Set up event listener on the placeholder to trigger autoplay and fullscreen
                 const placeholder = mediaContainer.querySelector(".custom-video-placeholder");
                 placeholder.addEventListener("click", () => {
-                    let iframeAttrs = 'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen';
+                    let iframeAttrs = 'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" referrerpolicy="no-referrer"';
                     let embedUrl = url;
 
                     if (url.includes("facebook.com")) {
-                        iframeAttrs = 'scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"';
+                        iframeAttrs = 'scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" loading="lazy" referrerpolicy="no-referrer"';
                     }
 
                     let htmlContent = "";
-                    if (url.includes("youtube.com") || url.includes("youtu.be") || url.includes("drive.google.com") || url.includes("drive.usercontent.google.com") || url.includes("facebook.com")) {
+                    let isGoogleDrive = url.includes("drive.google.com") || url.includes("drive.usercontent.google.com");
+
+                    if (isGoogleDrive) {
+                        const fileIdMatch = url.match(/\/file\/d\/([^/]+)/) || url.match(/[?&]id=([^&]+)/);
+                        if (fileIdMatch) {
+                            const fileId = fileIdMatch[1];
+                            const directStreamUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+                            // Try native HTML5 video player first for instant streaming
+                            htmlContent = `<video src="${directStreamUrl}" controls autoplay playsinline id="activeVideoPlayer" style="width:100%; height:100%;"></video>`;
+                        } else {
+                            htmlContent = `<iframe src="${url}" ${iframeAttrs} id="activeVideoPlayer" style="width:100%; height:100%; border:none;"></iframe>`;
+                        }
+                    } else if (url.includes("youtube.com") || url.includes("youtu.be") || url.includes("facebook.com")) {
                         if (url.includes("youtube.com/embed/")) {
                             embedUrl = url.includes("?") ? `${url}&autoplay=1` : `${url}?autoplay=1`;
                         }
@@ -1297,6 +1321,22 @@ function initPortfolio() {
                     }
 
                     mediaContainer.innerHTML = htmlContent;
+
+                    // Fallback to standard Google Drive iframe if the direct stream fails (e.g. virus warning on large files)
+                    if (isGoogleDrive) {
+                        const videoEl = mediaContainer.querySelector("video");
+                        if (videoEl) {
+                            videoEl.addEventListener("error", () => {
+                                console.warn("Google Drive direct stream failed. Falling back to official iframe preview player.");
+                                const fileIdMatch = url.match(/\/file\/d\/([^/]+)/) || url.match(/[?&]id=([^&]+)/);
+                                if (fileIdMatch) {
+                                    const fileId = fileIdMatch[1];
+                                    const iframeUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+                                    mediaContainer.innerHTML = `<iframe src="${iframeUrl}" ${iframeAttrs} id="activeVideoPlayer" style="width:100%; height:100%; border:none;"></iframe>`;
+                                }
+                            });
+                        }
+                    }
 
                     // Trigger fullscreen ONLY on mobile devices (excluding iOS to prevent double player)
                     const isMobile = window.innerWidth < 768;

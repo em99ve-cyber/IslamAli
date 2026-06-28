@@ -30,7 +30,7 @@
     --glass-bg: rgba(14, 17, 24, 0.65);
     --glass-border: rgba(0, 240, 255, 0.08);
     --glass-shadow: rgba(0, 0, 0, 0.6);
-    --glass-blur: 20px;
+    --glass-blur: 12px;
 
     --ambient-blob-1: rgba(0, 240, 255, 0.08);
     --ambient-blob-2: rgba(189, 0, 255, 0.07);
@@ -1728,6 +1728,9 @@ footer {
     overflow-y: auto;
     border-radius: 24px;
     padding: 0;
+    background: #0a0c12; /* Solid high-performance dark surface */
+    border: 1px solid rgba(0, 240, 255, 0.12); /* Subtle glow border */
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 240, 255, 0.03);
 }
 
 .close-modal {
@@ -1920,7 +1923,8 @@ footer {
 
 @media (max-width: 767px) {
     :root {
-        --glass-blur: 10px; /* Optimized from 20px for mobile scrolling performance */
+        --glass-blur: 4px; /* Reduced for ultra-smooth scrolling on mobile/low-end devices */
+        --glass-bg: rgba(14, 17, 24, 0.85); /* Slightly more opaque background to maintain contrast without heavy blur */
     }
 
     body {
