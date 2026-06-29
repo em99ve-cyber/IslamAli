@@ -1,4 +1,4 @@
-/* app.js - Interactive Portfolio Functionality */
+﻿/* app.js - Interactive Portfolio Functionality */
 
 // --- 1. Dynamic Projects Data ---
 // You can easily modify, add or delete projects here.
@@ -380,7 +380,7 @@ const projectsData = [
         mediaType: "video",
         mediaUrl: "https://drive.google.com/file/d/15qTuTJ2N0TUmqV43ZHJaic8KtdVQARr5/preview",
         aspect: "portrait",
-        originalPost: ""
+        originalPost: "https://www.facebook.com/share/r/1QZJkQPaGy/"
     },
     {
         id: 30,
