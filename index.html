@@ -41,6 +41,14 @@
         <div class="ambient-blob blob-3" id="blob3"></div>
         <div class="cursor-ambient-glow" id="cursorGlow"></div>
     </div>
+    
+    <!-- Global Clapperboard Scroll Follower (Floats in Background) -->
+    <div class="clapperboard-follower" id="clapperboard">
+        <div class="clapper-body">
+            <div class="clack-top"></div>
+            <div class="clack-bottom"></div>
+        </div>
+    </div>
 
     <!-- Custom Cursor Follower -->
     <div class="custom-cursor-dot" id="cursorDot" aria-hidden="true"></div>
@@ -186,7 +194,7 @@
             <div class="container">
                 <span class="section-label">ABOUT</span>
                 <div class="about-header-grid">
-                    <h2 class="about-title">Translating high-concept ideas into release-ready video assets.</h2>
+                    <h2 class="about-title">Translating <span class="gradient-text">high-concept ideas</span> into release-ready video assets.</h2>
                     <p class="about-desc">From polished commercials and cinematic color correction to multi-language video localization, my post-production workflow is optimized to deliver visual authority, quick turnaround times, and maximum viewer engagement.</p>
                 </div>
 
@@ -252,27 +260,54 @@
             <div class="container">
                 <span class="section-label">PROCESS</span>
                 <h2 class="section-title">A Structured Pipeline for Premium Execution.</h2>
-                <div class="process-grid">
-                    <article class="process-card glass tilt interactive-el" data-step="01">
-                        <div class="step-num">01</div>
-                        <h3>Brief & Focus Hook</h3>
-                        <p>Deconstructing your brand targets and establishing the core audience retention hook for the first 3 seconds.</p>
-                    </article>
-                    <article class="process-card glass tilt interactive-el" data-step="02">
-                        <div class="step-num">02</div>
-                        <h3>Visual Blueprint</h3>
-                        <p>Mapping out pacing beats, custom color palettes, structural asset references, and translated dialogue scripts.</p>
-                    </article>
-                    <article class="process-card glass tilt interactive-el" data-step="03">
-                        <div class="step-num">03</div>
-                        <h3>High-Velocity Assembly</h3>
-                        <p>Integrating multi-cam footage, building immersive sound FX beds, applying color LUTs, and timing caption cuts.</p>
-                    </article>
-                    <article class="process-card glass tilt interactive-el" data-step="04">
-                        <div class="step-num">04</div>
-                        <h3>Export & Optimize</h3>
-                        <p>Rendering native high-bitrate outputs formatted and optimized for YouTube broadcast or social-first channels.</p>
-                    </article>
+                <div class="process-timeline" id="processTimeline">
+                    <svg class="timeline-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                        <defs>
+                            <linearGradient id="timelineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#bd00ff" stop-opacity="0"></stop>
+                                <stop offset="10%" stop-color="#bd00ff" stop-opacity="0.85"></stop>
+                                <stop offset="50%" stop-color="#00f0ff" stop-opacity="0.85"></stop>
+                                <stop offset="90%" stop-color="#bd00ff" stop-opacity="0.85"></stop>
+                                <stop offset="100%" stop-color="#bd00ff" stop-opacity="0"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path class="path-desktop" d="M 50 0 C 50 4, 22 8, 22 12.5 C 22 21, 78 29, 78 37.5 C 78 46, 22 54, 22 62.5 C 22 71, 78 79, 78 87.5 C 78 96, 50 96, 50 100" fill="none"></path>
+                        <path class="path-mobile" d="M 5 0 L 5 100" fill="none"></path>
+                    </svg>
+                    
+
+                    
+                    <div class="timeline-item left">
+                        <div class="timeline-node">01</div>
+                        <article class="process-card glass tilt interactive-el">
+                            <h3>Brief & Focus Hook</h3>
+                            <p>Deconstructing your brand targets and establishing the core audience retention hook for the first 3 seconds.</p>
+                        </article>
+                    </div>
+
+                    <div class="timeline-item right">
+                        <div class="timeline-node">02</div>
+                        <article class="process-card glass tilt interactive-el">
+                            <h3>Visual Blueprint</h3>
+                            <p>Mapping out pacing beats, custom color palettes, structural asset references, and translated dialogue scripts.</p>
+                        </article>
+                    </div>
+
+                    <div class="timeline-item left">
+                        <div class="timeline-node">03</div>
+                        <article class="process-card glass tilt interactive-el">
+                            <h3>High-Velocity Assembly</h3>
+                            <p>Integrating multi-cam footage, building immersive sound FX beds, applying color LUTs, and timing caption cuts.</p>
+                        </article>
+                    </div>
+
+                    <div class="timeline-item right">
+                        <div class="timeline-node">04</div>
+                        <article class="process-card glass tilt interactive-el">
+                            <h3>Export & Optimize</h3>
+                            <p>Rendering native high-bitrate outputs formatted and optimized for YouTube broadcast or social-first channels.</p>
+                        </article>
+                    </div>
                 </div>
             </div>
         </section>
@@ -343,7 +378,7 @@
             <div class="container">
                 <div class="contact-card glass tilt interactive-el" data-tilt-max="4">
                     <span class="section-label">DIRECT COMMUNICATION</span>
-                    <h2>Let's talk details.</h2>
+                    <h2>Let's talk <span class="gradient-text">details</span>.</h2>
                     <p>I am available through the following contact channels for video editing, color grading, branded content, and professional translation/subtitling projects.</p>
                     
                     <div class="contact-links">

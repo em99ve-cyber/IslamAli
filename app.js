@@ -1,4 +1,4 @@
-﻿/* app.js - Interactive Portfolio Functionality */
+/* app.js - Interactive Portfolio Functionality */
 
 // --- 1. Dynamic Projects Data ---
 // You can easily modify, add or delete projects here.
@@ -1247,20 +1247,23 @@ function initPortfolio() {
             
             isTransitioning = true;
             const step = getScrollStep();
-            let targetScrollPos = scrollPos - step;
             
-            track.style.transition = "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)";
+            // Seamless boundary wrap before transition
+            if (scrollPos <= 0) {
+                scrollPos += loopWidth;
+                track.style.transition = "none";
+                track.style.transform = `translate3d(${-scrollPos}px, 0, 0)`;
+                track.offsetHeight; // Force layout recalculation
+            }
+            
+            const targetScrollPos = scrollPos - step;
+            track.style.transition = "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)";
             track.style.transform = `translate3d(${-targetScrollPos}px, 0, 0)`;
             scrollPos = targetScrollPos;
 
             setTimeout(() => {
-                if (scrollPos < 0) {
-                    scrollPos += loopWidth;
-                    track.style.transition = "none";
-                    track.style.transform = `translate3d(${-scrollPos}px, 0, 0)`;
-                }
                 isTransitioning = false;
-            }, 600);
+            }, 400);
         });
 
         nextBtn.addEventListener("click", () => {
@@ -1268,20 +1271,23 @@ function initPortfolio() {
             
             isTransitioning = true;
             const step = getScrollStep();
-            let targetScrollPos = scrollPos + step;
             
-            track.style.transition = "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)";
+            // Seamless boundary wrap before transition
+            if (scrollPos >= loopWidth) {
+                scrollPos -= loopWidth;
+                track.style.transition = "none";
+                track.style.transform = `translate3d(${-scrollPos}px, 0, 0)`;
+                track.offsetHeight; // Force layout recalculation
+            }
+            
+            const targetScrollPos = scrollPos + step;
+            track.style.transition = "transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)";
             track.style.transform = `translate3d(${-targetScrollPos}px, 0, 0)`;
             scrollPos = targetScrollPos;
 
             setTimeout(() => {
-                if (scrollPos >= loopWidth) {
-                    scrollPos -= loopWidth;
-                    track.style.transition = "none";
-                    track.style.transform = `translate3d(${-scrollPos}px, 0, 0)`;
-                }
                 isTransitioning = false;
-            }, 600);
+            }, 400);
         });
     }
 
@@ -1828,4 +1834,253 @@ function initScrollReveal() {
     revealElements.forEach(el => {
         observer.observe(el);
     });
+
+    // 5. Clapperboard scroll follower and timeline reveal
+    const processTimeline = document.getElementById("processTimeline");
+    const clapperboard = document.getElementById("clapperboard");
+    
+    if (processTimeline && clapperboard) {
+        const pathDesktop = processTimeline.querySelector(".path-desktop");
+        const pathMobile = processTimeline.querySelector(".path-mobile");
+        
+        function updateClapperboard() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const docHeight = document.documentElement.scrollHeight;
+            const winH = window.innerHeight;
+            const winW = window.innerWidth;
+            
+            // Set vertical position always centered in the viewport
+            const targetY = scrollTop + winH * 0.5;
+            clapperboard.style.top = `${targetY}px`;
+            
+            // Fetch process timeline bounding boxes
+            const rect = processTimeline.getBoundingClientRect();
+            const timelineTop = rect.top + scrollTop;
+            const timelineHeight = rect.height;
+            const timelineWidth = rect.width;
+            const timelineLeft = rect.left;
+            
+            // Fetch Make a Request badge button position for perfect overlay
+            const badge = document.getElementById("requestBadgeBtn");
+            let badgeY = timelineTop + timelineHeight + 250; // Fallback
+            let badgeX = winW * 0.5; // Fallback
+            if (badge) {
+                const badgeRect = badge.getBoundingClientRect();
+                badgeY = badgeRect.top + scrollTop + badgeRect.height * 0.5;
+                badgeX = badgeRect.left + badgeRect.width * 0.5;
+            }
+            
+            // Define global key points in actual pixel coordinates for a single continuous path
+            const keyPoints = [
+                { y: 0, x: winW * 0.5 },                                              // Top center
+                { y: timelineTop * 0.3, x: winW * 0.78 },                             // Hero right
+                { y: timelineTop * 0.6, x: winW * 0.22 },                             // About left
+                { y: timelineTop * 0.85, x: winW * 0.72 },                            // Work right
+                
+                // Process Section (Aligned with cards)
+                { y: timelineTop, x: timelineLeft + timelineWidth * 0.5 },            // Enter timeline (center)
+                { y: timelineTop + timelineHeight * 0.125, x: timelineLeft + timelineWidth * 0.22 }, // Step 1
+                { y: timelineTop + timelineHeight * 0.375, x: timelineLeft + timelineWidth * 0.78 }, // Step 2
+                { y: timelineTop + timelineHeight * 0.625, x: timelineLeft + timelineWidth * 0.22 }, // Step 3
+                { y: timelineTop + timelineHeight * 0.875, x: timelineLeft + timelineWidth * 0.78 }, // Step 4
+                { y: timelineTop + timelineHeight, x: timelineLeft + timelineWidth * 0.5 },          // Exit timeline (center)
+                
+                // Make a Request Badge (Interactive click)
+                { y: badgeY, x: badgeX },
+                
+                // Contact & Footer
+                { y: timelineTop + timelineHeight + (docHeight - timelineTop - timelineHeight) * 0.75, x: winW * 0.5 },
+                { y: docHeight, x: winW * 0.5 }                                       // End center
+            ];
+            
+            // Find current segment in keyPoints
+            const yVal = Math.max(0, Math.min(keyPoints[keyPoints.length - 1].y, targetY));
+            let i = 0;
+            for (i = 0; i < keyPoints.length - 1; i++) {
+                if (yVal >= keyPoints[i].y && yVal <= keyPoints[i + 1].y) {
+                    break;
+                }
+            }
+            
+            const p1 = keyPoints[i];
+            const p2 = keyPoints[i + 1];
+            
+            // Calculate progress inside the segment
+            const t = (yVal - p1.y) / (p2.y - p1.y);
+            const smoothT = t * t * (3 - 2 * t); // Smoothstep curve
+            
+            // Interpolate X coordinate
+            const targetX = p1.x + (p2.x - p1.x) * smoothT;
+            clapperboard.style.left = `${targetX}px`;
+            
+            // Rotate clapperboard to align with the slope of travel
+            const isMobile = winW < 768;
+            if (!isMobile) {
+                const deltaX = p2.x - p1.x;
+                const deltaY = p2.y - p1.y;
+                let tiltZ = (deltaX / deltaY) * 32; // Scale tilt based on slope steepness (max +/- 18deg)
+                tiltZ = Math.max(-18, Math.min(18, tiltZ));
+                clapperboard.style.transform = `translate(-50%, -50%) rotate(${tiltZ}deg)`;
+            } else {
+                clapperboard.style.transform = "translate(-50%, -50%)";
+            }
+            
+            // Handle local timeline events (SVG fade, clacking, card reveal)
+            const inTimeline = (targetY >= timelineTop && targetY <= timelineTop + timelineHeight);
+            if (inTimeline) {
+                const localProgress = (targetY - timelineTop) / timelineHeight;
+                
+                // Show SVG path inside timeline section
+                const timelineSvg = processTimeline.querySelector(".timeline-svg");
+                if (timelineSvg) {
+                    let svgOpacity = 1;
+                    if (localProgress < 0.1) {
+                        svgOpacity = localProgress / 0.1;
+                    } else if (localProgress > 0.9) {
+                        svgOpacity = (1 - localProgress) / 0.1;
+                    }
+                    timelineSvg.style.opacity = svgOpacity.toString();
+                    timelineSvg.style.transition = "opacity 0.25s ease-out";
+                }
+                
+                // Trigger clack snap-down animation when clapperboard passes step levels
+                const stepThresholds = [0.125, 0.375, 0.625, 0.875];
+                stepThresholds.forEach(t => {
+                    const diff = Math.abs(localProgress - t);
+                    if (diff < 0.018) {
+                        if (!clapperboard.dataset.lastClack || Math.abs(parseFloat(clapperboard.dataset.lastClack) - t) > 0.05) {
+                            clapperboard.classList.add("clacking");
+                            playClackSound();
+                            setTimeout(() => {
+                                clapperboard.classList.remove("clacking");
+                            }, 280);
+                            clapperboard.dataset.lastClack = t.toString();
+                        }
+                    }
+                });
+                
+                // Reveal cards and light up nodes as clapperboard passes them
+                const items = processTimeline.querySelectorAll(".timeline-item");
+                items.forEach((item, idx) => {
+                    const targetCenter = 0.125 + idx * 0.25;
+                    
+                    if (localProgress >= targetCenter - 0.08) {
+                        item.classList.add("revealed");
+                    }
+                    
+                    const distance = Math.abs(localProgress - targetCenter);
+                    if (distance <= 0.12) {
+                        item.classList.add("active-passing");
+                    } else {
+                        item.classList.remove("active-passing");
+                    }
+                });
+            } else {
+                // Remove active-passing classes if outside timeline
+                const items = processTimeline.querySelectorAll(".timeline-item");
+                items.forEach(item => item.classList.remove("active-passing"));
+                
+                // Hide SVG path inside timeline section when clapperboard is not there
+                const timelineSvg = processTimeline.querySelector(".timeline-svg");
+                if (timelineSvg) {
+                    timelineSvg.style.opacity = "0";
+                }
+            }
+            
+            // Handle proximity to "Make a request" badge
+            let clapperOpacity = 0.75;
+            if (badge) {
+                const distanceToBadge = Math.abs(targetY - badgeY);
+                if (distanceToBadge < 80) {
+                    badge.classList.add("glow-active");
+                } else {
+                    badge.classList.remove("glow-active");
+                }
+                
+                // Fade out clapperboard completely as it merges with the badge
+                if (distanceToBadge < 120) {
+                    clapperOpacity = 0.75 * (distanceToBadge / 120);
+                }
+            }
+            
+            // Fade out clapperboard completely at the very top (0-150px) and very bottom of the page
+            if (scrollTop <= 150 || scrollTop >= docHeight - winH - 150) {
+                clapperboard.style.opacity = "0";
+            } else {
+                clapperboard.style.opacity = clapperOpacity.toString();
+            }
+        }
+        
+        // Realistic Synthesized Wooden Clack sound (Web Audio API - 100% offline & low latency)
+        function playClackSound() {
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContext) return;
+                const ctx = new AudioContext();
+                
+                // 1. Wood body resonance oscillator sweep
+                const osc = ctx.createOscillator();
+                const gainOsc = ctx.createGain();
+                osc.type = "sine";
+                osc.frequency.setValueAtTime(1400, ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(320, ctx.currentTime + 0.07);
+                
+                gainOsc.gain.setValueAtTime(0.35, ctx.currentTime);
+                gainOsc.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.07);
+                
+                osc.connect(gainOsc);
+                gainOsc.connect(ctx.destination);
+                
+                // 2. High frequency sharp click (wooden impact crackle)
+                const bufferSize = ctx.sampleRate * 0.04; // 40ms buffer
+                const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+                const data = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    data[i] = Math.random() * 2 - 1;
+                }
+                
+                const noise = ctx.createBufferSource();
+                noise.buffer = buffer;
+                
+                const filter = ctx.createBiquadFilter();
+                filter.type = "bandpass";
+                filter.frequency.setValueAtTime(1100, ctx.currentTime);
+                filter.Q.setValueAtTime(5, ctx.currentTime);
+                
+                const gainNoise = ctx.createGain();
+                gainNoise.gain.setValueAtTime(0.28, ctx.currentTime);
+                gainNoise.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.035);
+                
+                noise.connect(filter);
+                filter.connect(gainNoise);
+                gainNoise.connect(ctx.destination);
+                
+                // Fire synthesizer node
+                osc.start();
+                osc.stop(ctx.currentTime + 0.08);
+                noise.start();
+                noise.stop(ctx.currentTime + 0.05);
+            } catch (e) {
+                console.warn("Web Audio API blocked or not supported:", e);
+            }
+        }
+        
+        // Listen for global clicks to snap clapperboard closed and play click-clack sound
+        window.addEventListener("mousedown", () => {
+            if (clapperboard.style.opacity !== "0") {
+                clapperboard.classList.add("clacking");
+                playClackSound();
+                setTimeout(() => {
+                    clapperboard.classList.remove("clacking");
+                }, 280);
+            }
+        });
+        
+        window.addEventListener("scroll", () => {
+            requestAnimationFrame(updateClapperboard);
+        });
+        window.addEventListener("resize", updateClapperboard);
+        // Run once on load
+        setTimeout(updateClapperboard, 100);
+    }
 }
