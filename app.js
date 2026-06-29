@@ -1849,9 +1849,11 @@ function initScrollReveal() {
             const winH = window.innerHeight;
             const winW = window.innerWidth;
             
-            // Set vertical position always centered in the viewport
+            // Get elapsed time in seconds for active floating animation
+            const time = performance.now() * 0.001;
+            
+            // Set base vertical position always centered in the viewport
             const targetY = scrollTop + winH * 0.5;
-            clapperboard.style.top = `${targetY}px`;
             
             // Fetch process timeline bounding boxes
             const rect = processTimeline.getBoundingClientRect();
@@ -1909,20 +1911,40 @@ function initScrollReveal() {
             const t = (yVal - p1.y) / (p2.y - p1.y);
             const smoothT = t * t * (3 - 2 * t); // Smoothstep curve
             
-            // Interpolate X coordinate
+            // Interpolate base X coordinate
             const targetX = p1.x + (p2.x - p1.x) * smoothT;
-            clapperboard.style.left = `${targetX}px`;
             
-            // Rotate clapperboard to align with the slope of travel
+            // 1. Continuous Time-Based Floating Wobble (Runs at 60fps even when stationary!)
+            // Combined prime frequencies for a complex, non-repetitive organic float
+            const timeX = 14 * Math.sin(time * 1.8) + 6 * Math.sin(time * 3.7);
+            const timeY = 8 * Math.cos(time * 1.4) + 4 * Math.sin(time * 2.9);
+            const timeR = 4.5 * Math.sin(time * 2.1) + 2.5 * Math.cos(time * 4.3);
+            
+            // 2. Scroll-Based Curve Wobble (adds extra drag movement as we scroll)
+            const scrollWobbleX = 8 * Math.sin(targetY * 0.0022) + 4 * Math.sin(targetY * 0.0053);
+            
+            // Combine all coordinates
+            const finalX = targetX + scrollWobbleX + timeX;
+            const finalY = targetY + timeY;
+            
+            clapperboard.style.left = `${finalX}px`;
+            clapperboard.style.top = `${finalY}px`;
+            
+            // Rotate clapperboard to align with the slope of travel + add organic tilt wobble
             const isMobile = winW < 768;
             if (!isMobile) {
                 const deltaX = p2.x - p1.x;
                 const deltaY = p2.y - p1.y;
                 let tiltZ = (deltaX / deltaY) * 32; // Scale tilt based on slope steepness (max +/- 18deg)
                 tiltZ = Math.max(-18, Math.min(18, tiltZ));
-                clapperboard.style.transform = `translate(-50%, -50%) rotate(${tiltZ}deg)`;
+                
+                // Add minor organic rotational wobble (simulating aerodynamic drag / float)
+                const wobbleR = 4 * Math.sin(targetY * 0.0028) + 2 * Math.cos(targetY * 0.0067);
+                const finalTiltZ = tiltZ + wobbleR + timeR;
+                
+                clapperboard.style.transform = `translate(-50%, -50%) rotate(${finalTiltZ}deg)`;
             } else {
-                clapperboard.style.transform = "translate(-50%, -50%)";
+                clapperboard.style.transform = `translate(-50%, -50%) rotate(${timeR}deg)`; // Still float on mobile!
             }
             
             // Handle local timeline events (SVG fade, clacking, card reveal)
@@ -2067,20 +2089,43 @@ function initScrollReveal() {
         
         // Listen for global clicks to snap clapperboard closed and play click-clack sound
         window.addEventListener("mousedown", () => {
-            if (clapperboard.style.opacity !== "0") {
+            let soundPlayed = false;
+            
+            const modalClap = document.getElementById("modalClapperboard");
+            const modalOpen = document.body.classList.contains("modal-open");
+            
+            // 1. Snap modal clapperboard if open
+            if (modalOpen && modalClap) {
+                modalClap.classList.add("clacking");
+                if (!soundPlayed) {
+                    playClackSound();
+                    soundPlayed = true;
+                }
+                setTimeout(() => {
+                    modalClap.classList.remove("clacking");
+                }, 280);
+            }
+            
+            // 2. Snap global background clapperboard
+            if (clapperboard && clapperboard.style.opacity !== "0") {
                 clapperboard.classList.add("clacking");
-                playClackSound();
+                if (!soundPlayed) {
+                    playClackSound();
+                    soundPlayed = true;
+                }
                 setTimeout(() => {
                     clapperboard.classList.remove("clacking");
                 }, 280);
             }
         });
         
-        window.addEventListener("scroll", () => {
-            requestAnimationFrame(updateClapperboard);
-        });
+        // Continuous requestAnimationFrame loop to update clapperboard floating & scrolling at 60fps
+        function tickClapperboard() {
+            updateClapperboard();
+            requestAnimationFrame(tickClapperboard);
+        }
+        requestAnimationFrame(tickClapperboard);
+        
         window.addEventListener("resize", updateClapperboard);
-        // Run once on load
-        setTimeout(updateClapperboard, 100);
     }
 }
