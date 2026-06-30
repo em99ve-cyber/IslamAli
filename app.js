@@ -1,4 +1,4 @@
-/* app.js - Interactive Portfolio Functionality */
+﻿/* app.js - Interactive Portfolio Functionality */
 
 // --- 1. Dynamic Projects Data ---
 // You can easily modify, add or delete projects here.
@@ -1840,12 +1840,62 @@ function initScrollReveal() {
     const clapperboard = document.getElementById("clapperboard");
     
     if (processTimeline && clapperboard) {
-        const pathDesktop = processTimeline.querySelector(".path-desktop");
-        const pathMobile = processTimeline.querySelector(".path-mobile");
+        // Cache layout measurements to avoid layout thrashing (forces synchronous layout reflow) in 60fps loop
+        let cachedTimelineTop = 0;
+        let cachedTimelineHeight = 0;
+        let cachedTimelineWidth = 0;
+        let cachedTimelineLeft = 0;
+        let cachedBadgeY = 0;
+        let cachedBadgeX = 0;
+        let cachedRequestToolWidth = 0;
+        let cachedRequestToolCenterX = 0;
+        let cachedRequestToolCenterY = 0;
+        let cachedDocHeight = 0;
+        
+        function cacheLayoutDimensions() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const winW = window.innerWidth;
+            
+            if (processTimeline) {
+                const rect = processTimeline.getBoundingClientRect();
+                cachedTimelineTop = rect.top + scrollTop;
+                cachedTimelineHeight = rect.height;
+                cachedTimelineWidth = rect.width;
+                cachedTimelineLeft = rect.left;
+            }
+            
+            const badge = document.getElementById("requestBadgeBtn");
+            if (badge) {
+                const badgeRect = badge.getBoundingClientRect();
+                cachedBadgeY = badgeRect.top + scrollTop + badgeRect.height * 0.5;
+                cachedBadgeX = badgeRect.left + badgeRect.width * 0.5;
+            } else {
+                cachedBadgeY = cachedTimelineTop + cachedTimelineHeight + 250;
+                cachedBadgeX = winW * 0.5;
+            }
+
+            const requestToolEl = document.getElementById("requestTool");
+            if (requestToolEl) {
+                // Use offsetWidth to get unscaled true layout width
+                cachedRequestToolWidth = requestToolEl.offsetWidth;
+                
+                // Calculate scale-invariant center coordinates
+                const rect = requestToolEl.getBoundingClientRect();
+                cachedRequestToolCenterX = rect.left + rect.width * 0.5;
+                cachedRequestToolCenterY = rect.top + rect.height * 0.5 + scrollTop;
+            }
+            
+            cachedDocHeight = document.documentElement.scrollHeight;
+        }
+        
+        // Run cache layout immediately
+        cacheLayoutDimensions();
+        
+        // Update cache on image load or full content load to ensure final positions are correct
+        window.addEventListener("load", cacheLayoutDimensions);
         
         function updateClapperboard() {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const docHeight = document.documentElement.scrollHeight;
             const winH = window.innerHeight;
             const winW = window.innerWidth;
             
@@ -1855,44 +1905,27 @@ function initScrollReveal() {
             // Set base vertical position always centered in the viewport
             const targetY = scrollTop + winH * 0.5;
             
-            // Fetch process timeline bounding boxes
-            const rect = processTimeline.getBoundingClientRect();
-            const timelineTop = rect.top + scrollTop;
-            const timelineHeight = rect.height;
-            const timelineWidth = rect.width;
-            const timelineLeft = rect.left;
-            
-            // Fetch Make a Request badge button position for perfect overlay
-            const badge = document.getElementById("requestBadgeBtn");
-            let badgeY = timelineTop + timelineHeight + 250; // Fallback
-            let badgeX = winW * 0.5; // Fallback
-            if (badge) {
-                const badgeRect = badge.getBoundingClientRect();
-                badgeY = badgeRect.top + scrollTop + badgeRect.height * 0.5;
-                badgeX = badgeRect.left + badgeRect.width * 0.5;
-            }
-            
-            // Define global key points in actual pixel coordinates for a single continuous path
+            // Define global key points in actual pixel coordinates using cached layout boundaries
             const keyPoints = [
                 { y: 0, x: winW * 0.5 },                                              // Top center
-                { y: timelineTop * 0.3, x: winW * 0.78 },                             // Hero right
-                { y: timelineTop * 0.6, x: winW * 0.22 },                             // About left
-                { y: timelineTop * 0.85, x: winW * 0.72 },                            // Work right
+                { y: cachedTimelineTop * 0.3, x: winW * 0.62 },                       // Hero right (Narrower)
+                { y: cachedTimelineTop * 0.6, x: winW * 0.38 },                       // About left (Narrower)
+                { y: cachedTimelineTop * 0.85, x: winW * 0.62 },                      // Work right (Narrower)
                 
                 // Process Section (Aligned with cards)
-                { y: timelineTop, x: timelineLeft + timelineWidth * 0.5 },            // Enter timeline (center)
-                { y: timelineTop + timelineHeight * 0.125, x: timelineLeft + timelineWidth * 0.22 }, // Step 1
-                { y: timelineTop + timelineHeight * 0.375, x: timelineLeft + timelineWidth * 0.78 }, // Step 2
-                { y: timelineTop + timelineHeight * 0.625, x: timelineLeft + timelineWidth * 0.22 }, // Step 3
-                { y: timelineTop + timelineHeight * 0.875, x: timelineLeft + timelineWidth * 0.78 }, // Step 4
-                { y: timelineTop + timelineHeight, x: timelineLeft + timelineWidth * 0.5 },          // Exit timeline (center)
+                { y: cachedTimelineTop, x: cachedTimelineLeft + cachedTimelineWidth * 0.5 },            // Enter timeline (center)
+                { y: cachedTimelineTop + cachedTimelineHeight * 0.125, x: cachedTimelineLeft + cachedTimelineWidth * 0.22 }, // Step 1
+                { y: cachedTimelineTop + cachedTimelineHeight * 0.375, x: cachedTimelineLeft + cachedTimelineWidth * 0.78 }, // Step 2
+                { y: cachedTimelineTop + cachedTimelineHeight * 0.625, x: cachedTimelineLeft + cachedTimelineWidth * 0.22 }, // Step 3
+                { y: cachedTimelineTop + cachedTimelineHeight * 0.875, x: cachedTimelineLeft + cachedTimelineWidth * 0.78 }, // Step 4
+                { y: cachedTimelineTop + cachedTimelineHeight, x: cachedTimelineLeft + cachedTimelineWidth * 0.5 },          // Exit timeline (center)
                 
                 // Make a Request Badge (Interactive click)
-                { y: badgeY, x: badgeX },
+                { y: cachedBadgeY, x: cachedBadgeX },
                 
                 // Contact & Footer
-                { y: timelineTop + timelineHeight + (docHeight - timelineTop - timelineHeight) * 0.75, x: winW * 0.5 },
-                { y: docHeight, x: winW * 0.5 }                                       // End center
+                { y: cachedTimelineTop + cachedTimelineHeight + (cachedDocHeight - cachedTimelineTop - cachedTimelineHeight) * 0.75, x: winW * 0.5 },
+                { y: cachedDocHeight, x: winW * 0.5 }                                 // End center
             ];
             
             // Find current segment in keyPoints
@@ -1914,24 +1947,24 @@ function initScrollReveal() {
             // Interpolate base X coordinate
             const targetX = p1.x + (p2.x - p1.x) * smoothT;
             
+            // Scale wobble orbit based on device screen width (much narrower/tighter orbit on mobile)
+            const isMobile = winW < 768;
+            const scaleFactor = isMobile ? 0.3 : 0.55; // 70% reduction on mobile, 45% reduction on desktop
+            
             // 1. Continuous Time-Based Floating Wobble (Runs at 60fps even when stationary!)
-            // Combined prime frequencies for a complex, non-repetitive organic float
-            const timeX = 14 * Math.sin(time * 1.8) + 6 * Math.sin(time * 3.7);
-            const timeY = 8 * Math.cos(time * 1.4) + 4 * Math.sin(time * 2.9);
-            const timeR = 4.5 * Math.sin(time * 2.1) + 2.5 * Math.cos(time * 4.3);
+            const timeX = scaleFactor * (14 * Math.sin(time * 1.8) + 6 * Math.sin(time * 3.7));
+            const timeY = scaleFactor * (8 * Math.cos(time * 1.4) + 4 * Math.sin(time * 2.9));
+            const timeR = scaleFactor * (4.5 * Math.sin(time * 2.1) + 2.5 * Math.cos(time * 4.3));
             
             // 2. Scroll-Based Curve Wobble (adds extra drag movement as we scroll)
-            const scrollWobbleX = 8 * Math.sin(targetY * 0.0022) + 4 * Math.sin(targetY * 0.0053);
+            const scrollWobbleX = scaleFactor * (8 * Math.sin(targetY * 0.0022) + 4 * Math.sin(targetY * 0.0053));
             
             // Combine all coordinates
             const finalX = targetX + scrollWobbleX + timeX;
             const finalY = targetY + timeY;
             
-            clapperboard.style.left = `${finalX}px`;
-            clapperboard.style.top = `${finalY}px`;
-            
             // Rotate clapperboard to align with the slope of travel + add organic tilt wobble
-            const isMobile = winW < 768;
+            let baseTiltZ = timeR;
             if (!isMobile) {
                 const deltaX = p2.x - p1.x;
                 const deltaY = p2.y - p1.y;
@@ -1939,18 +1972,73 @@ function initScrollReveal() {
                 tiltZ = Math.max(-18, Math.min(18, tiltZ));
                 
                 // Add minor organic rotational wobble (simulating aerodynamic drag / float)
-                const wobbleR = 4 * Math.sin(targetY * 0.0028) + 2 * Math.cos(targetY * 0.0067);
-                const finalTiltZ = tiltZ + wobbleR + timeR;
+                const wobbleR = scaleFactor * (4 * Math.sin(targetY * 0.0028) + 2 * Math.cos(targetY * 0.0067));
+                baseTiltZ = tiltZ + wobbleR + timeR;
+            }
+
+            // Check if we are entering the PROJECT REQUEST transition zone
+            const timelineEnd = cachedTimelineTop + cachedTimelineHeight;
+            const transitionStart = timelineEnd - 180;
+            const transitionEnd = timelineEnd + 80;
+            
+            // Use cached center coordinates of the Request Tool panel
+            const requestToolCenterX = cachedRequestToolCenterX;
+            const requestToolCenterY = cachedRequestToolCenterY;
+            
+            // Dynamically calculate scale factor so the clapperboard becomes EXACTLY as big as the panel
+            const clapperBaseWidth = isMobile ? 34 : 44;
+            const targetMaxScale = cachedRequestToolWidth / clapperBaseWidth;
+            
+            // Declare clapperOpacity as a window-level or loop-level variable to be used later
+            window.currentClapperOpacity = 0.75;
+            const requestTool = document.getElementById("requestTool");
+            
+            if (targetY >= transitionStart && targetY <= transitionEnd) {
+                const progress = (targetY - transitionStart) / (transitionEnd - transitionStart); // 0 to 1
                 
-                clapperboard.style.transform = `translate(-50%, -50%) rotate(${finalTiltZ}deg)`;
+                // 1. Scale up to EXACTLY targetMaxScale (matching requestTool panel dimensions)
+                const animScale = 1.0 + ((targetMaxScale - 1.0) * progress);
+                
+                // 2. Rotate a full 360-degree spin + base tilt
+                const animRotation = baseTiltZ + (360 * progress);
+                
+                // 3. Morph coordinate to fly directly into the center of the requestTool panel
+                const animX = finalX + (requestToolCenterX - finalX) * progress;
+                const animY = finalY + (requestToolCenterY - finalY) * progress;
+                
+                clapperboard.style.left = `${animX}px`;
+                clapperboard.style.top = `${animY}px`;
+                clapperboard.style.transform = `translate(-50%, -50%) scale(${animScale}) rotate(${animRotation}deg)`;
+                clapperboard.style.zIndex = "-1"; // Keep behind content
+                
+                // 4. Hide panel content until clapperboard reaches perfect sizing at >= 96% progress
+                if (progress >= 0.96) {
+                    window.currentClapperOpacity = 0; // Seamless hand-off
+                    if (requestTool) requestTool.classList.add("content-ready");
+                } else {
+                    window.currentClapperOpacity = 0.75;
+                    if (requestTool) requestTool.classList.remove("content-ready");
+                }
+            } else if (targetY > transitionEnd) {
+                window.currentClapperOpacity = 0;
+                if (requestTool) requestTool.classList.add("content-ready");
+                clapperboard.style.left = `${finalX}px`;
+                clapperboard.style.top = `${finalY}px`;
+                clapperboard.style.transform = `translate(-50%, -50%) rotate(${baseTiltZ}deg)`;
+                clapperboard.style.zIndex = "-1";
             } else {
-                clapperboard.style.transform = `translate(-50%, -50%) rotate(${timeR}deg)`; // Still float on mobile!
+                // Normal floating behavior
+                if (requestTool) requestTool.classList.remove("content-ready");
+                clapperboard.style.left = `${finalX}px`;
+                clapperboard.style.top = `${finalY}px`;
+                clapperboard.style.transform = `translate(-50%, -50%) rotate(${baseTiltZ}deg)`;
+                clapperboard.style.zIndex = "-1";
             }
             
             // Handle local timeline events (SVG fade, clacking, card reveal)
-            const inTimeline = (targetY >= timelineTop && targetY <= timelineTop + timelineHeight);
+            const inTimeline = (targetY >= cachedTimelineTop && targetY <= cachedTimelineTop + cachedTimelineHeight);
             if (inTimeline) {
-                const localProgress = (targetY - timelineTop) / timelineHeight;
+                const localProgress = (targetY - cachedTimelineTop) / cachedTimelineHeight;
                 
                 // Show SVG path inside timeline section
                 const timelineSvg = processTimeline.querySelector(".timeline-svg");
@@ -2009,27 +2097,36 @@ function initScrollReveal() {
                 }
             }
             
-            // Handle proximity to "Make a request" badge
-            let clapperOpacity = 0.75;
-            if (badge) {
-                const distanceToBadge = Math.abs(targetY - badgeY);
+            const badgeElement = document.getElementById("requestBadgeBtn");
+            
+            if (badgeElement) {
+                const distanceToBadge = Math.abs(targetY - cachedBadgeY);
                 if (distanceToBadge < 80) {
-                    badge.classList.add("glow-active");
+                    badgeElement.classList.add("glow-active");
                 } else {
-                    badge.classList.remove("glow-active");
+                    badgeElement.classList.remove("glow-active");
                 }
                 
-                // Fade out clapperboard completely as it merges with the badge
-                if (distanceToBadge < 120) {
-                    clapperOpacity = 0.75 * (distanceToBadge / 120);
+                // Trigger dynamic clack snap on the giant clapperboard when scroll Y aligns with it and panel is ready
+                if (distanceToBadge < 55 && requestTool && requestTool.classList.contains("content-ready")) {
+                    if (!requestTool.classList.contains("clacking") && !requestTool.dataset.clacked) {
+                        requestTool.classList.add("clacking");
+                        playClackSound();
+                        requestTool.dataset.clacked = "true";
+                        setTimeout(() => {
+                            requestTool.classList.remove("clacking");
+                        }, 280);
+                    }
+                } else if (distanceToBadge > 160 && requestTool) {
+                    requestTool.dataset.clacked = ""; // Reset clack flag when scrolled away
                 }
             }
             
             // Fade out clapperboard completely at the very top (0-150px) and very bottom of the page
-            if (scrollTop <= 150 || scrollTop >= docHeight - winH - 150) {
+            if (scrollTop <= 150 || scrollTop >= cachedDocHeight - winH - 150) {
                 clapperboard.style.opacity = "0";
             } else {
-                clapperboard.style.opacity = clapperOpacity.toString();
+                clapperboard.style.opacity = window.currentClapperOpacity.toString();
             }
         }
         
@@ -2093,6 +2190,7 @@ function initScrollReveal() {
             
             const modalClap = document.getElementById("modalClapperboard");
             const modalOpen = document.body.classList.contains("modal-open");
+            const requestTool = document.getElementById("requestTool");
             
             // 1. Snap modal clapperboard if open
             if (modalOpen && modalClap) {
@@ -2106,7 +2204,19 @@ function initScrollReveal() {
                 }, 280);
             }
             
-            // 2. Snap global background clapperboard
+            // 2. Snap giant clapperboard request tool wrapper
+            if (requestTool) {
+                requestTool.classList.add("clacking");
+                if (!soundPlayed) {
+                    playClackSound();
+                    soundPlayed = true;
+                }
+                setTimeout(() => {
+                    requestTool.classList.remove("clacking");
+                }, 280);
+            }
+            
+            // 3. Snap global background clapperboard
             if (clapperboard && clapperboard.style.opacity !== "0") {
                 clapperboard.classList.add("clacking");
                 if (!soundPlayed) {
@@ -2126,6 +2236,9 @@ function initScrollReveal() {
         }
         requestAnimationFrame(tickClapperboard);
         
-        window.addEventListener("resize", updateClapperboard);
+        window.addEventListener("resize", () => {
+            cacheLayoutDimensions();
+            updateClapperboard();
+        });
     }
 }
