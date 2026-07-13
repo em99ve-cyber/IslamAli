@@ -1,4 +1,4 @@
-﻿/* app.js - Interactive Portfolio Functionality */
+/* app.js - Interactive Portfolio Functionality */
 
 // --- 1. Dynamic Projects Data ---
 // You can easily modify, add or delete projects here.
@@ -460,8 +460,14 @@ function initLoader() {
 
     let progress = 0;
     const interval = setInterval(() => {
-        // Increment progress faster at the start, slower at the end
-        const step = progress < 70 ? Math.floor(Math.random() * 15) + 5 : Math.floor(Math.random() * 5) + 1;
+        let step = 1;
+        if (progress < 60) {
+            step = Math.floor(Math.random() * 5) + 2; // 2 to 6
+        } else if (progress < 90) {
+            step = Math.floor(Math.random() * 3) + 1; // 1 to 3
+        } else {
+            step = 1;
+        }
         progress = Math.min(progress + step, 100);
         
         progressText.textContent = `${progress}%`;
@@ -470,9 +476,9 @@ function initLoader() {
             clearInterval(interval);
             setTimeout(() => {
                 loader.classList.add("fade-out");
-            }, 300);
+            }, 400);
         }
-    }, 45);
+    }, 40);
 }
 
 // --- 4. Enforce Dark Theme ---
@@ -2060,7 +2066,9 @@ function initScrollReveal() {
                     if (diff < 0.018) {
                         if (!clapperboard.dataset.lastClack || Math.abs(parseFloat(clapperboard.dataset.lastClack) - t) > 0.05) {
                             clapperboard.classList.add("clacking");
-                            playClackSound();
+                            if (!isMobile) {
+                                playClackSound();
+                            }
                             setTimeout(() => {
                                 clapperboard.classList.remove("clacking");
                             }, 280);
@@ -2111,7 +2119,9 @@ function initScrollReveal() {
                 if (distanceToBadge < 55 && requestTool && requestTool.classList.contains("content-ready")) {
                     if (!requestTool.classList.contains("clacking") && !requestTool.dataset.clacked) {
                         requestTool.classList.add("clacking");
-                        playClackSound();
+                        if (!isMobile) {
+                            playClackSound();
+                        }
                         requestTool.dataset.clacked = "true";
                         setTimeout(() => {
                             requestTool.classList.remove("clacking");
@@ -2130,26 +2140,29 @@ function initScrollReveal() {
             }
         }
         
-        // Realistic Synthesized Wooden Clack sound (Web Audio API - 100% offline & low latency)
+        // Global AudioContext for clack sound (initialized once)
+        const clackAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+        // Play realistic synthesized wooden clack sound using shared AudioContext
         function playClackSound() {
             try {
-                const AudioContext = window.AudioContext || window.webkitAudioContext;
-                if (!AudioContext) return;
-                const ctx = new AudioContext();
-                
+                // Resume context if suspended (required after user interaction on some browsers)
+                if (clackAudioContext.state === 'suspended') {
+                    clackAudioContext.resume();
+                }
+                const ctx = clackAudioContext;
+
                 // 1. Wood body resonance oscillator sweep
                 const osc = ctx.createOscillator();
                 const gainOsc = ctx.createGain();
                 osc.type = "sine";
                 osc.frequency.setValueAtTime(1400, ctx.currentTime);
                 osc.frequency.exponentialRampToValueAtTime(320, ctx.currentTime + 0.07);
-                
                 gainOsc.gain.setValueAtTime(0.35, ctx.currentTime);
                 gainOsc.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.07);
-                
                 osc.connect(gainOsc);
                 gainOsc.connect(ctx.destination);
-                
+
                 // 2. High frequency sharp click (wooden impact crackle)
                 const bufferSize = ctx.sampleRate * 0.04; // 40ms buffer
                 const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
@@ -2157,24 +2170,22 @@ function initScrollReveal() {
                 for (let i = 0; i < bufferSize; i++) {
                     data[i] = Math.random() * 2 - 1;
                 }
-                
                 const noise = ctx.createBufferSource();
                 noise.buffer = buffer;
-                
+
                 const filter = ctx.createBiquadFilter();
                 filter.type = "bandpass";
                 filter.frequency.setValueAtTime(1100, ctx.currentTime);
                 filter.Q.setValueAtTime(5, ctx.currentTime);
-                
+
                 const gainNoise = ctx.createGain();
                 gainNoise.gain.setValueAtTime(0.28, ctx.currentTime);
                 gainNoise.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.035);
-                
                 noise.connect(filter);
                 filter.connect(gainNoise);
                 gainNoise.connect(ctx.destination);
-                
-                // Fire synthesizer node
+
+                // Fire synthesizer nodes
                 osc.start();
                 osc.stop(ctx.currentTime + 0.08);
                 noise.start();
