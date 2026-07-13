@@ -2894,48 +2894,79 @@ footer {
         font-size: 0.95rem !important;
     }
     
-    /* Modals mobile height bounds */
+    /* Modals mobile height bounds (Full-screen native subpage feel!) */
     .modal-wrapper {
-        max-height: 90vh;
-        border-radius: 16px;
+        width: 100% !important;
+        height: 100% !important;
+        max-height: 100vh !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        transform: translateY(100%) !important; /* Slide up from bottom */
+        transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    
+    .modal.active .modal-wrapper {
+        transform: translateY(0) !important;
     }
     
     .modal-card {
-        max-height: 90vh;
+        width: 100% !important;
+        height: 100% !important;
+        max-height: 100vh !important;
+        border-radius: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        background: #0c0e15 !important; /* Clean solid dark theme background */
     }
     
-    .close-modal {
-        top: 15px;
-        right: 18px;
-        font-size: 1.8rem;
+    /* Position the Close Clapperboard on the top-left to prevent play-control conflicts */
+    .close-modal.modal-clapperboard {
+        top: 16px !important;
+        left: 20px !important;
+        right: auto !important;
+        width: 32px !important;
+        height: 28px !important;
+        display: block !important;
+        z-index: 100 !important;
     }
 
     /* Modal layout responsive overrides */
     .modal-grid {
         grid-template-columns: 1fr !important;
         min-height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
     }
     
     .modal-media-side {
         border-right: none !important;
         border-bottom: 1px solid var(--glass-border) !important;
-        padding: 45px 20px 20px 20px !important; /* Added extra top padding to prevent close-button overlap */
+        padding: 60px 0px 10px 0px !important; /* Top space for close button, 0 side padding for full-bleed video */
+        display: flex !important;
+        flex-direction: column !important;
     }
     
     .media-container.aspect-portrait {
         aspect-ratio: 9/16 !important;
         width: 100% !important;
-        max-width: 320px !important;
+        max-width: 280px !important;
         height: auto !important;
         max-height: 52vh !important;
         align-self: center !important;
+        margin: 15px auto !important;
+        border-radius: 12px !important;
     }
     
     .media-container.aspect-landscape {
         aspect-ratio: 16/9 !important;
         width: 100% !important;
         height: auto !important;
-        min-height: 200px !important;
+        min-height: auto !important;
+        border-radius: 0 !important;
+    }
+    
+    .media-external-link {
+        margin: 15px 20px !important;
     }
     
     /* Remove artificial scaling on Google Drive iframes on mobile as it causes downscaled blurry text/subtitles */
@@ -2946,7 +2977,7 @@ footer {
     }
     
     .modal-info-side {
-        padding: 30px 20px !important;
+        padding: 25px 24px 45px 24px !important;
     }
 }
 
