@@ -2947,22 +2947,37 @@ footer {
     }
     
     .media-container.aspect-portrait {
-        aspect-ratio: 9/16 !important;
+        position: relative !important;
         width: 100% !important;
         max-width: 280px !important;
-        height: auto !important;
-        max-height: 52vh !important;
+        height: 0 !important;
+        padding-bottom: 177.77% !important; /* 9:16 aspect ratio */
         align-self: center !important;
         margin: 15px auto !important;
         border-radius: 12px !important;
+        overflow: hidden !important;
     }
     
     .media-container.aspect-landscape {
-        aspect-ratio: 16/9 !important;
+        position: relative !important;
         width: 100% !important;
-        height: auto !important;
-        min-height: auto !important;
+        height: 0 !important;
+        padding-bottom: 56.25% !important; /* 16:9 aspect ratio */
         border-radius: 0 !important;
+        overflow: hidden !important;
+    }
+    
+    /* Make all media children absolutely fill the responsive padding-bottom container */
+    .media-container iframe,
+    .media-container video,
+    .media-container img {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain !important;
+        border: none !important;
     }
     
     .media-external-link {
