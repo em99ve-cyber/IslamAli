@@ -223,6 +223,18 @@ foreach ($p in $projects) {
                     Write-Warning "   Failed to download YouTube thumbnail."
                 }
             }
+        } elseif ($link -like "*mediadelivery.net*") {
+            try {
+                if ($link -match "/embed/\d+/([^/?&]+)" -or $link -match "/play/\d+/([^/?&]+)" -or $link -match "/([^/?&]+)$") {
+                    $bunnyVideoId = $Matches[1]
+                    $bunnyThumbUrl = "https://vz-7c791b2c-154.b-cdn.net/$bunnyVideoId/thumbnail.jpg"
+                    Invoke-WebRequest -Uri $bunnyThumbUrl -OutFile $thumbnailLocalPath -UserAgent $userAgent -TimeoutSec 15 -Headers @{ "Referer" = "https://iframe.mediadelivery.net/" }
+                    $newThumbnailsDownloaded++
+                    Write-Output "   Successfully downloaded Bunny Stream thumbnail."
+                }
+            } catch {
+                Write-Warning "   Failed to download Bunny Stream thumbnail: $_"
+            }
         }
 
         # If download failed or it's a fallback placeholder
@@ -282,6 +294,15 @@ foreach ($p in $projects) {
         $mediaUrl = $link -replace 'dl=0', 'raw=1' -replace 'dl=1', 'raw=1'
     }
 
+    # Construct previewUrl if it's a Bunny Stream link
+    $previewUrlJs = "null"
+    if ($link -like "*mediadelivery.net*") {
+        if ($link -match "/embed/\d+/([^/?&]+)" -or $link -match "/play/\d+/([^/?&]+)" -or $link -match "/([^/?&]+)$") {
+            $bunnyVideoId = $Matches[1]
+            $previewUrlJs = "`"https://vz-7c791b2c-154.b-cdn.net/$bunnyVideoId/preview.webp`""
+        }
+    }
+
     # Format description for JS template literals
     $escapedDesc = $desc.Replace("\", "\\").Replace('"', '\"').Replace("`n", "\n").Replace("`r", "")
 
@@ -297,6 +318,7 @@ foreach ($p in $projects) {
         title: "$title",
         category: $categoriesJs,
         thumbnail: "$thumbnailUrlPath",
+        previewUrl: $previewUrlJs,
         description: "$escapedDesc",
         role: "$role",
         tools: $toolsJs,

@@ -1,4 +1,4 @@
-/* app.js - Interactive Portfolio Functionality */
+﻿/* app.js - Interactive Portfolio Functionality */
 
 // --- 1. Dynamic Projects Data ---
 // You can easily modify, add or delete projects here.
@@ -10,11 +10,12 @@ const projectsData = [
         title: "Strang Lila Short Film",
         category: ["editing", "translation"],
         thumbnail: "thumbnails/project1.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/7c4debd8-c75a-4184-ade8-53ad10bc0cf1/preview.webp",
         description: "One of my most rewarding cinematic projects. \"Strang Lila\" is a moving short drama about a young woman imprisoned over financial debt, exploring the harsh social abandonment she faces after her release.\n\nAs the sole editor, my focus was entirely on crafting the narrative structure and a compelling dramatic pace that captures her isolation. Through precise cutting and meticulous scene transitions, I shaped the emotional arc of the story to keep the audience deeply gripped with every frame.",
         role: "Editor & Colorist",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1pMGdnYhXO7o1WCA82hhSVpr7nt7o0VBZ/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/7c4debd8-c75a-4184-ade8-53ad10bc0cf1",
         aspect: "landscape",
         originalPost: ""
     },
@@ -23,11 +24,12 @@ const projectsData = [
         title: "Lonely Mother Short Film",
         category: ["editing", "color", "featured"],
         thumbnail: "thumbnails/project2.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/21a98d76-9ef0-4359-ac95-7a6cb7d9ebfe/preview.webp",
         description: "A silent musical short film exploring the profound isolation of a woman living completely alone in a vast, empty apartment. With no dialogue, the entire narrative relies purely on visual expression and emotional cadence.\nEditing: Crafted a slow, deliberate pace to emphasize the heavy silence and emotional weight.\n\nColor Grading: Used a cold, desaturated palette to reflect her internal loneliness within the void.",
         role: "Editor & Colorist",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1EkgmoOU-8p2RAKrf_5D71I7_7DKPLdUi/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/21a98d76-9ef0-4359-ac95-7a6cb7d9ebfe",
         aspect: "landscape",
         originalPost: ""
     },
@@ -36,11 +38,12 @@ const projectsData = [
         title: "Cancer Heroes",
         category: ["editing", "color", "featured"],
         thumbnail: "thumbnails/project3.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/ca795e15-fa6c-4460-9566-d0cc605cb02c/preview.webp",
         description: "A touching music video dedicated to children battling cancer, portraying them as resilient heroes through creative play like boxing or acting as doctors. The video highlights their inspiring strength and fighting spirit.\n\nEditing: Balanced the musical rhythm with energetic cuts, focusing on the children's uplifting expressions.\n\nColor Grading: Designed a vibrant, warm color palette to reflect hope, life, and heroic energy.",
         role: "Editor & Colorist",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1M0zXIeSvIDBNcu0E0jpXpjUau6taC5LM/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/ca795e15-fa6c-4460-9566-d0cc605cb02c",
         aspect: "landscape",
         originalPost: ""
     },
@@ -49,11 +52,12 @@ const projectsData = [
         title: "Out of Z Box",
         category: ["editing", "color"],
         thumbnail: "thumbnails/project4.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/af8fd05e-0728-4afe-b95b-4a11ee7ed629/preview.webp",
         description: "A high-energy corporate video created for an internal company event, designed entirely to inspire and motivate employees. Built 100% from curated stock footage, the project aimed to drive innovative thinking.\n\nFootage Curation: Handpicked and seamlessly stitched together high-quality clips to build a narrative from scratch.\n\nDynamic Pacing: Synced fast-paced editing with powerful sound to elevate energy and leave a lasting impression.",
         role: "Editor & Colorist",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1BHsLvLA2-g9sJZHehnSV9BNMDe4FfJ9O/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/af8fd05e-0728-4afe-b95b-4a11ee7ed629",
         aspect: "landscape",
         originalPost: ""
     },
@@ -62,11 +66,12 @@ const projectsData = [
         title: "Strang Lila Short Film Trailer",
         category: ["editing", "translation", "featured"],
         thumbnail: "thumbnails/project5.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/233f4e7e-9851-4df5-9a19-994f477c825f/preview.webp",
         description: "A high-tension, fast-paced trailer designed to tease the emotional and dramatic arc of the short film \"Layla.\" The goal was to build intense curiosity around her imprisonment and the social isolation she faces upon release.\nMy Role: Video Editor\n\nTeaser Pacing: Crafted a compelling, sharp sequence using quick cuts and high-impact transitions to grip the audience from the first second.\n\nSuspense Building: Structured the narrative fragments perfectly to highlight the conflict and create anticipation without spoiling the story.",
         role: "Film editor / Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1ls1Jd9tTaW7axUD8Ey7lmj0LAj9TiXME/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/233f4e7e-9851-4df5-9a19-994f477c825f",
         aspect: "landscape",
         originalPost: ""
     },
@@ -75,11 +80,12 @@ const projectsData = [
         title: "The Ballet Girls",
         category: ["editing", "color", "featured"],
         thumbnail: "thumbnails/project6.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/b94151ec-a59e-445f-a5c2-1d9cd05972f0/preview.webp",
         description: "A captivating visual piece that pulls back the curtain on the world of ballet, capturing the dedication, intense exhaustion, and physical struggles dancers endure during training.\n\nRhythmic Editing: Crafted a compelling pace that contrasts their elegant movements with the heavy physical toll of rehearsals.\n\nDramatic Grading: Blended soft, graceful tones for performances with harsh, high-contrast looks to amplify the sweat and strain.",
         role: "Editor & Colorist",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1XlQdXfbkVtkUtOTXTOTxsw2zJKPK9DIq/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/b94151ec-a59e-445f-a5c2-1d9cd05972f0",
         aspect: "landscape",
         originalPost: ""
     },
@@ -88,11 +94,12 @@ const projectsData = [
         title: "Nubian Short Film",
         category: ["translation", "featured"],
         thumbnail: "thumbnails/project7.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/a8213a9f-32bd-4bfb-92d8-facbb3dc4cd1/preview.webp",
         description: "A cultural documentary exploring the ancient stories, lifestyle, and historical struggles of the Nubian people in Egypt to preserve their unique heritage.\n\nCultural Translation: Translated dialogue and testimonies from Arabic to English, preserving cultural nuances and emotional depth.\n\nSubtitle Timing: Programmed precise subtitle syncing to ensure seamless readability without distracting from the visual storytelling.",
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1BNz4QaelfFRHiPLnjMrTTYe_BdthyL7y/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/a8213a9f-32bd-4bfb-92d8-facbb3dc4cd1",
         aspect: "landscape",
         originalPost: ""
     },
@@ -101,11 +108,12 @@ const projectsData = [
         title: "Masrya Short Film",
         category: ["translation"],
         thumbnail: "thumbnails/project8.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/72c22c06-4d6c-4c3f-940a-88c7e75f71f8/preview.webp",
         description: "A compelling anthology short film that highlights the vital role of women in Egyptian society by weaving together the distinct stories of multiple unique characters.\nMy Role: Subtitler & Translator\n\nDialogue Translation: Translated the diverse stories and dialogue into English, ensuring the local Egyptian cultural context and emotional depth were accurately conveyed.\n\nSubtitle Engineering: Managed precise timing and synchronization for the text to provide an easy, distraction-free reading experience for international viewers.",
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1VG9VgbMJtQMLtA-J7p7EmKEeNAhhyBJe/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/72c22c06-4d6c-4c3f-940a-88c7e75f71f8",
         aspect: "landscape",
         originalPost: ""
     },
@@ -114,11 +122,12 @@ const projectsData = [
         title: "BS Perfumes",
         category: ["editing", "color", "featured"],
         thumbnail: "thumbnails/project9.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/50475a6c-98b6-4cf5-9962-3b1a2eb8d7c1/preview.webp",
         description: "A cinematic and high-end commercial video showcasing the luxurious fragrance collection of an Emirati brand, designed with a sophisticated and premium visual aesthetic.\nMy Role: Editor, Colorist & Music Supervisor\n\nCinematic Editing & Pacing: Crafted sleek, elegant cuts synced perfectly with a premium soundtrack to elevate the brand's luxurious image.\n\nLuxury Color Grading: Applied a rich, polished color grade to highlight the product design, glass textures, and premium feel of the perfumes.",
         role: "Editor, Colorist & Music Supervisor",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1xPTelvjDZe03GKDMGiVNnsNIU9P0vv9e/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/50475a6c-98b6-4cf5-9962-3b1a2eb8d7c1",
         aspect: "landscape",
         originalPost: ""
     },
@@ -127,11 +136,12 @@ const projectsData = [
         title: "BS Hospitality",
         category: ["editing", "color", "featured"],
         thumbnail: "thumbnails/project10.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/5b4073b6-ab28-4253-8d58-2667dffa0090/preview.webp",
         description: "A sophisticated promotional video showcasing an Emirati company specializing in premium wedding and event hospitality, designed to reflect their high-end service and luxury standards.\nMy Role: Editor, Colorist & Music Supervisor\n\nCinematic Pacing: Combined seamless, elegant editing with a carefully curated soundtrack to highlight the premium and welcoming atmosphere of the events.\n\nLuxury Color Grading: Applied a warm, polished, and high-end color grade to enhance the beauty of the setups, lighting, and hospitality details.",
         role: "Editor, Colorist & Music Supervisor",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1wOpWc7CQxgcc8DxcPZe4LYP9ZQU3yP2_/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/5b4073b6-ab28-4253-8d58-2667dffa0090",
         aspect: "landscape",
         originalPost: ""
     },
@@ -140,11 +150,12 @@ const projectsData = [
         title: "BS Perfumes 2",
         category: ["editing", "color"],
         thumbnail: "thumbnails/project11.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/196b0ab0-a7f1-4ac8-9ec4-bad50496e590/preview.webp",
         description: "A cinematic and high-end commercial video showcasing the luxurious fragrance collection of an Emirati brand, designed with a sophisticated and premium visual aesthetic.\nMy Role: Editor, Colorist & Music Supervisor\n\nCinematic Editing & Pacing: Crafted sleek, elegant cuts synced perfectly with a premium soundtrack to elevate the brand's luxurious image.\n\nLuxury Color Grading: Applied a rich, polished color grade to highlight the product design, glass textures, and premium feel of the perfumes.",
         role: "Editor, Colorist & Music Supervisor",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1kOyWpq03X4MoqDH55xm196e04FdY1tKI/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/196b0ab0-a7f1-4ac8-9ec4-bad50496e590",
         aspect: "landscape",
         originalPost: ""
     },
@@ -153,11 +164,12 @@ const projectsData = [
         title: "Mohammed Shami – Influencer Content (Translation)",
         category: ["translation"],
         thumbnail: "thumbnails/project12.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/80c0398f-1035-4a20-a642-2779f98bb0fc/preview.webp",
         description: "A series of engaging food vlogs for the well-known Egyptian influencer Mohammed Shami, reviewing diverse restaurants across the United States with the goal of expanding his audience and breaking into the US market.\n\nArabic to English Translation: Translated vibrant street-food reviews and dialogue from Egyptian Arabic to English, maintaining his comedic timing, energetic tone, and unique personality.\n\nAudience Growth Strategy: Engineered precise and dynamic subtitle timing optimized for social media, ensuring the content is accessible and highly engaging for American viewers.",
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/12VpCjdZInGjsOM-1N8Mx34L2t18CEDMT/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/80c0398f-1035-4a20-a642-2779f98bb0fc",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/share/v/18gtEfcuSt/"
     },
@@ -166,11 +178,12 @@ const projectsData = [
         title: "Mohammed Shami – Influencer Content (Translation)",
         category: ["translation"],
         thumbnail: "thumbnails/project13.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/7a00fe47-0f2e-40a3-aac1-d0a84a16dfb8/preview.webp",
         description: "A series of engaging food vlogs for the well-known Egyptian influencer Mohammed Shami, reviewing diverse restaurants across the United States with the goal of expanding his audience and breaking into the US market.\nArabic to English Translation: Translated vibrant street-food reviews and dialogue from Egyptian Arabic to English, maintaining his comedic timing, energetic tone, and unique personality.\n\nAudience Growth Strategy: Engineered precise and dynamic subtitle timing optimized for social media, ensuring the content is accessible and highly engaging for American viewers.",
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1fG8645G8_VEXYxSky9QnEpeflB5YGQGG/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/7a00fe47-0f2e-40a3-aac1-d0a84a16dfb8",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/share/v/17d3jqvn3V/"
     },
@@ -179,11 +192,12 @@ const projectsData = [
         title: "Mohammed Shami – Influencer Content (Translation)",
         category: ["translation"],
         thumbnail: "thumbnails/project14.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/43ae99b2-5b2e-43ed-9319-ab13e8ede555/preview.webp",
         description: "A series of engaging food vlogs for the well-known Egyptian influencer Mohammed Shami, reviewing diverse restaurants across the United States with the goal of expanding his audience and breaking into the US market.\n\nArabic to English Translation: Translated vibrant street-food reviews and dialogue from Egyptian Arabic to English, maintaining his comedic timing, energetic tone, and unique personality.\n\nAudience Growth Strategy: Engineered precise and dynamic subtitle timing optimized for social media, ensuring the content is accessible and highly engaging for American viewers.",
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1jyjayaP2sPxziyjwDCzEwLL--J81d9FN/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/43ae99b2-5b2e-43ed-9319-ab13e8ede555",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/share/v/1D71ChjMrU/"
     },
@@ -192,11 +206,12 @@ const projectsData = [
         title: "Mohammed Shami – Influencer Content (Translation)",
         category: ["translation"],
         thumbnail: "thumbnails/project15.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/19621351-7aea-497c-a091-4ae5a3cd495c/preview.webp",
         description: "A series of engaging food vlogs for the well-known Egyptian influencer Mohammed Shami, reviewing diverse restaurants across the United States with the goal of expanding his audience and breaking into the US market.\n\nArabic to English Translation: Translated vibrant street-food reviews and dialogue from Egyptian Arabic to English, maintaining his comedic timing, energetic tone, and unique personality.\n\nAudience Growth Strategy: Engineered precise and dynamic subtitle timing optimized for social media, ensuring the content is accessible and highly engaging for American viewers.",
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1staSZySInlcOgHhDlz5AVC89VTiUSG25/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/19621351-7aea-497c-a091-4ae5a3cd495c",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/share/v/1FAQ27dsoX/"
     },
@@ -205,11 +220,12 @@ const projectsData = [
         title: "Mohammed Shami – Influencer Content (Translation)",
         category: ["translation"],
         thumbnail: "thumbnails/project16.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/1c7b994f-93f0-4fb6-8b5b-046a2787ac25/preview.webp",
         description: "A series of engaging food vlogs for the well-known Egyptian influencer Mohammed Shami, reviewing diverse restaurants across the United States with the goal of expanding his audience and breaking into the US market.\n\nArabic to English Translation: Translated vibrant street-food reviews and dialogue from Egyptian Arabic to English, maintaining his comedic timing, energetic tone, and unique personality.\n\nAudience Growth Strategy: Engineered precise and dynamic subtitle timing optimized for social media, ensuring the content is accessible and highly engaging for American viewers.",
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1OX5uol2j55cDx-w7U-HRrcSLoqjpdK9s/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/1c7b994f-93f0-4fb6-8b5b-046a2787ac25",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/reel/938147480875096"
     },
@@ -218,11 +234,12 @@ const projectsData = [
         title: "Mohammed Shami – Influencer Content (Translation)",
         category: ["translation"],
         thumbnail: "thumbnails/project17.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/061ac5b8-139d-45c7-9275-80622c5e064d/preview.webp",
         description: "A series of engaging food vlogs for the well-known Egyptian influencer Mohammed Shami, reviewing diverse restaurants across the United States with the goal of expanding his audience and breaking into the US market.\n\nArabic to English Translation: Translated vibrant street-food reviews and dialogue from Egyptian Arabic to English, maintaining his comedic timing, energetic tone, and unique personality.\n\nAudience Growth Strategy: Engineered precise and dynamic subtitle timing optimized for social media, ensuring the content is accessible and highly engaging for American viewers.",
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1WC_FMj0wUaVnVa10XK_Usx0gDODKNyAj/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/061ac5b8-139d-45c7-9275-80622c5e064d",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/reel/1763089927546647"
     },
@@ -231,11 +248,12 @@ const projectsData = [
         title: "Mohammed Shami – Influencer Content (Translation)",
         category: ["translation"],
         thumbnail: "thumbnails/project18.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/5c1fcdec-fe01-4ec2-82e6-a4c17e407bab/preview.webp",
         description: "A series of engaging food vlogs for the well-known Egyptian influencer Mohammed Shami, reviewing diverse restaurants across the United States with the goal of expanding his audience and breaking into the US market.\n\nArabic to English Translation: Translated vibrant street-food reviews and dialogue from Egyptian Arabic to English, maintaining his comedic timing, energetic tone, and unique personality.\n\nAudience Growth Strategy: Engineered precise and dynamic subtitle timing optimized for social media, ensuring the content is accessible and highly engaging for American viewers.",
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1QouY1mFICqBKagysze0CZ8laA3uzZTuU/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/5c1fcdec-fe01-4ec2-82e6-a4c17e407bab",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/share/v/17cchSfkc1/"
     },
@@ -244,11 +262,12 @@ const projectsData = [
         title: "Mohammed Shami – Influencer Content (Translation)",
         category: ["translation"],
         thumbnail: "thumbnails/project19.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/bad791a7-f157-4c8c-9243-fbb45ed4e648/preview.webp",
         description: "A series of engaging food vlogs for the well-known Egyptian influencer Mohammed Shami, reviewing diverse restaurants across the United States with the goal of expanding his audience and breaking into the US market.\n\nArabic to English Translation: Translated vibrant street-food reviews and dialogue from Egyptian Arabic to English, maintaining his comedic timing, energetic tone, and unique personality.\n\nAudience Growth Strategy: Engineered precise and dynamic subtitle timing optimized for social media, ensuring the content is accessible and highly engaging for American viewers.",
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1B5dMYrEyKA3dH9udQTyz1HOI8KuVxtOP/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/bad791a7-f157-4c8c-9243-fbb45ed4e648",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/reel/397823062876992"
     },
@@ -257,11 +276,12 @@ const projectsData = [
         title: "Mohammed Shami – Influencer Content (Translation)",
         category: ["translation"],
         thumbnail: "thumbnails/project20.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/3146f189-8a95-4f2b-b480-3fb197dea58b/preview.webp",
         description: "A series of engaging food vlogs for the well-known Egyptian influencer Mohammed Shami, reviewing diverse restaurants across the United States with the goal of expanding his audience and breaking into the US market.\n\nArabic to English Translation: Translated vibrant street-food reviews and dialogue from Egyptian Arabic to English, maintaining his comedic timing, energetic tone, and unique personality.\n\nAudience Growth Strategy: Engineered precise and dynamic subtitle timing optimized for social media, ensuring the content is accessible and highly engaging for American viewers.",
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1vEb6v5v4i7kjLpSE6006MVnCASs8Slzh/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/3146f189-8a95-4f2b-b480-3fb197dea58b",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/share/v/1JU66mVZfz/"
     },
@@ -270,11 +290,12 @@ const projectsData = [
         title: "Mohammed Shami – Influencer Content (Translation)",
         category: ["translation"],
         thumbnail: "thumbnails/project21.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/fbe8887b-afb0-4a76-9419-d7f086f8a1c3/preview.webp",
         description: "A series of engaging food vlogs for the well-known Egyptian influencer Mohammed Shami, reviewing diverse restaurants across the United States with the goal of expanding his audience and breaking into the US market.\n\nArabic to English Translation: Translated vibrant street-food reviews and dialogue from Egyptian Arabic to English, maintaining his comedic timing, energetic tone, and unique personality.\n\nAudience Growth Strategy: Engineered precise and dynamic subtitle timing optimized for social media, ensuring the content is accessible and highly engaging for American viewers.",
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1Sp7OmtQ_yNITTFkxVMdhT3UAhmOYIbEO/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/fbe8887b-afb0-4a76-9419-d7f086f8a1c3",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/share/v/1W6B1PPbt9/"
     },
@@ -283,11 +304,12 @@ const projectsData = [
         title: "Mohammed Shami – Influencer Content (Translation)",
         category: ["translation"],
         thumbnail: "thumbnails/project22.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/af10350f-558d-451a-8811-4a28f9edcd22/preview.webp",
         description: "A series of engaging food vlogs for the well-known Egyptian influencer Mohammed Shami, reviewing diverse restaurants across the United States with the goal of expanding his audience and breaking into the US market.\n\nArabic to English Translation: Translated vibrant street-food reviews and dialogue from Egyptian Arabic to English, maintaining his comedic timing, energetic tone, and unique personality.\n\nAudience Growth Strategy: Engineered precise and dynamic subtitle timing optimized for social media, ensuring the content is accessible and highly engaging for American viewers.",
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1MOOIoS33HawAZPffasFyA7qi_nD80i4R/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/af10350f-558d-451a-8811-4a28f9edcd22",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/reel/887708776538856"
     },
@@ -296,11 +318,12 @@ const projectsData = [
         title: "Mohammed Shami – Influencer Content (Translation)",
         category: ["translation"],
         thumbnail: "thumbnails/project23.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/df3765b9-2148-412f-ada4-f3a4de0a27b5/preview.webp",
         description: "A series of engaging food vlogs for the well-known Egyptian influencer Mohammed Shami, reviewing diverse restaurants across the United States with the goal of expanding his audience and breaking into the US market.\nArabic to English Translation: Translated vibrant street-food reviews and dialogue from Egyptian Arabic to English, maintaining his comedic timing, energetic tone, and unique personality.\n\nAudience Growth Strategy: Engineered precise and dynamic subtitle timing optimized for social media, ensuring the content is accessible and highly engaging for American viewers.",
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1EtqeSct5W17WEXODEtj43jufK2HYCLNz/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/df3765b9-2148-412f-ada4-f3a4de0a27b5",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/share/v/1ChG1sZPHc/"
     },
@@ -309,11 +332,12 @@ const projectsData = [
         title: "Mohammed Shami – Influencer Content (Translation)",
         category: ["translation"],
         thumbnail: "thumbnails/project24.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/22799f6b-a0f1-4cd6-8b95-2debe25976e0/preview.webp",
         description: "A series of engaging food vlogs for the well-known Egyptian influencer Mohammed Shami, reviewing diverse restaurants across the United States with the goal of expanding his audience and breaking into the US market.\n\nArabic to English Translation: Translated vibrant street-food reviews and dialogue from Egyptian Arabic to English, maintaining his comedic timing, energetic tone, and unique personality.\n\nAudience Growth Strategy: Engineered precise and dynamic subtitle timing optimized for social media, ensuring the content is accessible and highly engaging for American viewers.",
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1M4ckzltGXLETnkeu9eah2oSev1sqk-yS/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/22799f6b-a0f1-4cd6-8b95-2debe25976e0",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/share/v/18MCDBAe9j/"
     },
@@ -322,11 +346,12 @@ const projectsData = [
         title: "Mohammed Shami – Influencer Content (Translation)",
         category: ["translation", "featured"],
         thumbnail: "thumbnails/project25.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/a6b37e75-beb2-40fe-8b89-5085be7d2d5b/preview.webp",
         description: "A series of engaging food vlogs for the well-known Egyptian influencer Mohammed Shami, reviewing diverse restaurants across the United States with the goal of expanding his audience and breaking into the US market.\n\nArabic to English Translation: Translated vibrant street-food reviews and dialogue from Egyptian Arabic to English, maintaining his comedic timing, energetic tone, and unique personality.\n\nAudience Growth Strategy: Engineered precise and dynamic subtitle timing optimized for social media, ensuring the content is accessible and highly engaging for American viewers.",
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1b8JUtTRCIfUWfUPyXHHD1_xyTJzwRI9v/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/a6b37e75-beb2-40fe-8b89-5085be7d2d5b",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/reel/357597543504090"
     },
@@ -335,11 +360,12 @@ const projectsData = [
         title: "Mohammed Shami – Influencer Content (Translation)",
         category: ["translation"],
         thumbnail: "thumbnails/project26.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/2d746e7e-4715-4005-939f-98312b43ad3b/preview.webp",
         description: "A series of engaging food vlogs for the well-known Egyptian influencer Mohammed Shami, reviewing diverse restaurants across the United States with the goal of expanding his audience and breaking into the US market.\n\nArabic to English Translation: Translated vibrant street-food reviews and dialogue from Egyptian Arabic to English, maintaining his comedic timing, energetic tone, and unique personality.\n\nAudience Growth Strategy: Engineered precise and dynamic subtitle timing optimized for social media, ensuring the content is accessible and highly engaging for American viewers.",
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1vtKXvuGHrv11oetqtiwg9Imw2X8_2nkb/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/2d746e7e-4715-4005-939f-98312b43ad3b",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/share/v/193MWbSZWN/"
     },
@@ -348,11 +374,12 @@ const projectsData = [
         title: "Mohammed Shami – Influencer Content (Translation)",
         category: ["translation"],
         thumbnail: "thumbnails/project27.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/316500bc-45b2-4f1f-aca6-82ddbf5c4dcc/preview.webp",
         description: "A series of engaging food vlogs for the well-known Egyptian influencer Mohammed Shami, reviewing diverse restaurants across the United States with the goal of expanding his audience and breaking into the US market.\n\nArabic to English Translation: Translated vibrant street-food reviews and dialogue from Egyptian Arabic to English, maintaining his comedic timing, energetic tone, and unique personality.\n\nAudience Growth Strategy: Engineered precise and dynamic subtitle timing optimized for social media, ensuring the content is accessible and highly engaging for American viewers.",
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1BRE0YwKa8w5iUrEEDED0vIz5kOMb_Xap/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/316500bc-45b2-4f1f-aca6-82ddbf5c4dcc",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/reel/940250344253167"
     },
@@ -361,11 +388,12 @@ const projectsData = [
         title: "Mohammed Shami – Influencer Content (Translation)",
         category: ["translation"],
         thumbnail: "thumbnails/project28.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/21344783-ce27-45d4-8d35-eec56cf1f075/preview.webp",
         description: "A series of engaging food vlogs for the well-known Egyptian influencer Mohammed Shami, reviewing diverse restaurants across the United States with the goal of expanding his audience and breaking into the US market.\n\nArabic to English Translation: Translated vibrant street-food reviews and dialogue from Egyptian Arabic to English, maintaining his comedic timing, energetic tone, and unique personality.\n\nAudience Growth Strategy: Engineered precise and dynamic subtitle timing optimized for social media, ensuring the content is accessible and highly engaging for American viewers.",
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1aRX8UqumMAm1jXZSWE5o4Z00VaALjEac/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/21344783-ce27-45d4-8d35-eec56cf1f075",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/reel/414288234542459"
     },
@@ -374,11 +402,12 @@ const projectsData = [
         title: "Teleperformance Egypt – Eid Al-Fitr Campaign",
         category: ["editing", "color"],
         thumbnail: "thumbnails/project29.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/492da76a-ebf1-4de0-a92a-81f2617892e5/preview.webp",
         description: "A unique, fully AI-generated festive video created for Teleperformance Egypt to celebrate Eid Al-Fitr, designed to capture the holiday's joyful spirit through cutting-edge technology.\n\nAI Footage & Pacing: Seamlessly matched cuts and synchronized the AI-generated visuals to create a cohesive, energetic, and engaging festive rhythm.\n\nStylized Grading & Sound: Enhanced the digital assets with vibrant color grading and a curated soundtrack to elevate the video's emotional and cinematic impact.",
         role: "Video Editor,AI animation, sound design& Colorist ",
         tools: ["Adobe Premiere Pro", "Color correction", "AI generation"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/15qTuTJ2N0TUmqV43ZHJaic8KtdVQARr5/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/492da76a-ebf1-4de0-a92a-81f2617892e5",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/share/r/1QZJkQPaGy/"
     },
@@ -387,11 +416,12 @@ const projectsData = [
         title: "Teleperformance Egypt – Ramadan Charity Campaign",
         category: ["editing", "color"],
         thumbnail: "thumbnails/project30.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/19ad534b-93f0-433b-9fa8-dac091fc9181/preview.webp",
         description: "A heartwarming corporate social responsibility (CSR) video documenting Teleperformance Egypt's charity event, where employees gathered to pack Ramadan food boxes for families in need.\n\nProduction & Editing: Filmed the live charity event and crafted an uplifting, fast-paced narrative that highlights teamwork and community spirit.\n\nCinematic Color & Sound: Applied warm, inspiring color grading and paired it with an emotional soundtrack to enhance the video's positive and impactful message.",
         role: "Videographer,Video Editor, sound design& Colorist ",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1cOmuUZCvNKlprkDOz2CPvEj0mTr90_9S/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/19ad534b-93f0-433b-9fa8-dac091fc9181",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/share/r/15vDdLCXCBx/"
     },
@@ -400,11 +430,12 @@ const projectsData = [
         title: "Teleperformance Egypt – Sports Tournament",
         category: ["editing", "color"],
         thumbnail: "thumbnails/project31.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/efc301ed-7e45-4811-b244-028ff3ed6e8c/preview.webp",
         description: "An energetic corporate sports video documenting Teleperformance Egypt's exciting football and padel tournament organized for company employees.\n\nAction Videography: Captured high-intensity, fast-paced match footage, securing the best angles of employee goals, rallies, and team celebrations.\n\nVibrant Color Grading: Applied a dynamic, punchy color grade to enhance the green fields, court textures, and athletic energy of the event.",
         role: "Videographer,Video Editor, sound design& Colorist ",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1Nif0Q8OV-bJix240KO1KPnWR0Tangc1Y/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/efc301ed-7e45-4811-b244-028ff3ed6e8c",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/share/r/1DvqCytLYj/"
     },
@@ -413,11 +444,12 @@ const projectsData = [
         title: "Teleperformance Egypt – Campus Career Fair",
         category: ["editing", "color", "featured"],
         thumbnail: "thumbnails/project32.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/4a0b4816-3052-453f-8833-37812b2ce080/preview.webp",
         description: "A dynamic promotional video capturing Teleperformance Egypt's recruitment presence and engagement across multiple university career fairs throughout Egypt.\n\nOn-Campus Videography: Filmed live interactions, student interviews, and booth activity across various university campuses to showcase the company's youth recruitment drive.\n\nEnergetic Color & Sound: Applied a bright, professional color grade and paired it with an upbeat soundtrack to reflect a vibrant, corporate, and career-focused atmosphere.",
         role: "Videographer,Video Editor, sound design& Colorist ",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1q7eW_7maawsOnyU2cyV3LKg_G6Iq8ltZ/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/4a0b4816-3052-453f-8833-37812b2ce080",
         aspect: "landscape",
         originalPost: "https://www.facebook.com/share/v/1BSQ8GWDCV/"
     },
@@ -426,11 +458,12 @@ const projectsData = [
         title: "Teleperformance Egypt – Alexandria Eid Al-Adha Celebration",
         category: ["editing", "color", "featured"],
         thumbnail: "thumbnails/project33.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/df72f952-88e2-40b4-b07a-7375dc98fde8/preview.webp",
         description: "A festive corporate video capturing the high-energy Eid Al-Adha celebrations held for employees across Teleperformance branches in Alexandria.\nMy Role: Videographer, Editor, Colorist & Music Supervisor\n\nAlexandria Production: Filmed the live celebrations on-site at the Alexandria branches, capturing employee interactions, festive decorations, and joyful moments.\n\nCreative Post-Production: Edited the footage with rhythmic cuts, applied a vibrant color grade, and selected an upbeat soundtrack to highlight the holiday spirit and corporate culture.",
         role: "Videographer,Video Editor, sound design& Colorist ",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://drive.google.com/file/d/1V14on_KbudXbJy_MXB9BFRt14l0-EPxE/preview",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/df72f952-88e2-40b4-b07a-7375dc98fde8",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/100064726327101/videos/pcb.1429993362501528/1801425011215899"
     }
@@ -1061,8 +1094,9 @@ function initPortfolio() {
             card.innerHTML = `
                 <div class="${imageWrapClass}" ${imageWrapStyle}>
                     ${badgeHTML}
-                    <img src="${project.thumbnail}" alt="${project.title}" loading="lazy">
-                    <div class="play-hover-indicator">
+                    <img class="card-thumbnail-static" src="${project.thumbnail}" alt="${project.title}" loading="lazy">
+                    ${project.previewUrl ? `<img class="card-thumbnail-preview" src="${project.previewUrl}" alt="${project.title} Preview" loading="lazy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.35s ease; pointer-events: none; z-index: 2;">` : ''}
+                    <div class="play-hover-indicator" style="z-index: 3;">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M8 5v14l11-7z"/>
                         </svg>
@@ -1073,6 +1107,17 @@ function initPortfolio() {
                 <p class="project-card-excerpt">${project.description}</p>
                 <div class="project-tags-wrap">${tagsHTML}</div>
             `;
+            
+            // Hover play preview fade effect
+            const previewImg = card.querySelector(".card-thumbnail-preview");
+            if (previewImg) {
+                card.addEventListener("mouseenter", () => {
+                    previewImg.style.opacity = "1";
+                });
+                card.addEventListener("mouseleave", () => {
+                    previewImg.style.opacity = "0";
+                });
+            }
             
             // Preload modal on hover (de-bounced)
             card.addEventListener("mouseenter", () => {
@@ -1355,7 +1400,7 @@ function initPortfolio() {
                     } else {
                         htmlContent = `<iframe src="${url}" ${iframeAttrs} id="activeVideoPlayer" style="width:100%; height:100%; border:none;"></iframe>`;
                     }
-                } else if (url.includes("youtube.com") || url.includes("youtu.be") || url.includes("facebook.com")) {
+                } else if (url.includes("youtube.com") || url.includes("youtu.be") || url.includes("facebook.com") || url.includes("mediadelivery.net")) {
                     if (url.includes("youtube.com/embed/")) {
                         embedUrl = url.includes("?") ? `${url}&autoplay=1` : `${url}?autoplay=1`;
                     }
