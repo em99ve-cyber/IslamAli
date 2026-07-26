@@ -1164,6 +1164,44 @@ function initPortfolio() {
         return card ? card.clientWidth + 24 : 384; // Card width + gap
     };
 
+    // --- 3D Semi-Circle Arc Curve & Edge Fade Calculation ---
+    function updateCurvedArc3D() {
+        if (!grid || !track) return;
+        const gridRect = grid.getBoundingClientRect();
+        const centerX = gridRect.left + gridRect.width / 2;
+        const halfWidth = gridRect.width * 0.45;
+
+        const cards = track.querySelectorAll(".project-card");
+        cards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            const cardCenter = rect.left + rect.width / 2;
+            const normDist = (cardCenter - centerX) / halfWidth;
+
+            // Clamp normDist for smooth bounds
+            const clampedDist = Math.max(-2.5, Math.min(2.5, normDist));
+            const absDist = Math.abs(clampedDist);
+
+            // 1. Parabolic / Semi-circle vertical arc (cards curve into an arc as they move sideways)
+            const arcY = Math.pow(clampedDist, 2) * 38; // px drop along semi-circle arc
+
+            // 2. Semi-circle rotation matching user reference image (left tilts counter-clockwise -deg, right tilts clockwise +deg)
+            const rotateZ = clampedDist * 7.5; // degrees
+
+            // 3. Coverflow 3D perspective Y rotation
+            const rotateY = -clampedDist * 13; // degrees
+
+            // 4. Center card scale focus & elevation
+            const scale = Math.max(0.82, 1.05 - absDist * 0.09);
+
+            // 5. Edge Fade-Out Animation: smooth fade for cards exiting/entering left and right panels
+            const edgeFade = Math.max(0.05, 1 - Math.pow(absDist / 1.75, 3));
+
+            card.style.transform = `translate3d(0, ${arcY}px, 0) scale(${scale}) rotateZ(${rotateZ}deg) rotateY(${rotateY}deg)`;
+            card.style.opacity = edgeFade.toFixed(3);
+            card.style.zIndex = Math.round(100 - absDist * 20);
+        });
+    }
+
     window.carouselPaused = false;
     function smoothScroll() {
         if (autoScrollActive && !isHovered && !isTransitioning && loopWidth > 0 && !window.carouselPaused) {
@@ -1174,10 +1212,14 @@ function initPortfolio() {
             track.style.transition = "none";
             track.style.transform = `translate3d(${-scrollPos}px, 0, 0)`;
         }
+        
+        // Update 3D Semi-Circle Arc Curve positions on every animation frame
+        updateCurvedArc3D();
+        
         requestAnimationFrame(smoothScroll);
     }
 
-    // Start the marquee-style loop
+    // Start the marquee-style 3D Arc loop
     requestAnimationFrame(smoothScroll);
 
     // Hover detection to pause scrolling
