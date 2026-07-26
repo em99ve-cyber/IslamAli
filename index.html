@@ -38,7 +38,7 @@
     <link rel="dns-prefetch" href="https://drive.google.com">
     <link rel="dns-prefetch" href="https://facebook.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3.2.0">
+    <link rel="stylesheet" href="style.css?v=5.0.0">
 </head>
 <body>
 
@@ -272,13 +272,42 @@
                         <button class="carousel-nav-btn prev interactive-el" id="prevProjectBtn" aria-label="Previous Project">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><polyline points="15 18 9 12 15 6"></polyline></svg>
                         </button>
-                        
+
+                        <!-- Desktop Tabs Bar -->
                         <div class="portfolio-tabs" role="tablist">
                             <button class="portfolio-tab-btn interactive-el" data-category="all" role="tab" aria-selected="false">All</button>
                             <button class="portfolio-tab-btn interactive-el" data-category="editing" role="tab" aria-selected="false">Video Editing</button>
                             <button class="portfolio-tab-btn interactive-el" data-category="color" role="tab" aria-selected="false">Color Grading</button>
                             <button class="portfolio-tab-btn interactive-el" data-category="translation" role="tab" aria-selected="false">Translation</button>
                             <button class="portfolio-tab-btn active interactive-el" data-category="featured" role="tab" aria-selected="true">Best of the Best</button>
+                        </div>
+
+                        <!-- Custom Professional Glass Filter Dropdown -->
+                        <div class="custom-filter-dropdown" id="customFilterDropdown">
+                            <button class="filter-trigger-btn interactive-el" id="filterTriggerBtn" type="button" aria-haspopup="listbox" aria-expanded="false">
+                                <span class="trigger-label" id="currentCategoryLabel">Best of the Best</span>
+                                <svg class="trigger-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </button>
+
+                            <div class="filter-dropdown-menu glass" id="filterDropdownMenu" role="listbox">
+                                <div class="filter-dropdown-item active" data-category="featured" role="option">
+                                    <span class="item-text">Best of the Best</span>
+                                    <span class="item-badge">Top Picks</span>
+                                </div>
+                                <div class="filter-dropdown-item" data-category="all" role="option">
+                                    <span class="item-text">All Projects</span>
+                                    <span class="item-badge">34 Videos</span>
+                                </div>
+                                <div class="filter-dropdown-item" data-category="editing" role="option">
+                                    <span class="item-text">Video Editing</span>
+                                </div>
+                                <div class="filter-dropdown-item" data-category="color" role="option">
+                                    <span class="item-text">Color Grading</span>
+                                </div>
+                                <div class="filter-dropdown-item" data-category="translation" role="option">
+                                    <span class="item-text">Translation</span>
+                                </div>
+                            </div>
                         </div>
 
                         <button class="carousel-nav-btn next interactive-el" id="nextProjectBtn" aria-label="Next Project">
@@ -528,6 +557,6 @@
     </div>
 
     <!-- Script File -->
-    <script src="app.js?v=3.2.0"></script>
+    <script src="app.js?v=5.0.0"></script>
 </body>
 </html>

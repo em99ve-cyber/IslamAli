@@ -1036,11 +1036,119 @@ body:hover .cursor-ambient-glow {
 
 .portfolio-tabs {
     display: flex;
+    align-items: center;
     gap: 8px;
     background: rgba(255, 255, 255, 0.03);
     padding: 6px;
     border-radius: 50px;
     border: 1px solid var(--glass-border);
+}
+
+/* Custom Professional Filter Dropdown */
+.custom-filter-dropdown {
+    display: none; /* Hidden by default on Desktop */
+    position: relative;
+    z-index: 45;
+}
+
+.filter-trigger-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background: rgba(12, 16, 26, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 240, 255, 0.35);
+    color: #ffffff;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 12px rgba(0, 240, 255, 0.15);
+    user-select: none;
+}
+
+.filter-trigger-btn:hover,
+.filter-trigger-btn.open {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+    background: rgba(16, 22, 36, 0.95);
+}
+
+.trigger-chevron {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    color: var(--color-accent);
+    flex-shrink: 0;
+}
+
+.filter-trigger-btn.open .trigger-chevron {
+    transform: rotate(180deg);
+}
+
+/* Floating Glass Dropdown Menu Popup */
+.filter-dropdown-menu {
+    position: absolute;
+    bottom: calc(100% + 10px); /* Opens upwards above bottom controls */
+    left: 50%;
+    transform: translateX(-50%) translateY(8px) scale(0.95);
+    width: 210px;
+    background: rgba(10, 14, 22, 0.95);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 18px;
+    padding: 6px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 240, 255, 0.2);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 100;
+}
+
+.filter-dropdown-menu.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0) scale(1);
+}
+
+.filter-dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.filter-dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: #ffffff;
+}
+
+.filter-dropdown-item.active {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.22) 0%, rgba(189, 0, 255, 0.22) 100%);
+    border: 1px solid rgba(0, 240, 255, 0.45);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.item-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--color-accent);
+    background: rgba(0, 240, 255, 0.12);
+    padding: 2px 7px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 240, 255, 0.2);
 }
 
 .portfolio-tab-btn {
@@ -1053,11 +1161,13 @@ body:hover .cursor-ambient-glow {
     background: transparent;
     color: var(--color-text-secondary);
     transition: all var(--transition-fast);
+    white-space: nowrap;
 }
 
 .portfolio-tab-btn.active {
     background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-secondary) 100%);
     color: #ffffff;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.35);
 }
 
 .portfolio-tab-btn:hover:not(.active) {
@@ -2921,18 +3031,31 @@ footer {
         text-align: center;
     }
     
-    .portfolio-tabs {
-        justify-content: center;
-        flex-wrap: wrap !important;
-        gap: 6px !important;
-        padding: 6px !important;
-        border-radius: 20px !important;
+    .portfolio-bottom-controls {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 12px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: 15px !important;
+        padding: 0 10px !important;
     }
-    
-    .portfolio-tab-btn {
-        padding: 8px 12px !important;
-        font-size: 0.76rem !important;
-        white-space: nowrap !important;
+
+    .portfolio-tabs {
+        display: none !important; /* Hide wide tabs bar on mobile */
+    }
+
+    .custom-filter-dropdown {
+        display: block !important; /* Show custom glass dropdown menu on mobile */
+        flex: 0 1 auto !important;
+    }
+
+    .carousel-nav-btn {
+        flex-shrink: 0 !important;
+        width: 40px !important;
+        height: 40px !important;
     }
     
     .project-card {

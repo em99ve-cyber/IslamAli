@@ -1,4 +1,4 @@
-﻿/* app.js - Interactive Portfolio Functionality */
+/* app.js - Interactive Portfolio Functionality */
 
 // --- 1. Dynamic Projects Data ---
 // You can easily modify, add or delete projects here.
@@ -1034,29 +1034,102 @@ function initPortfolio() {
     // Initial render default to Best of the Best
     renderProjectsList("featured");
 
-    // Tab filtering clicks
+    const triggerBtn = document.getElementById("filterTriggerBtn");
+    const dropdownMenu = document.getElementById("filterDropdownMenu");
+    const currentLabel = document.getElementById("currentCategoryLabel");
+    const dropdownItems = document.querySelectorAll(".filter-dropdown-item");
+
+    const categoryLabelMap = {
+        featured: "Best of the Best",
+        all: "All Projects",
+        editing: "Video Editing",
+        color: "Color Grading",
+        translation: "Translation"
+    };
+
+    function filterCategory(category) {
+        // Sync Desktop tabs
+        tabs.forEach(t => {
+            if (t.dataset.category === category) {
+                t.classList.add("active");
+                t.setAttribute("aria-selected", "true");
+            } else {
+                t.classList.remove("active");
+                t.setAttribute("aria-selected", "false");
+            }
+        });
+
+        // Sync Custom Glass Dropdown
+        if (currentLabel) {
+            currentLabel.textContent = categoryLabelMap[category] || "Best of the Best";
+        }
+        dropdownItems.forEach(item => {
+            if (item.dataset.category === category) {
+                item.classList.add("active");
+            } else {
+                item.classList.remove("active");
+            }
+        });
+
+        // Close dropdown
+        if (triggerBtn && dropdownMenu) {
+            triggerBtn.classList.remove("open");
+            dropdownMenu.classList.remove("active");
+            triggerBtn.setAttribute("aria-expanded", "false");
+        }
+
+        // Render projects
+        grid.style.opacity = "0";
+        setTimeout(() => {
+            renderProjectsList(category);
+            scrollPos = 0;
+            track.style.transition = "none";
+            track.style.transform = `translate3d(0px, 0, 0)`;
+            grid.style.opacity = "1";
+            
+            setTimeout(() => {
+                updateLoopBounds();
+                initTiltEffect();
+            }, 50);
+        }, 250);
+    }
+
+    // Toggle custom dropdown popover
+    if (triggerBtn && dropdownMenu) {
+        triggerBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const isOpen = dropdownMenu.classList.contains("active");
+            if (isOpen) {
+                triggerBtn.classList.remove("open");
+                dropdownMenu.classList.remove("active");
+                triggerBtn.setAttribute("aria-expanded", "false");
+            } else {
+                triggerBtn.classList.add("open");
+                dropdownMenu.classList.add("active");
+                triggerBtn.setAttribute("aria-expanded", "true");
+            }
+        });
+
+        dropdownItems.forEach(item => {
+            item.addEventListener("click", (e) => {
+                e.stopPropagation();
+                filterCategory(item.dataset.category);
+            });
+        });
+
+        document.addEventListener("click", (e) => {
+            if (!e.target.closest(".custom-filter-dropdown")) {
+                triggerBtn.classList.remove("open");
+                dropdownMenu.classList.remove("active");
+                triggerBtn.setAttribute("aria-expanded", "false");
+            }
+        });
+    }
+
+    // Desktop Tab Clicks
     tabs.forEach(tab => {
         tab.addEventListener("click", () => {
-            // Toggle active classes
-            tabs.forEach(t => t.classList.remove("active"));
-            tab.classList.add("active");
-            
-            // Fade out grid, filter, then fade in
-            grid.style.opacity = "0";
-            setTimeout(() => {
-                renderProjectsList(tab.dataset.category);
-                // Reset scroll
-                scrollPos = 0;
-                track.style.transition = "none";
-                track.style.transform = `translate3d(0px, 0, 0)`;
-                grid.style.opacity = "1";
-                
-                // Recalculate loop bounds
-                setTimeout(() => {
-                    updateLoopBounds();
-                    initTiltEffect();
-                }, 50);
-            }, 300);
+            filterCategory(tab.dataset.category);
         });
     });
 
@@ -1195,17 +1268,23 @@ function initPortfolio() {
             const clampedDist = Math.max(-2.5, Math.min(2.5, normDist));
             const absDist = Math.abs(clampedDist);
 
-            // 1. Parabolic / Semi-circle vertical arc (cards curve into an arc as they move sideways)
-            const arcY = Math.pow(clampedDist, 2) * 38; // px drop along semi-circle arc
+            const isMobile = window.innerWidth <= 768;
 
-            // 2. Semi-circle rotation matching user reference image (left tilts counter-clockwise -deg, right tilts clockwise +deg)
-            const rotateZ = clampedDist * 7.5; // degrees
+            // 1. Parabolic / Semi-circle vertical arc (subtler on mobile for perfect fit)
+            const arcFactor = isMobile ? 12 : 38;
+            const arcY = Math.pow(clampedDist, 2) * arcFactor;
+
+            // 2. Semi-circle rotation (subtler on mobile)
+            const rotZFactor = isMobile ? 3.2 : 7.5;
+            const rotateZ = clampedDist * rotZFactor;
 
             // 3. Coverflow 3D perspective Y rotation
-            const rotateY = -clampedDist * 13; // degrees
+            const rotYFactor = isMobile ? 5 : 13;
+            const rotateY = -clampedDist * rotYFactor;
 
             // 4. Center card scale focus & elevation
-            const scale = Math.max(0.82, 1.05 - absDist * 0.09);
+            const scaleFactor = isMobile ? 0.05 : 0.09;
+            const scale = Math.max(0.85, 1.05 - absDist * scaleFactor);
 
             // 5. Edge Fade-Out Animation: smooth fade for cards exiting/entering left and right panels
             const edgeFade = Math.max(0.05, 1 - Math.pow(absDist / 1.75, 3));
