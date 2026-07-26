@@ -1,4 +1,4 @@
-﻿/* app.js - Interactive Portfolio Functionality */
+/* app.js - Interactive Portfolio Functionality */
 
 // --- 1. Dynamic Projects Data ---
 // You can easily modify, add or delete projects here.
@@ -1430,9 +1430,72 @@ function initPortfolio() {
         preloadedProjectId = projectId;
     }
 
-    function openModal(projectId) {
+    let currentModalProjectId = null;
+
+    function renderModalRelatedTrack(activeId) {
+        const track = document.getElementById("modalRelatedTrack");
+        if (!track) return;
+
+        track.innerHTML = "";
+        const activeProject = projectsData.find(p => p.id === activeId);
+        if (!activeProject) return;
+
+        // Extract active project's categories
+        const activeCats = Array.isArray(activeProject.category) ? activeProject.category : [activeProject.category];
+
+        // Filter projects sharing at least one category, excluding current active project
+        let relatedProjects = projectsData.filter(p => {
+            if (p.id === activeId) return false;
+            const pCats = Array.isArray(p.category) ? p.category : [p.category];
+            return pCats.some(cat => cat !== 'featured' && activeCats.includes(cat));
+        });
+
+        // If fewer than 4 related projects in category, pad with next project sequence
+        if (relatedProjects.length < 4) {
+            const activeIndex = projectsData.findIndex(p => p.id === activeId);
+            for (let i = 1; i <= projectsData.length; i++) {
+                if (relatedProjects.length >= 4) break;
+                const nextProj = projectsData[(activeIndex + i) % projectsData.length];
+                if (nextProj.id !== activeId && !relatedProjects.some(rp => rp.id === nextProj.id)) {
+                    relatedProjects.push(nextProj);
+                }
+            }
+        }
+
+        // Keep strictly 4 curated related projects
+        relatedProjects = relatedProjects.slice(0, 4);
+
+        relatedProjects.forEach(p => {
+            const card = document.createElement("div");
+            card.className = "related-card";
+            card.innerHTML = `
+                <div class="related-thumb-wrap">
+                    <img src="${p.thumbnail}" alt="${p.title}" loading="lazy">
+                </div>
+                <div class="related-card-title">${p.title}</div>
+            `;
+
+            card.addEventListener("click", (e) => {
+                e.stopPropagation();
+                switchModalProject(p.id);
+            });
+
+            track.appendChild(card);
+        });
+    }
+
+    function switchModalProject(projectId) {
         const project = projectsData.find(p => p.id === projectId);
         if (!project || !modal) return;
+
+        currentModalProjectId = projectId;
+        const currentIndex = projectsData.findIndex(p => p.id === projectId);
+
+        // Update counter badge
+        const counterEl = document.getElementById("modalNavCounter");
+        if (counterEl) {
+            counterEl.textContent = `Project ${String(currentIndex + 1).padStart(2, '0')} / ${projectsData.length}`;
+        }
 
         // Populate Modal Fields
         const catNameMap = {
@@ -1468,8 +1531,44 @@ function initPortfolio() {
         const mediaContainer = document.getElementById("modalMediaContainer");
         const externalLink = document.getElementById("modalExternalLink");
 
-        // Always load media fresh for the opened modal
+        // Clear previous video player iframe cleanly
+        if (mediaContainer) {
+            const iframes = mediaContainer.querySelectorAll("iframe");
+            iframes.forEach(iframe => {
+                try { iframe.src = "about:blank"; iframe.remove(); } catch (e) {}
+            });
+            const videos = mediaContainer.querySelectorAll("video");
+            videos.forEach(v => {
+                try { v.pause(); v.src = ""; v.load(); v.remove(); } catch (e) {}
+            });
+            mediaContainer.innerHTML = "";
+        }
+
+        // Load new media fresh
         loadProjectMedia(project, mediaContainer, externalLink, projectId);
+
+        // Update related videos tray
+        renderModalRelatedTrack(projectId);
+    }
+
+    function navigateModal(direction) {
+        if (!currentModalProjectId) return;
+        const currentIndex = projectsData.findIndex(p => p.id === currentModalProjectId);
+        if (currentIndex === -1) return;
+
+        let targetIndex;
+        if (direction === "next") {
+            targetIndex = (currentIndex + 1) % projectsData.length;
+        } else {
+            targetIndex = (currentIndex - 1 + projectsData.length) % projectsData.length;
+        }
+
+        switchModalProject(projectsData[targetIndex].id);
+    }
+
+    function openModal(projectId) {
+        if (!modal) return;
+        switchModalProject(projectId);
 
         // Pause background rendering to allocate 100% CPU/GPU resources to the video!
         if (typeof window.pauseBgAnimation === "function") {
@@ -1524,6 +1623,7 @@ function initPortfolio() {
         modal.classList.remove("active");
         document.body.classList.remove("modal-open");
         window.carouselPaused = false;
+        currentModalProjectId = null;
 
         // Resume background rendering when modal is closed
         if (typeof window.resumeBgAnimation === "function") {
@@ -1533,6 +1633,22 @@ function initPortfolio() {
 
     if (closeBtn) closeBtn.addEventListener("click", closeModal);
     if (backdrop) backdrop.addEventListener("click", closeModal);
+
+    // Prev / Next Modal Buttons
+    const modalPrevBtn = document.getElementById("modalPrevBtn");
+    const modalNextBtn = document.getElementById("modalNextBtn");
+    if (modalPrevBtn) {
+        modalPrevBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            navigateModal("prev");
+        });
+    }
+    if (modalNextBtn) {
+        modalNextBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            navigateModal("next");
+        });
+    }
 
     // Universal click & touch listener: close modal if clicking/tapping anywhere outside .modal-card
     if (modal) {
@@ -1561,9 +1677,15 @@ function initPortfolio() {
         });
     }
     
-    // Close modal on Escape key
+    // Keyboard navigation inside modal (Escape, ArrowLeft, ArrowRight)
     window.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
+        if (!modal || !modal.classList.contains("active")) return;
+
+        if (e.key === "ArrowLeft") {
+            navigateModal("prev");
+        } else if (e.key === "ArrowRight") {
+            navigateModal("next");
+        } else if (e.key === "Escape") {
             closeModal();
         }
     });

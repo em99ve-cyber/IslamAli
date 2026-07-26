@@ -2199,9 +2199,185 @@ footer {
 }
 
 .modal-info-side {
-    padding: 50px 40px;
+    padding: 35px 30px;
     overflow-y: auto;
     position: relative;
+}
+
+/* Related Videos Strip at Bottom of Modal */
+.modal-related-section {
+    padding: 16px 24px 20px;
+    background: rgba(8, 10, 15, 0.85);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modal-related-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.related-title-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.modal-arrow-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-circle-arrow {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    outline: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.modal-circle-arrow:hover {
+    background: rgba(0, 240, 255, 0.2);
+    border-color: var(--color-accent);
+    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0 0 16px rgba(0, 240, 255, 0.4);
+}
+
+.modal-circle-arrow:active {
+    transform: scale(0.94);
+}
+
+/* Related Videos Strip at Bottom of Modal */
+.modal-related-section {
+    padding: 16px 24px 20px;
+    background: rgba(8, 10, 15, 0.85);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modal-related-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.related-title {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.related-title::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    box-shadow: 0 0 8px var(--color-accent);
+}
+
+.related-hint {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.modal-related-track {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+@media (max-width: 768px) {
+    .modal-related-track {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}
+
+.related-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+.related-card:hover {
+    border-color: rgba(0, 240, 255, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 240, 255, 0.2);
+}
+
+.related-card.active-now {
+    border-color: var(--color-accent);
+    background: rgba(0, 240, 255, 0.1);
+    box-shadow: 0 0 14px rgba(0, 240, 255, 0.4);
+}
+
+.related-thumb-wrap {
+    width: 100%;
+    height: 75px;
+    position: relative;
+    overflow: hidden;
+}
+
+.related-thumb-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.related-card:hover .related-thumb-wrap img {
+    transform: scale(1.08);
+}
+
+.now-playing-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: var(--color-accent);
+    color: #000;
+    font-size: 0.55rem;
+    font-weight: 900;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+}
+
+.related-card-title {
+    padding: 8px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Modal Clapperboard as Close Button */
