@@ -1,4 +1,4 @@
-/* app.js - Interactive Portfolio Functionality */
+﻿/* app.js - Interactive Portfolio Functionality */
 
 // --- 1. Dynamic Projects Data ---
 // You can easily modify, add or delete projects here.

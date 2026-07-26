@@ -2920,11 +2920,11 @@ footer {
         background: #0c0e15 !important; /* Clean solid dark theme background */
     }
     
-    /* Position the Close Clapperboard on the top-left to prevent play-control conflicts */
+    /* Position the Close Clapperboard on the top-right */
     .close-modal.modal-clapperboard {
         top: 16px !important;
-        left: 20px !important;
-        right: auto !important;
+        right: 20px !important;
+        left: auto !important;
         width: 32px !important;
         height: 28px !important;
         display: block !important;
