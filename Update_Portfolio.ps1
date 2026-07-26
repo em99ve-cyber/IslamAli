@@ -151,12 +151,12 @@ foreach ($p in $projects) {
         }
     }
 
-    # Aspect Ratio logic
+    # Aspect Ratio logic - Automatic Detection from Image Dimensions & Keywords
     $aspect = "landscape"
-    if ($title -like "*Mohammed Shami*" -or $link -like "*/reel/*" -or $link -like "*/shorts/*") {
+    if ($title -like "*Mohammed Shami*" -or $link -like "*/reel/*" -or $link -like "*/shorts/*" -or $link -like "*tiktok.com*" -or $title -like "*Reel*" -or $title -like "*Shorts*" -or $title -like "*Vertical*" -or $title -like "*World Cup*") {
         $aspect = "portrait"
     }
-    # Teleperformance vertical campaigns
+    # Teleperformance & Creator vertical campaigns
     if ($title -like "*Eid Al-Fitr*" -or $title -like "*Ramadan Charity*" -or $title -like "*Sports Tournament*" -or $title -like "*Alexandria Eid Al-Adha*") {
         $aspect = "portrait"
     }
@@ -249,6 +249,18 @@ foreach ($p in $projects) {
                 Write-Warning "   Could not download placeholder."
             }
         }
+    }
+
+    # Automatic Aspect Ratio Check: Inspect downloaded thumbnail image dimensions (height vs width)
+    if (Test-Path $thumbnailLocalPath) {
+        try {
+            Add-Type -AssemblyName System.Drawing -ErrorAction SilentlyContinue
+            $img = [System.Drawing.Image]::FromFile($thumbnailLocalPath)
+            if ($img.Height -gt ($img.Width * 1.05)) {
+                $aspect = "portrait"
+            }
+            $img.Dispose()
+        } catch {}
     }
 
     # Categories

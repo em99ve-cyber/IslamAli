@@ -1,4 +1,4 @@
-/* app.js - Interactive Portfolio Functionality */
+﻿/* app.js - Interactive Portfolio Functionality */
 
 // --- 1. Dynamic Projects Data ---
 // You can easily modify, add or delete projects here.
@@ -466,6 +466,20 @@ const projectsData = [
         mediaUrl: "https://iframe.mediadelivery.net/embed/705832/df72f952-88e2-40b4-b07a-7375dc98fde8",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/100064726327101/videos/pcb.1429993362501528/1801425011215899"
+    },
+    {
+        id: 34,
+        title: "Teleperformance Egypt – World Cup Coverage",
+        category: ["editing", "color"],
+        thumbnail: "thumbnails/project34.jpg",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/c0654be0-6c83-40f4-a09d-8c39bb1c4f19/preview.webp",
+        description: "A fast-paced corporate highlight video capturing the high stakes, tension, and pure joy of Teleperformance Egypt employees during the World Cup.\nHighlights: Energetic cuts, stadium-like sound design, and vibrant color grading to showcase the electrifying workplace culture.",
+        role: "Videographer,Video Editor, sound design& Colorist ",
+        tools: ["Adobe Premiere Pro", "Color correction"],
+        mediaType: "video",
+        mediaUrl: "https://player.mediadelivery.net/play/705832/c0654be0-6c83-40f4-a09d-8c39bb1c4f19",
+        aspect: "portrait",
+        originalPost: "https://www.facebook.com/share/r/1JyVnjHaXE/"
     }
 ];
 
@@ -1444,6 +1458,9 @@ function initPortfolio() {
                 } else if (url.includes("youtube.com") || url.includes("youtu.be") || url.includes("facebook.com") || url.includes("mediadelivery.net")) {
                     if (url.includes("youtube.com/embed/")) {
                         embedUrl = url.includes("?") ? `${url}&autoplay=1` : `${url}?autoplay=1`;
+                    } else if (url.includes("mediadelivery.net")) {
+                        embedUrl = url.replace("player.mediadelivery.net/play/", "iframe.mediadelivery.net/embed/");
+                        embedUrl = embedUrl.includes("?") ? `${embedUrl}&autoplay=true` : `${embedUrl}?autoplay=true`;
                     }
                     htmlContent = `<iframe src="${embedUrl}" ${iframeAttrs} id="activeVideoPlayer" style="width:100%; height:100%; border:none;"></iframe>`;
                 } else {
