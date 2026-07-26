@@ -1534,14 +1534,24 @@ function initPortfolio() {
     if (closeBtn) closeBtn.addEventListener("click", closeModal);
     if (backdrop) backdrop.addEventListener("click", closeModal);
 
-    // Close when clicking directly on overlay area around modal card
+    // Universal click & touch listener: close modal if clicking/tapping anywhere outside .modal-card
     if (modal) {
-        modal.addEventListener("click", (e) => {
-            if (e.target === modal || e.target.classList.contains("modal-backdrop") || e.target.classList.contains("modal-wrapper")) {
+        const handleOutsideDismiss = (e) => {
+            if (modal.classList.contains("active") && !e.target.closest(".modal-card")) {
                 closeModal();
             }
-        });
+        };
+
+        modal.addEventListener("click", handleOutsideDismiss);
+        modal.addEventListener("touchend", handleOutsideDismiss);
     }
+
+    // Stop audio when tab is hidden or user switches window
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden && modal && modal.classList.contains("active")) {
+            closeModal();
+        }
+    });
 
     // Stop modal video when user clicks external fullscreen link
     const extLink = document.getElementById("modalExternalLink");
