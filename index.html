@@ -38,7 +38,7 @@
     <link rel="dns-prefetch" href="https://drive.google.com">
     <link rel="dns-prefetch" href="https://facebook.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2.8.1">
+    <link rel="stylesheet" href="style.css?v=2.9.1">
 </head>
 <body>
 
@@ -253,17 +253,10 @@
         <!-- Dynamic Portfolio Section -->
         <section id="portfolio" class="portfolio-section section-padding">
             <div class="container">
-                <div class="portfolio-header">
+                <div class="portfolio-header" style="justify-content: center; text-align: center; margin-bottom: 20px;">
                     <div>
                         <span class="section-label">SELECTED WORK</span>
                         <h2 class="section-title">Projects</h2>
-                    </div>
-                    <div class="portfolio-tabs" role="tablist">
-                        <button class="portfolio-tab-btn active interactive-el" data-category="all" role="tab" aria-selected="true">All</button>
-                        <button class="portfolio-tab-btn interactive-el" data-category="editing" role="tab" aria-selected="false">Video Editing</button>
-                        <button class="portfolio-tab-btn interactive-el" data-category="color" role="tab" aria-selected="false">Color Grading</button>
-                        <button class="portfolio-tab-btn interactive-el" data-category="translation" role="tab" aria-selected="false">Translation</button>
-                        <button class="portfolio-tab-btn interactive-el" data-category="featured" role="tab" aria-selected="false">Best of the Best</button>
                     </div>
                 </div>
                 
@@ -273,10 +266,21 @@
                             <!-- Projects are rendered dynamically via JavaScript -->
                         </div>
                     </div>
-                    <div class="carousel-nav">
+                    
+                    <!-- Centered Controls & Category Banner Underneath Videos -->
+                    <div class="portfolio-bottom-controls">
                         <button class="carousel-nav-btn prev interactive-el" id="prevProjectBtn" aria-label="Previous Project">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><polyline points="15 18 9 12 15 6"></polyline></svg>
                         </button>
+                        
+                        <div class="portfolio-tabs" role="tablist">
+                            <button class="portfolio-tab-btn interactive-el" data-category="all" role="tab" aria-selected="false">All</button>
+                            <button class="portfolio-tab-btn interactive-el" data-category="editing" role="tab" aria-selected="false">Video Editing</button>
+                            <button class="portfolio-tab-btn interactive-el" data-category="color" role="tab" aria-selected="false">Color Grading</button>
+                            <button class="portfolio-tab-btn interactive-el" data-category="translation" role="tab" aria-selected="false">Translation</button>
+                            <button class="portfolio-tab-btn active interactive-el" data-category="featured" role="tab" aria-selected="true">Best of the Best</button>
+                        </div>
+
                         <button class="carousel-nav-btn next interactive-el" id="nextProjectBtn" aria-label="Next Project">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><polyline points="9 18 15 12 9 6"></polyline></svg>
                         </button>
@@ -524,6 +528,6 @@
     </div>
 
     <!-- Script File -->
-    <script src="app.js?v=2.8.1"></script>
+    <script src="app.js?v=2.9.1"></script>
 </body>
 </html>

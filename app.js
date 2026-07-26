@@ -1017,8 +1017,8 @@ function initPortfolio() {
     let preloadTimeout = null;
     let preloadedProjectId = null;
 
-    // Initial render
-    renderProjectsList("all");
+    // Initial render default to Best of the Best
+    renderProjectsList("featured");
 
     // Tab filtering clicks
     tabs.forEach(tab => {
