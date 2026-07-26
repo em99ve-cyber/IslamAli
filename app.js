@@ -1,4 +1,4 @@
-﻿/* app.js - Interactive Portfolio Functionality */
+/* app.js - Interactive Portfolio Functionality */
 
 // --- 1. Dynamic Projects Data ---
 // You can easily modify, add or delete projects here.
@@ -108,12 +108,12 @@ const projectsData = [
         title: "Masrya Short Film",
         category: ["translation"],
         thumbnail: "thumbnails/project8.jpg",
-        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/72c22c06-4d6c-4c3f-940a-88c7e75f71f8/preview.webp",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/7c29b697-852d-4707-b815-991546159184/preview.webp",
         description: "A compelling anthology short film that highlights the vital role of women in Egyptian society by weaving together the distinct stories of multiple unique characters.\nMy Role: Subtitler & Translator\n\nDialogue Translation: Translated the diverse stories and dialogue into English, ensuring the local Egyptian cultural context and emotional depth were accurately conveyed.\n\nSubtitle Engineering: Managed precise timing and synchronization for the text to provide an easy, distraction-free reading experience for international viewers.",
         role: "Subtitler & Translator",
         tools: ["Adobe Premiere Pro", "Subtitle Edit"],
         mediaType: "video",
-        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/72c22c06-4d6c-4c3f-940a-88c7e75f71f8",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/7c29b697-852d-4707-b815-991546159184",
         aspect: "landscape",
         originalPost: ""
     },
@@ -402,12 +402,12 @@ const projectsData = [
         title: "Teleperformance Egypt – Eid Al-Fitr Campaign",
         category: ["editing", "color"],
         thumbnail: "thumbnails/project29.jpg",
-        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/492da76a-ebf1-4de0-a92a-81f2617892e5/preview.webp",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/3f795113-f5d9-4283-a223-dd9aa052c402/preview.webp",
         description: "A unique, fully AI-generated festive video created for Teleperformance Egypt to celebrate Eid Al-Fitr, designed to capture the holiday's joyful spirit through cutting-edge technology.\n\nAI Footage & Pacing: Seamlessly matched cuts and synchronized the AI-generated visuals to create a cohesive, energetic, and engaging festive rhythm.\n\nStylized Grading & Sound: Enhanced the digital assets with vibrant color grading and a curated soundtrack to elevate the video's emotional and cinematic impact.",
         role: "Video Editor,AI animation, sound design& Colorist ",
         tools: ["Adobe Premiere Pro", "Color correction", "AI generation"],
         mediaType: "video",
-        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/492da76a-ebf1-4de0-a92a-81f2617892e5",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/3f795113-f5d9-4283-a223-dd9aa052c402",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/share/r/1QZJkQPaGy/"
     },
@@ -416,12 +416,12 @@ const projectsData = [
         title: "Teleperformance Egypt – Ramadan Charity Campaign",
         category: ["editing", "color"],
         thumbnail: "thumbnails/project30.jpg",
-        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/19ad534b-93f0-433b-9fa8-dac091fc9181/preview.webp",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/909c2496-b7fd-42cb-9629-563ab5c55dee/preview.webp",
         description: "A heartwarming corporate social responsibility (CSR) video documenting Teleperformance Egypt's charity event, where employees gathered to pack Ramadan food boxes for families in need.\n\nProduction & Editing: Filmed the live charity event and crafted an uplifting, fast-paced narrative that highlights teamwork and community spirit.\n\nCinematic Color & Sound: Applied warm, inspiring color grading and paired it with an emotional soundtrack to enhance the video's positive and impactful message.",
         role: "Videographer,Video Editor, sound design& Colorist ",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/19ad534b-93f0-433b-9fa8-dac091fc9181",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/909c2496-b7fd-42cb-9629-563ab5c55dee",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/share/r/15vDdLCXCBx/"
     },
@@ -430,12 +430,12 @@ const projectsData = [
         title: "Teleperformance Egypt – Sports Tournament",
         category: ["editing", "color"],
         thumbnail: "thumbnails/project31.jpg",
-        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/efc301ed-7e45-4811-b244-028ff3ed6e8c/preview.webp",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/abeb1252-2108-4871-ab50-c16e9565db07/preview.webp",
         description: "An energetic corporate sports video documenting Teleperformance Egypt's exciting football and padel tournament organized for company employees.\n\nAction Videography: Captured high-intensity, fast-paced match footage, securing the best angles of employee goals, rallies, and team celebrations.\n\nVibrant Color Grading: Applied a dynamic, punchy color grade to enhance the green fields, court textures, and athletic energy of the event.",
         role: "Videographer,Video Editor, sound design& Colorist ",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/efc301ed-7e45-4811-b244-028ff3ed6e8c",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/abeb1252-2108-4871-ab50-c16e9565db07",
         aspect: "portrait",
         originalPost: "https://www.facebook.com/share/r/1DvqCytLYj/"
     },
@@ -444,12 +444,12 @@ const projectsData = [
         title: "Teleperformance Egypt – Campus Career Fair",
         category: ["editing", "color", "featured"],
         thumbnail: "thumbnails/project32.jpg",
-        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/4a0b4816-3052-453f-8833-37812b2ce080/preview.webp",
+        previewUrl: "https://vz-7c791b2c-154.b-cdn.net/0665e2c5-5788-40fa-a7de-e0843b8ae2f4/preview.webp",
         description: "A dynamic promotional video capturing Teleperformance Egypt's recruitment presence and engagement across multiple university career fairs throughout Egypt.\n\nOn-Campus Videography: Filmed live interactions, student interviews, and booth activity across various university campuses to showcase the company's youth recruitment drive.\n\nEnergetic Color & Sound: Applied a bright, professional color grade and paired it with an upbeat soundtrack to reflect a vibrant, corporate, and career-focused atmosphere.",
         role: "Videographer,Video Editor, sound design& Colorist ",
         tools: ["Adobe Premiere Pro", "Color correction"],
         mediaType: "video",
-        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/4a0b4816-3052-453f-8833-37812b2ce080",
+        mediaUrl: "https://iframe.mediadelivery.net/embed/705832/0665e2c5-5788-40fa-a7de-e0843b8ae2f4",
         aspect: "landscape",
         originalPost: "https://www.facebook.com/share/v/1BSQ8GWDCV/"
     },
@@ -484,7 +484,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initScrollReveal();
 });
 
-// --- 3. Mock Intro Loader ---
+// --- 3. Intro Loader with Smooth Page Sync ---
 function initLoader() {
     const loader = document.getElementById("introLoader");
     const progressText = document.getElementById("loadingProgress");
@@ -492,26 +492,40 @@ function initLoader() {
     if (!loader) return;
 
     let progress = 0;
+    let pageLoaded = false;
+
+    if (document.readyState === "complete") {
+        pageLoaded = true;
+    } else {
+        window.addEventListener("load", () => {
+            pageLoaded = true;
+        });
+    }
+
     const interval = setInterval(() => {
         let step = 1;
-        if (progress < 60) {
-            step = Math.floor(Math.random() * 5) + 2; // 2 to 6
-        } else if (progress < 90) {
-            step = Math.floor(Math.random() * 3) + 1; // 1 to 3
+        if (progress < 45) {
+            step = Math.floor(Math.random() * 3) + 1;
+        } else if (progress < 85) {
+            step = Math.floor(Math.random() * 2) + 1;
+        } else if (progress < 96) {
+            step = pageLoaded ? 2 : (Math.random() < 0.35 ? 1 : 0);
         } else {
-            step = 1;
+            step = pageLoaded ? 2 : 0;
         }
         progress = Math.min(progress + step, 100);
         
-        progressText.textContent = `${progress}%`;
+        if (progressText) {
+            progressText.textContent = `${progress}%`;
+        }
         
         if (progress === 100) {
             clearInterval(interval);
             setTimeout(() => {
                 loader.classList.add("fade-out");
-            }, 400);
+            }, 450);
         }
-    }, 40);
+    }, 45);
 }
 
 // --- 4. Enforce Dark Theme ---
@@ -1095,7 +1109,7 @@ function initPortfolio() {
                 <div class="${imageWrapClass}" ${imageWrapStyle}>
                     ${badgeHTML}
                     <img class="card-thumbnail-static" src="${project.thumbnail}" alt="${project.title}" loading="lazy">
-                    ${project.previewUrl ? `<img class="card-thumbnail-preview" src="${project.previewUrl}" alt="${project.title} Preview" loading="lazy" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.35s ease; pointer-events: none; z-index: 2;">` : ''}
+                    ${project.previewUrl ? `<img class="card-thumbnail-preview" src="${project.previewUrl}" alt="${project.title} Preview" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.35s ease; pointer-events: none; z-index: 2;">` : ''}
                     <div class="play-hover-indicator" style="z-index: 3;">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M8 5v14l11-7z"/>
@@ -1119,21 +1133,6 @@ function initPortfolio() {
                 });
             }
             
-            // Preload modal on hover (de-bounced)
-            card.addEventListener("mouseenter", () => {
-                if (preloadTimeout) clearTimeout(preloadTimeout);
-                preloadTimeout = setTimeout(() => {
-                    preloadProject(project.id);
-                }, 150); // 150ms debounce
-            });
-
-            card.addEventListener("mouseleave", () => {
-                if (preloadTimeout) {
-                    clearTimeout(preloadTimeout);
-                    preloadTimeout = null;
-                }
-            });
-
             // Open modal on click
             card.addEventListener("click", (e) => {
                 if (hasDragged) {
@@ -1469,11 +1468,8 @@ function initPortfolio() {
         const mediaContainer = document.getElementById("modalMediaContainer");
         const externalLink = document.getElementById("modalExternalLink");
 
-        // If not already preloaded (or matches different project), load it fresh
-        if (preloadedProjectId !== projectId) {
-            loadProjectMedia(project, mediaContainer, externalLink, projectId);
-            preloadedProjectId = projectId;
-        }
+        // Always load media fresh for the opened modal
+        loadProjectMedia(project, mediaContainer, externalLink, projectId);
 
         // Pause background rendering to allocate 100% CPU/GPU resources to the video!
         if (typeof window.pauseBgAnimation === "function") {
@@ -1488,10 +1484,42 @@ function initPortfolio() {
 
     function closeModal() {
         if (!modal) return;
-        // Stop any playing video by clearing content
+        
+        // Thoroughly stop any playing video & iframe to prevent background audio bugs on all browsers
         const mediaContainer = document.getElementById("modalMediaContainer");
-        mediaContainer.innerHTML = "";
-        preloadedProjectId = null; // Clear preloaded id since container is now empty
+        if (mediaContainer) {
+            const iframes = mediaContainer.querySelectorAll("iframe");
+            iframes.forEach(iframe => {
+                try {
+                    iframe.contentWindow.postMessage('pause', '*');
+                    iframe.contentWindow.postMessage(JSON.stringify({ method: 'pause' }), '*');
+                    iframe.contentWindow.postMessage(JSON.stringify({ type: 'pause' }), '*');
+                    iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'pauseVideo', args: '' }), '*');
+                } catch (e) {}
+                try {
+                    iframe.src = "about:blank";
+                    iframe.removeAttribute("src");
+                } catch (e) {}
+                try {
+                    iframe.remove();
+                } catch (e) {}
+            });
+
+            const videos = mediaContainer.querySelectorAll("video");
+            videos.forEach(video => {
+                try {
+                    video.pause();
+                    video.src = "";
+                    video.removeAttribute("src");
+                    video.load();
+                } catch (e) {}
+                try {
+                    video.remove();
+                } catch (e) {}
+            });
+
+            mediaContainer.innerHTML = "";
+        }
 
         modal.classList.remove("active");
         document.body.classList.remove("modal-open");
@@ -1505,6 +1533,23 @@ function initPortfolio() {
 
     if (closeBtn) closeBtn.addEventListener("click", closeModal);
     if (backdrop) backdrop.addEventListener("click", closeModal);
+
+    // Close when clicking directly on overlay area around modal card
+    if (modal) {
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal || e.target.classList.contains("modal-backdrop") || e.target.classList.contains("modal-wrapper")) {
+                closeModal();
+            }
+        });
+    }
+
+    // Stop modal video when user clicks external fullscreen link
+    const extLink = document.getElementById("modalExternalLink");
+    if (extLink) {
+        extLink.addEventListener("click", () => {
+            setTimeout(closeModal, 150);
+        });
+    }
     
     // Close modal on Escape key
     window.addEventListener("keydown", (e) => {

@@ -153,11 +153,12 @@ foreach ($p in $projects) {
 
     # Aspect Ratio logic
     $aspect = "landscape"
-    if ($title -like "*Mohammed Shami*" -or $link -like "*/reel/*" -or $title -like "*Teleperformance*" -or $link -like "*/shorts/*") {
+    if ($title -like "*Mohammed Shami*" -or $link -like "*/reel/*" -or $link -like "*/shorts/*") {
         $aspect = "portrait"
     }
-    if ($title -like "*Campus Career Fair*") {
-        $aspect = "landscape"
+    # Teleperformance vertical campaigns
+    if ($title -like "*Eid Al-Fitr*" -or $title -like "*Ramadan Charity*" -or $title -like "*Sports Tournament*" -or $title -like "*Alexandria Eid Al-Adha*") {
+        $aspect = "portrait"
     }
 
     # Ensure thumbnail folder exists

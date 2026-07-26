@@ -588,7 +588,7 @@ body:hover .cursor-ambient-glow {
 
 /* --- Section Layouts --- */
 .section-padding {
-    padding: 140px 0 100px;
+    padding: 90px 0 65px;
 }
 
 .container {
@@ -2178,9 +2178,10 @@ footer {
 
 .media-container.aspect-portrait {
     aspect-ratio: 9/16;
-    max-height: 62vh;
+    max-height: 74vh;
     width: auto;
     margin: 0 auto;
+    align-self: center; /* Prevent flex stretching */
 }
 
 .media-container iframe,
@@ -2949,7 +2950,7 @@ footer {
     .media-container.aspect-portrait {
         position: relative !important;
         width: 100% !important;
-        max-width: 280px !important;
+        max-width: 320px !important;
         height: 0 !important;
         padding-bottom: 177.77% !important; /* 9:16 aspect ratio */
         align-self: center !important;
